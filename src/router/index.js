@@ -31,8 +31,8 @@ export default new Router({
       component: Appointment
     },
     {
-      // path:'/forgetpsw',
-      path:'/',
+      path:'/forgetpsw',
+      // path:'/',
       name:'ForgetPsw',
       component:ForgetPsw
     }
