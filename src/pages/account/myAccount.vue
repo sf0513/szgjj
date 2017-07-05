@@ -58,6 +58,7 @@
         height: 50px;
         text-align: left;
         position: relative;
+        margin: 0 auto;
         /*top: 50%;*/
     }
     .finish{

@@ -42,10 +42,6 @@
 			</ul>
 		</div>
 	</div>
-<div>
-	<h1>my name is zyh</h1>
-	<h2>my page is appointment</h2>
-</div>
 </template>
 <script>
 	export default{
