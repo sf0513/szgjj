@@ -11,7 +11,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/hh',
+      path: '/',
       name: 'Hello',
       component: Hello
     },
@@ -31,8 +31,8 @@ export default new Router({
       component: Appointment
     },
     {
-      // path:'/forgetpsw',
-      path:'/',
+      path:'/forgetpsw',
+      // path:'/',
       name:'ForgetPsw',
       component:ForgetPsw
     }
