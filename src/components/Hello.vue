@@ -4,6 +4,7 @@
     <h2>Essential Links</h2>
 
     <button @click="goToMyInformation">Go to MyInformation</button>
+    <button @click="goToMyAccount">Go to MyAccount</button>
 
     <!--<ul>-->
       <!--<li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>-->
@@ -35,6 +36,9 @@ export default {
   methods: {
     goToMyInformation: function () {
       this.$router.push('/pages/account/MyInformation')
+    },
+    goToMyAccount () {
+          this.$router.push('/pages/account/myAccount')
     }
   }
 }
