@@ -56,7 +56,7 @@ export default{
 <style type="text/css">
 li{list-style: none;}
 .appointment{width: 100%;}
-.appointment header{width: 100%; height: 100px; line-height: 100px; display: -webkit-flex; display: flex; margin-bottom: 91px;}
+.appointment header{width: 100%; height: 100px; line-height: 100px; display: -webkit-flex; display: flex; margin-bottom: 46px;}
 .appointment header a:nth-child(1){background: url(../../assets/back_icon.jpg) no-repeat center; }
 .appointment header a{width: 70px;}
 .appointment header div{flex: 1; -webkit-flex: 1; font-size: 20px; }
