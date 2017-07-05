@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header">
-            <div class="title_bar">
+            <div class="title_bar" >
                 <img src="../../assets/logo.png" alt="" width="20px">
                 深圳市住房公积金管理中心
                 <button class="finish">退出</button>
@@ -50,7 +50,7 @@
 </script>
 <style scoped>
     div{
-        font-size:20px;
+        font-size:16px;
         font-family: '微软雅黑';
     }
     .title_bar{
@@ -58,17 +58,17 @@
         height: 50px;
         text-align: left;
         position: relative;
-        top: 50%;
+        /*top: 50%;*/
     }
     .finish{
         float: right;
     }
     .title{
-        height: 400px;
+        height: 300px;
         background: lightskyblue;
     }
     .title span{
-        font-size:40px;
+        font-size:30px;
         font-weight: bold;
     }
     .deposite{
@@ -81,5 +81,8 @@
     a{
         text-decoration: none;
         color: black;
+    }
+    .title a{
+        display: block;
     }
 </style>
