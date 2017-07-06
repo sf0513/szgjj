@@ -4,6 +4,7 @@
     <h2>Essential Links</h2>
 
     <button @click="goToMyInformation">Go to MyInformation</button>
+    <br>
     <button @click="goToMyAccount">Go to MyAccount</button>
 
     <!--<ul>-->

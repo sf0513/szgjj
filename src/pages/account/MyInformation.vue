@@ -1,24 +1,24 @@
 <template>
-    <div class="my-information">
+    <div class="my-information-div">
 
-        <div class="my-information-title">
+        <div class="my-information-title-div">
             <button id="back-button">返回</button>
             <h4>我的信息</h4>
         </div>
 
-        <div class="my-information-list">
+        <div class="my-information-list-div">
             <table class="my-information-table">
                 <tr id="odd-tr">
                     <td>姓名:</td>
                     <td>王小花</td>
                     <td></td>
-                    <td>修改密码></td>
+                    <td><a href="#">修改密码 ></a></td>
                 </tr>
                 <tr id="even-tr">
                     <td>省份证:</td>
                     <td>4320000000000000</td>
                     <td></td>
-                    <td>升位></td>
+                    <td><a href="#">升位 ></a></td>
                 </tr>
                 <tr id="odd-tr">
                     <td>缴存单位:</td>
@@ -29,14 +29,14 @@
                 <tr id="even-tr">
                     <td>手机号码:</td>
                     <td>13812345678</td>
-                    <td>立即绑定</td>
-                    <td>修改></td>
+                    <td><a href="/index.html">立即绑定</a></td>
+                    <td><a href="#">修改 ></a></td>
                 </tr>
                 <tr id="odd-tr">
                     <td>邮箱:</td>
                     <td>12345678@163.com</td>
                     <td></td>
-                    <td>修改></td>
+                    <td><a href="#">修改 ></a></td>
                 </tr>
                 <tr id="even-tr">
                     <td>婚姻状况:</td>
@@ -61,24 +61,23 @@
     </div>
 </template>
 
-<style scoped>
 
-    .my-information {
+
+
+<style type="text/css">
+
+    .my-information-div {
         background-color: whitesmoke;
     }
-    .my-information-title, #back-button {
-
+    #back-button {
+        width: 60px;
+        height: 30px;
+        display: inline;
+        position: relative;
     }
 
-    h4 {
-        font-size: 24px;
-        display: inline-block;
-        width: auto;
-        background-color: white;
-    }
-
-    .my-information-list {
-        font-size: 18px;
+    .my-information-list-div {
+        font-size: 14px;
         display: block;
         /*width: 400px;*/
         /*height: 800px;*/
@@ -91,23 +90,34 @@
         empty-cells: hide;
         background-color: cornflowerblue;
     }
-    .my-information-list, #odd-tr {
+    .my-information-list-div, #odd-tr {
         width: 100%;
         margin: 5px;
         /*display: block;*/
         background-color: gainsboro;
     }
-    .my-information-list, #even-tr {
+    .my-information-list-div, #even-tr {
         width: 100%;
         margin: 5px;
         /*display: block;*/
+        background-color: white;
+    }
+
+    h4 {
+        font-size: 24px;
+        display: inline;
+        width: auto;
         background-color: white;
     }
     td {
         width:100px;
         padding:10px;
         border:1px
-        solid green;
+        /*solid green;*/
+    }
+    a {
+        color: royalblue;
+        text-decoration-color: #008800;
     }
 
 </style>
