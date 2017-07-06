@@ -4,15 +4,15 @@
         <!--<img  src="@/assets/logo.png"/>-->
         <br/>
         <div class="login_row">
-            <p class="login_name">账户：</p>
+            <label class="login_name">账户：</label>
             <input type="text" class="login_input">
         </div>
         <div class="login_row">
-            <p>密码：</p>
+            <label>密码：</label>
             <input type="text" class="login_input">
         </div>
         <div class="login_row">
-            <p>验证码：</p>
+            <label>验证码：</label>
             <input type="text" class="login_input name">
             <img>
         </div>
@@ -35,22 +35,29 @@
 <style scoped>
     .login {
         background-color: #EFEFEF;
-        height: 100%;
-    }
+        height: 20rem;
+        text-align: left;
+     }
 
     .login_row {
-        width: 7rem;
+        width: 6rem;
+        background: white;
+        border: 1px solid black;
+        margin-top: 10px;
+        border-radius: 5px;
+        vertical-align: middle;
      }
 
     .login_input {
         height: 32px;
-        width: 6rem;
+        border: none;
+        background: transparent;
     }
 
     .login_input.name {
         width: 3rem;
-        left:0px;
-     }
+        left: 0px;
+    }
 
     .login_submit {
         position: relative;
@@ -66,10 +73,7 @@
         color: white;
         overflow: hidden;
     }
-    .login_name{
-        position: absolute;
-        margin-left: 0.8rem;
-        height: 100%;
-        text-align: center;
-    }
+
+    .login_name {
+       }
 </style>
