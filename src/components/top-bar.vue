@@ -1,3 +1,6 @@
+/**
+ * 顶部bar组件
+ */
 <template>
 	<div class="top-bar">
 		<img src="../assets/top_bar_img.jpg" height="48">
