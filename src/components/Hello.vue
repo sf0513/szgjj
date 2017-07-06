@@ -5,6 +5,7 @@
 
     <button @click="goToMyInformation">Go to MyInformation</button>
     <button @click="goToMyAccount">Go to MyAccount</button>
+    <button @click="goToForgetPsw">Go to ForgetPsw</button>
 
     <!--<ul>-->
       <!--<li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>-->
@@ -38,7 +39,10 @@ export default {
       this.$router.push('/pages/account/MyInformation')
     },
     goToMyAccount () {
-          this.$router.push('/pages/account/myAccount')
+      this.$router.push('/pages/account/myAccount')
+    },
+    goToForgetPsw(){
+      this.$router.push('/forgetpsw')
     }
   }
 }
