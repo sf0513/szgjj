@@ -6,6 +6,7 @@ import MyInformation from '../pages/account/MyInformation'
 import Appointment from '../pages/appointment/appointment'
 import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
+import Message from '../pages/message/Message'
 
 Vue.use(Router)
 
@@ -40,6 +41,12 @@ export default new Router({
           path: '/pages/login/login',
           name: 'login',
           component: Login
+      },
+      {
+          path: '/Mesage',
+          name: 'Mesage',
+          component: Mesage
       }
+
     ]
 })
