@@ -22,7 +22,7 @@
                 type:Boolean,
                 default:true,
             }, 
-            showImg:{
+            showImg:{       //是否显示中间文字旁边的图片
                 type:Boolean,
                 default:true,
             }

@@ -66,7 +66,7 @@ export default{
 .item ul{width: 7.5rem; font-size: 0.35rem;}
 .item li{width: 2.48rem; height: 3.14rem; border-right: 0.01rem solid #c9caca; border-top:0.01rem solid #c9caca; float: left;  position: relative;}
 .item .no-border{border-right:none; }
-.border-b{border-bottom: 0.01rem solid #c9caca; margin-bottom: -0.01rem;}
+.border-b{border-bottom: 0.01rem solid #c9caca;}
 .item img{width: 0.76rem; height: 0.73rem; position: absolute; left: 0.96rem; top: 0.68rem;}
 .item span{ position: absolute; top: 1.94rem; left: 0.96rem;}
 </style>
