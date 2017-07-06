@@ -1,3 +1,6 @@
+/**
+ * 头部导航组件
+ */
 <template>
     <div class="header">
             <div class="is-left" v-if="showLeft">
