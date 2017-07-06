@@ -44,14 +44,14 @@
 	</div>
 </template>
 <script>
-export default{
-	name:'appointment',
-	data(){
-		return{
-			
+	export default{
+		name:'appointment',
+		data(){
+			return{
+
+			}
 		}
 	}
-}	
 </script>
 <style type="text/css">
 li{list-style: none;}
