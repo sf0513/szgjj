@@ -13,7 +13,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
       {
-        path: '/ADM',
+        path: '/',
         name: 'Hello',
         component: Hello
       },
@@ -43,7 +43,7 @@ export default new Router({
           component: Login
       },
       {
-          path: '/',
+          path: '/Message',
           name: 'Mesage',
           component: Mesage
       }
