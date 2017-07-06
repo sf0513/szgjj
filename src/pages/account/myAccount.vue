@@ -24,9 +24,15 @@
             </div>
             <div class="item">
                 <img src="../../assets/logo.png" alt="" width="20px">
-                最近缴存<br>2016-01-09
-                +￥1500.00
-                <a href="#">更多  >></a>
+                <p>最近缴存<br><span>2016-01-09</span></p>
+                <p>+￥1500.00</p>
+                <p><a href="#">更多  >></a></p>
+            </div>
+            <div class="item">
+                <img src="../../assets/logo.png" alt="" width="20px">
+                <p>最近提取<br><span>2016-01-09</span></p>
+                <p>-￥1500.00</p>
+                <p><a href="#">更多  >></a></p>
             </div>
         </div>
         <div class="footer">
@@ -34,7 +40,7 @@
                 <span @click="show_first" id="my_card">
                     我的联名卡
                 </span>
-                <span @click="show_second" id="my_protocol">
+                <span @click="show_second" id="smy_protocol">
                     我的协议
                 </span>
             </div>
@@ -167,5 +173,16 @@
     }
     #my_card{
         color: orange;
+    }
+    .item p{
+        display: inline-block;
+        margin-top: 25px;
+        width: 30%;
+    }
+    .item img{
+        margin-left: 3px;
+    }
+    .item span{
+        font-size:12px;
     }
 </style>
