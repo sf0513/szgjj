@@ -1,6 +1,10 @@
 <template>
-	<div id="app">
-		<h1>{{title}}</h1>
+	<div>
+		<div class="title_bar">
+			<img src="../../assets/back_icon.jpg" width="16px">
+			<input type="button">
+			{{title}}
+		</div>
 		<div>
 			<p>
 				<span>{{gjj_account}}</span>
@@ -42,7 +46,11 @@ export default{
 </script>
 
 <style type="text/css">
-	#app{
-		width: 60%;
-	}
+	div{
+        font-size:16px;
+        font-family: '微软雅黑';
+    }
+    .title_bar{
+    	float: left;
+    }
 </style>
