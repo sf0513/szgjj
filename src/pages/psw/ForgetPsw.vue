@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="title_bar">
-			<img src="../../assets/back_icon.jpg" width="16px">
+			<!--<img src="../../assets/back_icon.jpg" width="16px">-->
 			<input type="button">
 			{{title}}
 		</div>
