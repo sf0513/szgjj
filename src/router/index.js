@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import myAccount from '@/pages/account/myAccount.vue'
 import MyInformation from '../pages/account/MyInformation'
-import Appointment from '../pages/appointment/appointment'
+// import Appointment from '../pages/appointment/appointment'
 import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
@@ -13,7 +13,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
       {
-        path: '/',
+        path: '/ADM',
         name: 'Hello',
         component: Hello
       },
@@ -43,7 +43,7 @@ export default new Router({
           component: Login
       },
       {
-          path: '/Mesage',
+          path: '/',
           name: 'Mesage',
           component: Mesage
       }
