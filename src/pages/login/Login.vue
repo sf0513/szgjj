@@ -35,24 +35,26 @@
 <style scoped>
     .login {
         background-color: #EFEFEF;
-        height: 20rem;
-        text-align: left;
+        height: 15rem;
+        vertical-align: middle;
      }
 
     .login_row {
-        width: 6rem;
+        width: 80%;
         background: white;
         border: 1px solid black;
         margin-top: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
         border-radius: 5px;
-        vertical-align: middle;
-     }
+       }
 
     .login_input {
         height: 32px;
         border: none;
         background: transparent;
-    }
+        outline: none;
+      }
 
     .login_input.name {
         width: 3rem;
