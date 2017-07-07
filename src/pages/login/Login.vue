@@ -35,7 +35,12 @@
 <style scoped>
     .login {
         background-color: #EFEFEF;
-        height: 100%;
+        height: 1920px;
+    }
+
+    input, button {
+        /*outline: none;*/
+        border: none;
     }
 
     .login_logo {
@@ -47,24 +52,25 @@
     .login_row {
         max-width: 90%;
         background: white;
-        border: 1px solid black;
-        margin: 10px auto;
+        border: 3px solid #F5F4F3;
+        margin: 16px auto;
         text-align: left;
+        box-shadow: 2px 2px 3px #aaaaaa;
         border-radius: 10px;
     }
 
     .login_input {
-        height: 35px;
-        border: none;
+        height: 40px;
         background: transparent;
-        outline: none;
+        width: 70%;
     }
 
     .login_code {
         width: 75%;
-        border: 1px solid black;
+        border: 3px solid #F5F4F3;
         background: white;
         border-radius: 10px;
+        box-shadow: 2px 2px 3px #aaaaaa;
     }
 
     .login_row_code {
@@ -78,21 +84,26 @@
         position: relative;
         width: 50%;
         height: 35px;
-        background: #01AFEC;
-        border: none;
-        margin: 10px 20px 10px;
+        font-size: 16px;
+        background-image: url(../../assets/btn.png);
+        margin: 32px 20px 10px;
         -webkit-transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
         transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
         border-radius: 3rem;
         cursor: pointer;
         color: white;
+        background-repeat: no-repeat;
+        background-position: 50% center;
         overflow: hidden;
     }
 
     .login_name {
+        font-size: 16px;
         margin-left: 10px;
     }
-    .forget{
+
+    .forget {
+        font-size: 16px;
         margin-top: 20px;
     }
 </style>
