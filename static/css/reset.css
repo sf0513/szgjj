@@ -32,7 +32,6 @@ footer, header, menu, nav, section {
 body {
     line-height: 1;
 }
-i,em{font-style: normal;}
 blockquote, q {
     quotes: none;
 }
@@ -57,6 +56,14 @@ a {
 li {
     list-style: none;
 }
+
+i,em{font-style: normal;}
+input,textarea{resize:none; overflow: auto; outline:none;}
+.fl{float: left;}
+.fr{float: right;}
+.clear{zoom:1;}
+.clear:after{content: ""; display: block; clear:both;}
+.red-color{color:red;}
 
 ::-webkit-scrollbar {
     width: 5px;
@@ -88,3 +95,6 @@ body {
     -webkit-text-size-adjust: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
+
