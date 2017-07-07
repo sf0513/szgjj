@@ -40,7 +40,7 @@
                 <span @click="show_first" id="my_card">
                     我的联名卡
                 </span>
-                <span @click="show_second" id="smy_protocol">
+                <span @click="show_second" id="my_protocol">
                     我的协议
                 </span>
             </div>
@@ -73,29 +73,11 @@
             },
             show_first(){
                 this.show = true;
-//                showItem(this.show);
-                var card = document.getElementById("my_card");
-                var protocol = document.getElementById("my_protocol");
-                if(this.show){
-                    card.style.color = "orange";
-                    protocol.style.color = "black";
-                }else{
-                    card.style.color = "black";
-                    protocol.style.color = "orange";
-                }
+                this.showItem(this.show);
             },
             show_second(){
                 this.show = false;
-//                showItem(this.show);
-                var card = document.getElementById("my_card");
-                var protocol = document.getElementById("my_protocol");
-                if(this.show){
-                    card.style.color = "orange";
-                    protocol.style.color = "black";
-                }else{
-                    card.style.color = "black";
-                    protocol.style.color = "orange";
-                }
+                this.showItem(this.show);
             },
             showItem(show){
                 var card = document.getElementById("my_card");
@@ -116,9 +98,14 @@
         font-size:16px;
         font-family: '微软雅黑';
     }
+    a{
+        text-decoration: none;
+        color: black;
+    }
     .title_bar{
         background: deepskyblue;
         height: 50px;
+        width: 100%;
         text-align: left;
         position: relative;
         margin: 0 auto;
@@ -132,12 +119,18 @@
         margin-right: 10px;
     }
     .title{
-        height: 250px;
+        height: 300px;
         background: lightskyblue;
     }
     .title span{
         font-size:20px;
         font-weight: bold;
+    }
+    .title a{
+        display: block;
+    }
+    .title img{
+        margin-top: 30px;
     }
     .deposite{
          height: 60px;
@@ -148,22 +141,9 @@
         margin-top: 20px;
         width: 45%;
     }
-    a{
-        text-decoration: none;
-        color: black;
-    }
-    .title a{
-        display: block;
-    }
     .balance_style{
         word-break:break-all;
         margin-top: 20px;
-    }
-    .title img{
-        margin-top: 30px;
-    }
-    .item{
-        height: 100px;
     }
     .item_first p{
         text-align: left;
@@ -174,9 +154,12 @@
     #my_card{
         color: orange;
     }
+    .item{
+        height: 70px;
+    }
     .item p{
         display: inline-block;
-        margin-top: 25px;
+        margin-top: 10px;
         width: 30%;
     }
     .item img{
