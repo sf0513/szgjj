@@ -105,6 +105,7 @@
     .title_bar{
         background: deepskyblue;
         height: 50px;
+        width: 100%;
         text-align: left;
         position: relative;
         margin: 0 auto;
@@ -118,7 +119,7 @@
         margin-right: 10px;
     }
     .title{
-        height: 250px;
+        height: 300px;
         background: lightskyblue;
     }
     .title span{
