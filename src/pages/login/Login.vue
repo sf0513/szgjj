@@ -1,19 +1,19 @@
 <template>
     <div class="login">
-        <h1>login</h1>
-        <!--<img  src="@/assets/logo.png"/>-->
+        <img class="login_logo" src="../../assets/logo.png">
         <br/>
-        <div class="login_row">
+        <div class="login_row name">
             <label class="login_name">账户：</label>
             <input type="text" class="login_input">
         </div>
         <div class="login_row">
-            <label>密码：</label>
+            <label class="login_name">密码：</label>
             <input type="text" class="login_input">
         </div>
-        <div class="login_row">
-            <label>验证码：</label>
-            <input type="text" class="login_input name">
+        <div class="login_row_code">
+            <div class="login_code">
+                <label class="login_name">验证码：</label>
+                <input type="text" class="login_input"></div>
             <img>
         </div>
         <button class="login_submit">登录</button>
@@ -35,36 +35,49 @@
 <style scoped>
     .login {
         background-color: #EFEFEF;
-        height: 15rem;
-        vertical-align: middle;
-     }
+        height: 100%;
+    }
+
+    .login_logo {
+        margin-top: 48px;
+        margin-bottom: 32px;
+        height: 96px;
+    }
 
     .login_row {
-        width: 80%;
+        max-width: 90%;
         background: white;
         border: 1px solid black;
-        margin-top: 10px;
-        margin-right: 10px;
-        margin-left: 10px;
-        border-radius: 5px;
-       }
+        margin: 10px auto;
+        text-align: left;
+        border-radius: 10px;
+    }
 
     .login_input {
-        height: 32px;
+        height: 35px;
         border: none;
         background: transparent;
         outline: none;
-      }
+    }
 
-    .login_input.name {
-        width: 3rem;
-        left: 0px;
+    .login_code {
+        width: 75%;
+        border: 1px solid black;
+        background: white;
+        border-radius: 10px;
+    }
+
+    .login_row_code {
+        margin: 10px auto;
+        max-width: 90%;
+        text-align: left;
+
     }
 
     .login_submit {
         position: relative;
         width: 50%;
-        height: 32px;
+        height: 35px;
         background: #01AFEC;
         border: none;
         margin: 10px 20px 10px;
@@ -77,5 +90,9 @@
     }
 
     .login_name {
-       }
+        margin-left: 10px;
+    }
+    .forget{
+        margin-top: 20px;
+    }
 </style>
