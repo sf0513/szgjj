@@ -2,15 +2,15 @@
     <div>
         <div class="header">
             <div class="title_bar" >
-                <img src="../../assets/logo.png" alt="" width="20px">
+                <img src="../../assets/top_bar_img.jpg" alt="" width="20px">
                 深圳市住房公积金管理中心
                 <button class="finish" @click="finish">退出</button>
             </div>
             <div class="title">
-                <img src="../../assets/logo.png" alt="" height="100px">
+                <img src="../../assets/ic_my_account.png" alt="" height="100px">
                 <a href="#">王小花 >></a>
                 <p>330305285   封存</p>
-                <p class="balance_style">余额<span>{{balance}}</span></p>
+                <p class="balance_style">余额<span id="balance" v-if="showBalance">{{balance}}</span><span id="balance_hide" v-else="">******</span><img id="balance_img" @click="showOrHideBalance" src="../../assets/ic_account_open.png"></p>
             </div>
         </div>
         <div class="center">
@@ -23,13 +23,13 @@
                 </span>
             </div>
             <div class="item">
-                <img src="../../assets/logo.png" alt="" width="20px">
+                <img src="../../assets/ic_card_capture.png" alt="" width="20px">
                 <p>最近缴存<br><span>2016-01-09</span></p>
                 <p>+￥1500.00</p>
                 <p><a href="#">更多  >></a></p>
             </div>
             <div class="item">
-                <img src="../../assets/logo.png" alt="" width="20px">
+                <img src="../../assets/ic_card_extract.png" alt="" width="20px">
                 <p>最近提取<br><span>2016-01-09</span></p>
                 <p>-￥1500.00</p>
                 <p><a href="#">更多  >></a></p>
@@ -65,6 +65,7 @@
                 bank:'中国银行',
                 idCard:'6213457****5874',
                 show:true,
+                showBalance:true,
             }
         },
         methods:{
@@ -88,6 +89,17 @@
                 }else{
                     card.style.color = "black";
                     protocol.style.color = "orange";
+                }
+            },
+            showOrHideBalance(){
+                var balance = document.getElementById("balance");
+                var balance_img = document.getElementById("balance_img");
+                if(this.showBalance){
+                    this.showBalance = false;
+//                    balance_img.src = "../../assets/ic_account_hide.png";
+                }else{
+                    this.showBalance = true;
+//                    balance_img.src = "../../assets/ic_account_open.png";
                 }
             }
         }
@@ -119,7 +131,7 @@
         margin-right: 10px;
     }
     .title{
-        height: 300px;
+        height: 250px;
         background: lightskyblue;
     }
     .title span{
@@ -143,7 +155,6 @@
     }
     .balance_style{
         word-break:break-all;
-        margin-top: 20px;
     }
     .item_first p{
         text-align: left;
@@ -167,5 +178,10 @@
     }
     .item span{
         font-size:12px;
+    }
+    .balance_style img{
+        width: 30px;
+        height: 15px;
+        margin-left: 10px;
     }
 </style>
