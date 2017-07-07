@@ -131,7 +131,7 @@
         margin-right: 10px;
     }
     .title{
-        height: 250px;
+        height: 300px;
         background: lightskyblue;
     }
     .title span{
