@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="header">
-            <div class="title_bar" >
-                <img src="../../assets/top_bar_img.jpg" alt="" width="20px">
-                深圳市住房公积金管理中心
-                <button class="finish" @click="finish">退出</button>
-            </div>
+            <!--<div class="title_bar" >-->
+                <!--<img src="../../assets/top_bar_img.jpg" alt="" width="20px">-->
+                <!--深圳市住房公积金管理中心-->
+                <!--<button class="finish" @click="finish">退出</button>-->
+            <!--</div>-->
             <div class="title">
                 <img src="../../assets/ic_my_account.png" alt="" height="100px">
                 <a href="#">王小花 >></a>
@@ -128,19 +128,19 @@
     }
     .title_bar{
         background: deepskyblue;
-        height: 50px;
+        height: 1rem;
         width: 100%;
         text-align: left;
         position: relative;
         margin: 0 auto;
-        line-height: 50px;
+        line-height: 0.15rem;
     }
     .finish{
         float: right;
-        width: 60px;
-        height: 30px;
-        margin-top: 10px;
-        margin-right: 10px;
+        width: 1rem;
+        height: 0.5rem;
+        margin-top: 0.1rem;
+        margin-right: 0.1rem;
     }
     .title{
         height: 4rem;
@@ -174,8 +174,8 @@
         display: inline-block;
         margin-top: 0.33rem;
         flex: 1;
-        margin-left: 0.6rem;
-        margin-right: 0.1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
     }
     .balance_style{
         word-break:break-all;
