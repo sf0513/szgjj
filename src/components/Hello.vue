@@ -8,7 +8,7 @@
         <button @click="goToMyAccount">Go to MyAccount</button>
         <br/>
         <button @click="goToLogin">Go to Login</button>
-
+        <br/>
         <button @click="goToForgetPsw">Go to ForgetPsw</button>
 
     </div>
@@ -31,7 +31,8 @@
             },
             goToLogin(){
                 this.$router.push("pages/login/login")
-            }, goToForgetPsw(){
+            },
+            goToForgetPsw(){
                 this.$router.push('/forgetpsw')
             }
         }
