@@ -2,15 +2,15 @@
     <div>
         <div class="header">
             <div class="title_bar" >
-                <img src="../../assets/logo.png" alt="" width="20px">
+                <img src="../../assets/top_bar_img.jpg" alt="" width="20px">
                 深圳市住房公积金管理中心
                 <button class="finish" @click="finish">退出</button>
             </div>
             <div class="title">
-                <img src="../../assets/logo.png" alt="" height="100px">
+                <img src="../../assets/ic_my_account.png" alt="" height="100px">
                 <a href="#">王小花 >></a>
                 <p>330305285   封存</p>
-                <p class="balance_style">余额<span>{{balance}}</span></p>
+                <p class="balance_style">余额<span id="balance" v-if="showBalance">{{balance}}</span><span id="balance_hide" v-else="">******</span><img id="balance_img" @click="showOrHideBalance" src="../../assets/ic_account_open.png"></p>
             </div>
         </div>
         <div class="center">
@@ -23,13 +23,13 @@
                 </span>
             </div>
             <div class="item">
-                <img src="../../assets/logo.png" alt="" width="20px">
+                <img src="../../assets/ic_card_capture.png" alt="" width="20px">
                 <p>最近缴存<br><span>2016-01-09</span></p>
                 <p>+￥1500.00</p>
                 <p><a href="#">更多  >></a></p>
             </div>
             <div class="item">
-                <img src="../../assets/logo.png" alt="" width="20px">
+                <img src="../../assets/ic_card_extract.png" alt="" width="20px">
                 <p>最近提取<br><span>2016-01-09</span></p>
                 <p>-￥1500.00</p>
                 <p><a href="#">更多  >></a></p>
@@ -40,7 +40,7 @@
                 <span @click="show_first" id="my_card">
                     我的联名卡
                 </span>
-                <span @click="show_second" id="smy_protocol">
+                <span @click="show_second" id="my_protocol">
                     我的协议
                 </span>
             </div>
@@ -65,6 +65,7 @@
                 bank:'中国银行',
                 idCard:'6213457****5874',
                 show:true,
+                showBalance:true,
             }
         },
         methods:{
@@ -73,29 +74,11 @@
             },
             show_first(){
                 this.show = true;
-//                showItem(this.show);
-                var card = document.getElementById("my_card");
-                var protocol = document.getElementById("my_protocol");
-                if(this.show){
-                    card.style.color = "orange";
-                    protocol.style.color = "black";
-                }else{
-                    card.style.color = "black";
-                    protocol.style.color = "orange";
-                }
+                this.showItem(this.show);
             },
             show_second(){
                 this.show = false;
-//                showItem(this.show);
-                var card = document.getElementById("my_card");
-                var protocol = document.getElementById("my_protocol");
-                if(this.show){
-                    card.style.color = "orange";
-                    protocol.style.color = "black";
-                }else{
-                    card.style.color = "black";
-                    protocol.style.color = "orange";
-                }
+                this.showItem(this.show);
             },
             showItem(show){
                 var card = document.getElementById("my_card");
@@ -107,6 +90,17 @@
                     card.style.color = "black";
                     protocol.style.color = "orange";
                 }
+            },
+            showOrHideBalance(){
+                var balance = document.getElementById("balance");
+                var balance_img = document.getElementById("balance_img");
+                if(this.showBalance){
+                    this.showBalance = false;
+//                    balance_img.src = "../../assets/ic_account_hide.png";
+                }else{
+                    this.showBalance = true;
+//                    balance_img.src = "../../assets/ic_account_open.png";
+                }
             }
         }
     }
@@ -116,9 +110,14 @@
         font-size:16px;
         font-family: '微软雅黑';
     }
+    a{
+        text-decoration: none;
+        color: black;
+    }
     .title_bar{
         background: deepskyblue;
         height: 50px;
+        width: 100%;
         text-align: left;
         position: relative;
         margin: 0 auto;
@@ -132,12 +131,18 @@
         margin-right: 10px;
     }
     .title{
-        height: 250px;
+        height: 300px;
         background: lightskyblue;
     }
     .title span{
         font-size:20px;
         font-weight: bold;
+    }
+    .title a{
+        display: block;
+    }
+    .title img{
+        margin-top: 30px;
     }
     .deposite{
          height: 60px;
@@ -148,22 +153,8 @@
         margin-top: 20px;
         width: 45%;
     }
-    a{
-        text-decoration: none;
-        color: black;
-    }
-    .title a{
-        display: block;
-    }
     .balance_style{
         word-break:break-all;
-        margin-top: 20px;
-    }
-    .title img{
-        margin-top: 30px;
-    }
-    .item{
-        height: 100px;
     }
     .item_first p{
         text-align: left;
@@ -174,9 +165,12 @@
     #my_card{
         color: orange;
     }
+    .item{
+        height: 70px;
+    }
     .item p{
         display: inline-block;
-        margin-top: 25px;
+        margin-top: 10px;
         width: 30%;
     }
     .item img{
@@ -184,5 +178,10 @@
     }
     .item span{
         font-size:12px;
+    }
+    .balance_style img{
+        width: 30px;
+        height: 15px;
+        margin-left: 10px;
     }
 </style>

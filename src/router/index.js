@@ -5,6 +5,9 @@ import myAccount from '@/pages/account/myAccount.vue'
 import MyInformation from '../pages/account/MyInformation'
 import Appointment from '../pages/appointment/appointment'
 import myAppointment from '../pages/appointment/my-appointment'
+import completeAppoint from '../pages/appointment/complete-appoint'
+import appointBank from '../pages/appointment/appoint-bank'
+import changeAppoint from '../pages/appointment/change-appoint'
 import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
@@ -37,6 +40,21 @@ export default new Router({
           path: '/appointment/myAppointment',
           name: 'myAppointment',
           component: myAppointment
+      },
+      {
+          path: '/appointment/completeAppoint',
+          name: 'completeAppoint',
+          component: completeAppoint
+      },
+      {
+          path: '/appointment/changeAppoint',
+          name: 'changeAppoint',
+          component: changeAppoint
+      },
+      {
+          path: '/appointment/appointBank',
+          name: 'appointBank',
+          component: appointBank
       },
       {
           path:'/forgetpsw',

@@ -6,8 +6,8 @@
 		<div class="appoint-tabs">
 			<div class="tabs">
 				<ul>
-					<li>预约代办</li>
-					<li class="active">已完成预约</li>
+					<li class="active">预约代办</li>
+					<li @click='completeAppoint'>已完成预约</li>
 				</ul>
 				<div class="hr30"></div>
 			</div>
@@ -37,19 +37,18 @@
 							</li>
 							<li>
 								<span>办理网点</span>
-								<div class="network-dot">
+								<span class="network-dot">
 									<i>中国银行侨香支行</i>
 									<div class="addr">深圳市福田区侨香路123号  0755-123123</div>
-								</div>
+								</span>
 							</li>
 							<li>
 								<span>预约时间</span>
-								<span>2016-04-05 上午</span>
+								<span><i class="red-color">2016-04-05</i> <i>上午</i></span>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div class="page" style="display:none;"></div>
 			</div>
 			<div class="btn-area">
 				<input type="button" name="" value="取 消">
@@ -64,6 +63,11 @@ export default{
 	data(){
 		return{
 
+		}
+	},
+	methods:{
+		completeAppoint:function(){
+			this.$router.push('/appointment/completeAppoint')
 		}
 	},
 	components:{
@@ -84,12 +88,14 @@ export default{
 .page .page-tit .title i{color: #008cd6;}
 .page .page-tit .title img,.page .page-tit .title span,.page .page-tit .title i{float: left;}
 
-.page .page-cont{font-size: 0.34rem;}
+.page .page-cont{}
 .page .page-cont li{height: 0.9rem; overflow: hidden;}
 .page .page-cont li:nth-of-type(odd){background: #f7f8f8;}
-.page .page-cont li:nth-of-type(even){background: #fff;}
-.page .page-cont li span{float: left; width: 3.75rem; line-height: 0.9rem;}
-.network-dot{font-size: 0.24rem; margin-top: 0.1rem; line-height: 0.4rem;}
+.page .page-cont li:nth-of-type(even){background: #fff; }
+.page .page-cont li span{float: left;  line-height: 0.9rem;}
+.page .page-cont li span:nth-child(1){margin-left: -0.45rem; width: 4rem;}
+.page .page-cont li span:nth-child(2){text-align: left; width: 3.5rem;}
+.network-dot{font-size: 0.24rem; margin-top: 0.1rem; line-height: 0.4rem !important; }
 .network-dot .addr{font-size: 0.18rem;}
 
 .btn-area{height: 1.56rem;}
