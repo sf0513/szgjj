@@ -36,6 +36,7 @@
                 this.$router.push('/forgetpsw')
             }
         }
+    }
 </script>
 
 <style scoped>
