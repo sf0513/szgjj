@@ -163,7 +163,8 @@
         margin-top: 0.3rem;
     }
     .name{
-        margin-top: 0.1rem;
+        margin-top: 0.2rem;
+        font-size:0.25rem;
     }
     .deposite{
          height: 1rem;
