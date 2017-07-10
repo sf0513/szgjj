@@ -27,6 +27,8 @@
 
 <script>
 export default {
+
+	
   name: 'hello',
   data () {
     return {
@@ -45,7 +47,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style  scoped>
+	/*@import url('../../static/css/base.less');*/
 h1, h2 {
   font-weight: normal;
 }
