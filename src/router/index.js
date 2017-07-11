@@ -11,6 +11,7 @@ import changeAppoint from '../pages/appointment/change-appoint'
 import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
+import MyLoan from '../pages/loan/MyLoan'
 
 Vue.use(Router)
 
@@ -70,7 +71,11 @@ export default new Router({
           path: '/Message',
           name: 'Message',
           component: Message
+      },
+      {
+          path: '/pages/loan/MyLoan',
+          name: 'MyLoan',
+          component: MyLoan
       }
-
     ]
 })

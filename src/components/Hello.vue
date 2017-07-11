@@ -10,6 +10,8 @@
         <button @click="goToLogin">Go to Login</button>
         <br/>
         <button @click="goToForgetPsw">Go to ForgetPsw</button>
+        <br/>
+        <button @click="goToMyLoan">Go to MyLoan</button>
 
     </div>
 </template>
@@ -34,6 +36,9 @@
             },
             goToForgetPsw(){
                 this.$router.push('/forgetpsw')
+            },
+            goToMyLoan(){
+                this.$router.push('/pages/loan/MyLoan')
             }
         }
     }

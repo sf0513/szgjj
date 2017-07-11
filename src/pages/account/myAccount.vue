@@ -1,16 +1,16 @@
 <template>
     <div>
         <div class="header">
-            <div class="title_bar" >
-                <img src="../../assets/top_bar_img.jpg" alt="" width="20px">
-                深圳市住房公积金管理中心
-                <button class="finish" @click="finish">退出</button>
-            </div>
+            <!--<div class="title_bar" >-->
+                <!--<img src="../../assets/top_bar_img.jpg" alt="" width="20px">-->
+                <!--深圳市住房公积金管理中心-->
+                <!--<button class="finish" @click="finish">退出</button>-->
+            <!--</div>-->
             <div class="title">
                 <img src="../../assets/ic_my_account.png" alt="" height="100px">
                 <a href="#">王小花 >></a>
-                <p>330305285   封存</p>
-                <p class="balance_style">余额<span id="balance" v-if="showBalance">{{balance}}</span><span id="balance_hide" v-else="">******</span><img id="balance_img" @click="showOrHideBalance" src="../../assets/ic_account_open.png"></p>
+                <p class="name">330305285   封存</p>
+                <p class="balance_style">余额<span id="balance" v-if="showBalance">{{balance}}</span><span id="balance_hide" v-else="">******</span><img id="balance_img" @click="showOrHideBalance" src="../../assets/ic_account_hide.png"></p>
             </div>
         </div>
         <div class="center">
@@ -23,14 +23,15 @@
                 </span>
             </div>
             <div class="item">
-                <img src="../../assets/ic_card_capture.png" alt="" width="20px">
-                <p>最近缴存<br><span>2016-01-09</span></p>
+                <img src="../../assets/ic_card_capture.png" alt="" >
+                <p class="p1">最近缴存<br><span>2016-01-09</span></p>
                 <p>+￥1500.00</p>
                 <p><a href="#">更多  >></a></p>
             </div>
+            <span class="line"></span>
             <div class="item">
-                <img src="../../assets/ic_card_extract.png" alt="" width="20px">
-                <p>最近提取<br><span>2016-01-09</span></p>
+                <img src="../../assets/ic_card_extract.png" alt="" >
+                <p class="p1">最近提取<br><span>2016-01-09</span></p>
                 <p>-￥1500.00</p>
                 <p><a href="#">更多  >></a></p>
             </div>
@@ -46,10 +47,12 @@
             </div>
             <div class="item_first" v-if="show" >
                 <p>银&nbsp;&nbsp;行:  &nbsp;&nbsp;&nbsp;&nbsp;{{bank}}</p>
-                <p>账&nbsp;&nbsp;号:  &nbsp;&nbsp;&nbsp;&nbsp;{{idCard}}</p>
+                <span class="line"></span>
+                <p class="idcard">账&nbsp;&nbsp;号:  &nbsp;&nbsp;&nbsp;&nbsp;<span>{{idCard}}</span></p>
             </div>
             <div class="item_first" v-else >
                 <p>对冲还款协议</p>
+                <span class="line"></span>
                 <p>按月还款协议</p>
             </div>
         </div>
@@ -66,6 +69,7 @@
                 idCard:'6213457****5874',
                 show:true,
                 showBalance:true,
+
             }
         },
         methods:{
@@ -85,10 +89,18 @@
                 var protocol = document.getElementById("my_protocol");
                 if(show){
                     card.style.color = "orange";
+                    card.style.borderBottom = "5px solid orange";
+                    card.style.height = "0.4rem";
+
                     protocol.style.color = "black";
+                    protocol.style.borderBottom = "none";
                 }else{
                     card.style.color = "black";
+                    card.style.borderBottom = "none";
+
                     protocol.style.color = "orange";
+                    protocol.style.borderBottom = "5px solid orange";
+                    protocol.style.height = "0.4rem";
                 }
             },
             showOrHideBalance(){
@@ -96,65 +108,79 @@
                 var balance_img = document.getElementById("balance_img");
                 if(this.showBalance){
                     this.showBalance = false;
-//                    balance_img.src = "../../assets/ic_account_hide.png";
+                    balance_img.src =require('../../assets/ic_account_open.png');
                 }else{
                     this.showBalance = true;
-//                    balance_img.src = "../../assets/ic_account_open.png";
+                    balance_img.src =require('../../assets/ic_account_hide.png');
                 }
-            }
+            },
         }
     }
 </script>
 <style scoped>
     div{
-        font-size:16px;
-        font-family: '微软雅黑';
-    }
+         font-size:0.30rem;
+         font-family: '微软雅黑';
+     }
     a{
         text-decoration: none;
         color: black;
     }
     .title_bar{
         background: deepskyblue;
-        height: 50px;
+        height: 1rem;
         width: 100%;
         text-align: left;
         position: relative;
         margin: 0 auto;
-        line-height: 50px;
+        line-height: 0.15rem;
     }
     .finish{
         float: right;
-        width: 60px;
-        height: 30px;
-        margin-top: 10px;
-        margin-right: 10px;
+        width: 1rem;
+        height: 0.5rem;
+        margin-top: 0.1rem;
+        margin-right: 0.1rem;
     }
     .title{
-        height: 300px;
+        height: 4rem;
         background: lightskyblue;
     }
     .title span{
-        font-size:20px;
+        font-size:0.4rem;
         font-weight: bold;
+        width: 3rem;
+        display: inline-block;
     }
     .title a{
         display: block;
+        margin-top: 0.1rem;
     }
     .title img{
         margin-top: 30px;
     }
+    .title #balance_img{
+        margin-top: 0.3rem;
+    }
+    .name{
+        margin-top: 0.2rem;
+        font-size:0.25rem;
+    }
     .deposite{
-         height: 60px;
+         height: 1rem;
          background: rgb(245,245,245);
+        display: flex;
      }
     .deposite span{
         display: inline-block;
-        margin-top: 20px;
-        width: 45%;
+        margin-top: 0.33rem;
+        flex: 1;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
     }
     .balance_style{
         word-break:break-all;
+        text-align: center;
     }
     .item_first p{
         text-align: left;
@@ -164,17 +190,26 @@
     }
     #my_card{
         color: orange;
+        border-bottom: 5px solid orange;
+        height: 0.4rem;
     }
     .item{
-        height: 70px;
+        height: 1rem;
+        display: flex;
     }
     .item p{
         display: inline-block;
-        margin-top: 10px;
-        width: 30%;
+        flex: 1;
+        margin-top: 0.4rem;
+    }
+    .item .p1{
+        margin-top: 0.2rem;
     }
     .item img{
-        margin-left: 3px;
+        width: 28px;
+        height: 29px;
+        margin-left: 0.5rem;
+        margin-top: 0.2rem;
     }
     .item span{
         font-size:12px;
@@ -183,5 +218,15 @@
         width: 30px;
         height: 15px;
         margin-left: 10px;
+    }
+    .line{
+        background: gray;
+        width: 85%;
+        height: 1px;
+        display: block;
+        margin-left: 0.5rem;
+    }
+    .idcard span{
+        font-weight: bold;
     }
 </style>
