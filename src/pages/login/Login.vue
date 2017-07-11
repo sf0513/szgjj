@@ -3,22 +3,23 @@
         <img class="login_logo" src="../../assets/logo.png">
         <br/>
         <div class="login_row name">
-            <label class="login_name">账户：</label>
-            <input type="text" class="login_input">
+            <label class="login_name" for="acount">账户：</label>
+            <input type="text" class="login_input" id="acount" placeholder="公积金账户/手机账户">
         </div>
         <div class="login_row">
-            <label class="login_name">密码：</label>
-            <input type="text" class="login_input">
+            <label class="login_name" for="password">密码：</label>
+            <input type="password" class="login_input" id="password">
         </div>
         <div class="login_row_code">
             <div class="login_code">
-                <label class="login_name">验证码：</label>
-                <input type="text" class="login_input"></div>
-            <img>
+                <label class="login_name" for="code">验证码：</label>
+                <input type="text" class="login_input" id="code">
+            </div>
+            <img class="image_code" src="../../assets/card_email_registered_validation.png">
         </div>
         <button class="login_submit">登录</button>
         <div class="forget">
-            <router-link to=""><p>忘记密码</p></router-link>
+            <router-link to="/forgetpsw"><p>忘记密码</p></router-link>
         </div>
     </div>
 </template>
@@ -32,14 +33,16 @@
     }
 </script>
 
-<style scoped>
+<style type="text/css" scoped>
     .login {
+        width: 100%;
+        height: 100%;
+        position: absolute;
         background-color: #EFEFEF;
-        height: 1920px;
     }
 
     input, button {
-        /*outline: none;*/
+        outline: none;
         border: none;
     }
 
@@ -50,7 +53,7 @@
     }
 
     .login_row {
-        max-width: 90%;
+        max-width: 7rem;
         background: white;
         border: 3px solid #F5F4F3;
         margin: 16px auto;
@@ -60,29 +63,42 @@
     }
 
     .login_input {
-        height: 40px;
         background: transparent;
-        width: 70%;
+        width: 80%;
+        vertical-align: middle;
+    }
+
+    div {
+        font-size: 18px;
+    }
+
+    label {
+        vertical-align: middle;
     }
 
     .login_code {
-        width: 75%;
+        max-width: 70%;
         border: 3px solid #F5F4F3;
         background: white;
         border-radius: 10px;
+        text-align: left;
         box-shadow: 2px 2px 3px #aaaaaa;
+
+    }
+
+    .login_code input {
+        max-width: 68%;
     }
 
     .login_row_code {
-        margin: 10px auto;
-        max-width: 90%;
-        text-align: left;
-
+        position: relative;
+        margin: 16px auto;
+        max-width: 7rem;
     }
 
     .login_submit {
         position: relative;
-        width: 50%;
+        width: 4rem;
         height: 35px;
         font-size: 16px;
         background-image: url(../../assets/btn.png);
@@ -94,16 +110,25 @@
         color: white;
         background-repeat: no-repeat;
         background-position: 50% center;
+        background-color: transparent;
         overflow: hidden;
     }
 
     .login_name {
         font-size: 16px;
-        margin-left: 10px;
+        margin-left: 16px;
     }
 
     .forget {
         font-size: 16px;
         margin-top: 20px;
+    }
+
+    .image_code {
+        position: absolute;
+        top: 0;
+        margin-top: 2px;
+        right: 0px;
+        height: 40px;
     }
 </style>
