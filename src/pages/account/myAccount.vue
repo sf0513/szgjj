@@ -129,20 +129,20 @@
         height: 230px;
         background: lightskyblue;
     }
-    .title span{
+    .account_title span{
         font-size:0.4rem;
         font-weight: bold;
         width: 3rem;
         display: inline-block;
     }
-    .title a{
+    .account_title a{
         display: block;
         margin-top: 0.1rem;
     }
-    .title img{
+    .account_title img{
         margin-top: 30px;
     }
-    .title #balance_img{
+    .account_title #balance_img{
         margin-top: 0.3rem;
     }
     .name{
