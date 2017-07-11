@@ -118,8 +118,8 @@
         position:absolute;
         width:2rem;
         height:1.5rem;
-        left:28px;
-        top:110px;
+        left:0.6rem;
+        top:2.2rem;
     }
     .loan1 span{
         font-weight:bold;
