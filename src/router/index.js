@@ -15,7 +15,7 @@ import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
 import MyLoan from '../pages/loan/MyLoan'
 import MyNotes from '@/pages/notes/NotesBoard'
-
+import HedgeSubmit from '../pages/hedge/HedgeSubmit'
 import HedgeInput from '../pages/hedge/HedgeInput'
 
 Vue.use(Router)
@@ -83,7 +83,7 @@ export default new Router({
           component: Login
       },
       {
-          path: '/Message',
+          path: '/pages/message/Message',
           name: 'Message',
           component: Message
       },
@@ -98,9 +98,14 @@ export default new Router({
           component: MyNotes
       },
       {
-          path: '/HedgeInput',
+          path: '/pages/hedge/HedgeInput',
           name: 'HedgeInput',
           component: HedgeInput
+      },
+      {
+          path: '/HedgeSubmit',
+          name: 'HedgeSubmit',
+          component: HedgeSubmit
       }
     ]
 })
