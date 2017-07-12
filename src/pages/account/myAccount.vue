@@ -1,14 +1,10 @@
 <template>
     <div>
         <div class="header">
-            <!--<div class="title_bar" >-->
-                <!--<img src="../../assets/top_bar_img.jpg" alt="" width="20px">-->
-                <!--深圳市住房公积金管理中心-->
-                <!--<button class="finish" @click="finish">退出</button>-->
-            <!--</div>-->
-            <div class="title">
+            <top-bar></top-bar>
+            <div class="account_title">
                 <img src="../../assets/ic_my_account.png" alt="" height="100px">
-                <a href="#">王小花 >></a>
+                <router-link to="/pages/loan/MyLoan"><p>王小花 >></p></router-link>
                 <p class="name">330305285   封存</p>
                 <p class="balance_style">余额<span id="balance" v-if="showBalance">{{balance}}</span><span id="balance_hide" v-else="">******</span><img id="balance_img" @click="showOrHideBalance" src="../../assets/ic_account_hide.png"></p>
             </div>
@@ -26,14 +22,14 @@
                 <img src="../../assets/ic_card_capture.png" alt="" >
                 <p class="p1">最近缴存<br><span>2016-01-09</span></p>
                 <p>+￥1500.00</p>
-                <p><a href="#">更多  >></a></p>
+                <p>更多  >></p>
             </div>
             <span class="line"></span>
             <div class="item">
                 <img src="../../assets/ic_card_extract.png" alt="" >
                 <p class="p1">最近提取<br><span>2016-01-09</span></p>
                 <p>-￥1500.00</p>
-                <p><a href="#">更多  >></a></p>
+                <p>更多  >></p>
             </div>
         </div>
         <div class="footer">
@@ -60,6 +56,8 @@
 </template>
 <script>
     import Vue from 'vue';
+    import topBar from '../../components/top-bar.vue';
+
     export default {
         name: 'myAccount',
         data () {
@@ -73,9 +71,6 @@
             }
         },
         methods:{
-            finish(){
-                window.close;
-            },
             show_first(){
                 this.show = true;
                 this.showItem(this.show);
@@ -114,6 +109,10 @@
                     balance_img.src =require('../../assets/ic_account_hide.png');
                 }
             },
+
+        },
+        components:{
+            topBar
         }
     }
 </script>
@@ -126,40 +125,24 @@
         text-decoration: none;
         color: black;
     }
-    .title_bar{
-        background: deepskyblue;
-        height: 1rem;
-        width: 100%;
-        text-align: left;
-        position: relative;
-        margin: 0 auto;
-        line-height: 0.15rem;
-    }
-    .finish{
-        float: right;
-        width: 1rem;
-        height: 0.5rem;
-        margin-top: 0.1rem;
-        margin-right: 0.1rem;
-    }
-    .title{
-        height: 4rem;
+    .account_title{
+        height: 230px;
         background: lightskyblue;
     }
-    .title span{
+    .account_title span{
         font-size:0.4rem;
         font-weight: bold;
         width: 3rem;
         display: inline-block;
     }
-    .title a{
+    .account_title a{
         display: block;
         margin-top: 0.1rem;
     }
-    .title img{
+    .account_title img{
         margin-top: 30px;
     }
-    .title #balance_img{
+    .account_title #balance_img{
         margin-top: 0.3rem;
     }
     .name{

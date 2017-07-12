@@ -123,10 +123,10 @@ export default{
             }
         }
     }
-}	
+}
 </script>
 
-<style type="text/css">
+<style type="text/css" >
     .app{
         width: 100%;
         height: 100%;
