@@ -11,6 +11,7 @@ import changeAppoint from '../pages/appointment/change-appoint'
 import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
+import HedgeInput from '../pages/hedge/HedgeInput'
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ export default new Router({
           path: '/Message',
           name: 'Message',
           component: Message
+      },
+      {
+          path: '/HedgeInput',
+          name: 'HedgeInput',
+          component: HedgeInput
       }
 
     ]

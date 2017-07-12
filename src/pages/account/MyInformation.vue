@@ -93,13 +93,11 @@
     .my-information-list-div, #odd-tr {
         width: 100%;
         margin: 5px;
-        /*display: block;*/
         background-color: gainsboro;
     }
     .my-information-list-div, #even-tr {
         width: 100%;
         margin: 5px;
-        /*display: block;*/
         background-color: white;
     }
 
