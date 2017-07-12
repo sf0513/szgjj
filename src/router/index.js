@@ -14,6 +14,9 @@ import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
 import MyLoan from '../pages/loan/MyLoan'
+import MyNotes from '@/pages/notes/NotesBoard'
+
+import HedgeInput from '../pages/hedge/HedgeInput'
 
 Vue.use(Router)
 
@@ -88,6 +91,16 @@ export default new Router({
           path: '/pages/loan/MyLoan',
           name: 'MyLoan',
           component: MyLoan
+      },
+      {
+          path: '/notes',
+          name: 'MyNotes',
+          component: MyNotes
+      },
+      {
+          path: '/HedgeInput',
+          name: 'HedgeInput',
+          component: HedgeInput
       }
     ]
 })
