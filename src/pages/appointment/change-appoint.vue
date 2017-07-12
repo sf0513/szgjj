@@ -10,7 +10,7 @@
 					<li>预约业务</li>
 					<li @click="selectArea">预约区域</li>
 					<li @click="selectBack">预约银行</li>
-					<li>预约网点</li>
+					<li @click="selectDot">预约网点</li>
 					<li>预约时间</li>
 				</ul>
 			</div>
@@ -19,7 +19,7 @@
 					<li>租房业务<i class="bg"></i></li>
 					<li @click="selectArea">福田区<i class="bg"></i></li>
 					<li @click="selectBack">中国银行<i class="bg"></i></li>
-					<li>中国银行侨香支行<i class="bg"></i></li>
+					<li @click="selectDot">中国银行侨香支行<i class="bg"></i></li>
 					<li><i class="red-color">2015-12-20</i>&nbsp;&nbsp;&nbsp;&nbsp;<span>上午</span><i class="bg"></i></li>
 				</ul>
 			</div>
@@ -47,6 +47,9 @@ export default{
 		},
 		selectArea:function(){
 			this.$router.push('/appointment/appointArea')
+		},
+		selectDot:function(){
+			this.$router.push('/appointment/appointDot')
 		}
 	},
 	components:{
