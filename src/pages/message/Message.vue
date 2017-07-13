@@ -15,7 +15,7 @@
     </div>
 </template>
 
-<script type="application/javascript">
+<script type="application/javascript" scoped>
     export default {
             name: 'message',
             data() {
