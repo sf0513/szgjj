@@ -14,6 +14,7 @@ import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
 import MyLoan from '../pages/loan/MyLoan'
+import ReimbursementDetail from '../pages/loan/ReimbursementDetail'
 import MyNotes from '@/pages/notes/NotesBoard'
 import HedgeSubmit from '../pages/hedge/HedgeSubmit'
 import HedgeInput from '../pages/hedge/HedgeInput'
@@ -89,10 +90,14 @@ export default new Router({
           component: Message
       },
       {
-<<<<<<< HEAD
           path: '/pages/loan/MyLoan',
           name: 'MyLoan',
           component: MyLoan
+      },
+      {
+          path: '/pages/loan/ReimbursementDetail',
+          name: 'ReimbursementDetail',
+          component: ReimbursementDetail
       },
       {
           path: '/notes',
@@ -104,15 +109,15 @@ export default new Router({
           name: 'HedgeInput',
           component: HedgeInput
       },
+    {
+    path: '/HedgeSubmit',
+    name:'HedgeSubmit',
+    component:HedgeSubmit
+},
       {
-          path: '/HedgeSubmit',
-          name: 'HedgeSubmit',
-          component: HedgeSubmit
-=======
           path: '/loan/modeOfRepayment',
           name: 'modeOfRepayment',
           component: modeOfRepayment
->>>>>>> shenfei
       }
     ]
 })

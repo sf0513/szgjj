@@ -15,8 +15,8 @@
                     </div>
                 </div>
                 <div class="loan2">
-                    <div><img src="../../assets/ic_card_cumulative.png" alt=""><p>累计已还本金<span class="refund_principal">{{refund_principal}}&nbsp;></span></p></div>
-                    <div><img src="../../assets/ic_card_remaining.png" alt=""><p>剩余贷款本金<span class="loan_principal">{{loan_principal}}&nbsp;></span></p></div>
+                    <div @click="repay_loan"><img src="../../assets/ic_card_cumulative.png" alt=""><p>累计已还本金<span class="refund_principal">{{refund_principal}}&nbsp;></span></p></div>
+                    <div @click="remaining_loan"><img src="../../assets/ic_card_remaining.png" alt=""><p>剩余贷款本金<span class="loan_principal">{{loan_principal}}&nbsp;></span></p></div>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
 
         <div class="content">
             <div class="first">
-                <img src="../../assets/ic_card_time_limit.png" alt=""><span>{{time_limit}}</span><span>{{time_limit_bal}}</span>
+                <img src="../../assets/ic_card_time_limit.png" alt=""><span>{{time_limit}}</span><span class="limit_loan">{{time_limit_bal}}</span>
             </div>
             <p class="line"></p>
         </div>
@@ -74,6 +74,15 @@
             }
         },
         methods:{
+            repay_loan(){
+                this.$router.push({
+                    path:'ReimbursementDetail',
+                    query: {bal:this.refund_principal},
+                })
+            },
+            remaining_loan(){
+
+            }
         },
         components:{
             topBar
@@ -177,13 +186,10 @@
         display: block;
         margin-left: 0.2rem;
     }
-    .yelloSpan{
-        color: red;
-    }
-    .blackSpan{
-        color: black;
-    }
     .color{
-        color: red;
+        color: rgb(157,198,9);
+    }
+    .limit_loan{
+        color: rgb(14,118,204);
     }
 </style>
