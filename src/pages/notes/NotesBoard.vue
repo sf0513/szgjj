@@ -1,14 +1,14 @@
 <template>
 	<div class="app">
-        <nav_header_view :title="title"></nav_header_view>
         <topbar_view></topbar_view>
+        <title_bar_view></title_bar_view>
         <p>{{title}}</p>
 	</div>
 </template>
 
 <script>
 import topbar_view from '@/components/top-bar.vue';
-import nav_header_view from '../../components/notes_nav-header.vue';
+import title_bar_view from '@/components/nav-header.vue'
 export default{
 	data(){
 		return{
@@ -18,7 +18,7 @@ export default{
 	methods: {},
     components:{
         topbar_view,
-        nav_header_view
+        title_bar_view
     }
 }	
 </script>

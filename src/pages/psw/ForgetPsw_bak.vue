@@ -1,7 +1,9 @@
 <template>
 	<div class="app">
-		<NavHeader :title="title" :showImg="false" :color="true"></NavHeader>
-        <EditText :labelStr="gjj_acc_label" :holderStr="gjj_acc_holder" v-if="show_verification==false"></EditText>
+		<div class="title_bar">
+			<img src="../../assets/back_icon.png" width="16px" class="back_icon" @click="backHome">
+            <h1 class="title">{{title}}</h1>
+		</div>
 		<div class="edit_zone" v-if="show_verification==false">
             <span class="label_style">{{gjj_acc_label}}</span>
 			<input type="text" :placeholder="gjj_acc_holder" v-model="acc_info" class="holder_style">
@@ -34,8 +36,6 @@
 </template>
 
 <script>
-	import NavHeader from '@/components/nav-header'
-    import EditText from '@/components/EditText'
 export default{
 	data(){
 		return{
@@ -122,10 +122,6 @@ export default{
                 this.show_verification_err=false;
             }
         }
-    },
-    components:{
-        NavHeader,
-        EditText
     }
 }
 </script>
