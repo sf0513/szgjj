@@ -113,11 +113,6 @@ export default new Router({
             component: HedgeInput
         },
         {
-            path: '/HedgeSubmit',
-            name: 'HedgeSubmit',
-            component: HedgeSubmit
-        },
-        {
             path: '/loan/modeOfRepayment',
             name: 'modeOfRepayment',
             component: modeOfRepayment
