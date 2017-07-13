@@ -7,12 +7,18 @@ import Appointment from '../pages/appointment/appointment'
 import myAppointment from '../pages/appointment/my-appointment'
 import completeAppoint from '../pages/appointment/complete-appoint'
 import appointBank from '../pages/appointment/appoint-bank'
+import appointArea from '../pages/appointment/appoint-area'
+import appointDot from '../pages/appointment/appoint-dot'
 import changeAppoint from '../pages/appointment/change-appoint'
 import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
 import MyLoan from '../pages/loan/MyLoan'
 import ReimbursementDetail from '../pages/loan/ReimbursementDetail'
+import MyNotes from '@/pages/notes/NotesBoard'
+import HedgeSubmit from '../pages/hedge/HedgeSubmit'
+import HedgeInput from '../pages/hedge/HedgeInput'
+import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 
 Vue.use(Router)
 
@@ -59,6 +65,16 @@ export default new Router({
           component: appointBank
       },
       {
+          path: '/appointment/appointArea',
+          name: 'appointArea',
+          component: appointArea
+      },
+      {
+          path: '/appointment/appointDot',
+          name: 'appointDot',
+          component: appointDot
+      },
+      {
           path:'/forgetpsw',
           name:'ForgetPsw',
           component:ForgetPsw
@@ -69,7 +85,7 @@ export default new Router({
           component: Login
       },
       {
-          path: '/Message',
+          path: '/pages/message/Message',
           name: 'Message',
           component: Message
       },
@@ -82,6 +98,26 @@ export default new Router({
           path: '/pages/loan/ReimbursementDetail',
           name: 'ReimbursementDetail',
           component: ReimbursementDetail
+      },
+      {
+          path: '/notes',
+          name: 'MyNotes',
+          component: MyNotes
+      },
+      {
+          path: '/pages/hedge/HedgeInput',
+          name: 'HedgeInput',
+          component: HedgeInput
+      },
+    {
+    path: '/HedgeSubmit',
+    name:'HedgeSubmit',
+    component:HedgeSubmit
+},
+      {
+          path: '/loan/modeOfRepayment',
+          name: 'modeOfRepayment',
+          component: modeOfRepayment
       }
     ]
 })

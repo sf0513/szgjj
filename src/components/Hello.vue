@@ -12,6 +12,8 @@
         <button @click="goToForgetPsw">Go to ForgetPsw</button>
         <br/>
         <button @click="goToMyLoan">Go to MyLoan</button>
+        <br/>
+        <button @click="goToMyNotes">Go to MyNotes</button>
 
     </div>
 </template>
@@ -39,6 +41,9 @@
             },
             goToMyLoan(){
                 this.$router.push('/pages/loan/MyLoan')
+            },
+            goToMyNotes(){
+                this.$router.push('/notes')
             }
         }
     }

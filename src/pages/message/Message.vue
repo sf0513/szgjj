@@ -56,6 +56,9 @@
         display: inline;
         margin: 10px;
     }
+    a {
+        font-size: 15px;
+    }
 
     /*.message-menu-button {*/
         /*display: inline;*/

@@ -2,7 +2,7 @@
  * 头部导航组件
  */
 <template>
-    <div class="header">
+    <div class="header" v-bind:class="{'color':false}">
             <div class="is-left" v-if="showLeft">
             </div>
             <div class="is-center">
@@ -26,6 +26,10 @@
                 type:Boolean,
                 default:true,
             },
+            color:{
+                type:Boolean,
+                default:false,
+            }
         }
 	}
 </script>
@@ -35,4 +39,5 @@
     .header .is-center{flex: 1; -webkit-flex: 1; position: relative;}
     .header .is-center img{display: inline-block; width: 0.26rem; height: 0.26rem; line-height: 0.26rem; position: absolute; left: 4.2rem; top: 0.36rem;}
     .header .is-right{width: 0.7rem; height: 1rem;}
+    .color{background:#efefef;}
 </style>

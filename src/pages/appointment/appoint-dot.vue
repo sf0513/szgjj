@@ -2,23 +2,17 @@
 	<div class="">
 		<div>
 			<top-bar></top-bar>
-			<nav-header :title="title" :showLeft="true" :showImg='true' :class="{'color':true}"></nav-header>
+			<nav-header :title="title" :showLeft="true" :showImg='true' :class="{'color':false}"></nav-header>
 		</div>
 		<div class="wrap">
-			<div class="top">请选择预约银行</div>
+			<div class="top">请选择预约网点的区域</div>
 			<div class="hr30-efefef"></div>
 			<ul class="item">
-				<li>建设银行</li>
-				<li>中国银行</li>
-				<li>招商银行</li>
-				<li>兴业银行</li>
+				<li>东海支行</li>
+				<li>侨香支行</li>
+				<li>福建大厦支行</li>
+				<li>上步支行</li>
 			</ul>
-			<div class="hr30-efefef"></div>
-			<div class="item">
-				<li>龙岗区管理部</li>
-				<li>宝安区管理部</li>
-				<li>福田区管理部</li>
-			</div>
 			<div class="footer"></div>
 		</div>
 	</div>
@@ -31,7 +25,7 @@ export default{
 	name:'appointment',
 	data(){
 		return{
-			title:'预约银行'
+			title:'预约网点'
 		}
 	},
 	components:{
