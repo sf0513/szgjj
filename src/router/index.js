@@ -17,6 +17,7 @@ import MyLoan from '../pages/loan/MyLoan'
 import MyNotes from '@/pages/notes/NotesBoard'
 import HedgeSubmit from '../pages/hedge/HedgeSubmit'
 import HedgeInput from '../pages/hedge/HedgeInput'
+import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 
 Vue.use(Router)
 
@@ -88,6 +89,7 @@ export default new Router({
           component: Message
       },
       {
+<<<<<<< HEAD
           path: '/pages/loan/MyLoan',
           name: 'MyLoan',
           component: MyLoan
@@ -106,6 +108,11 @@ export default new Router({
           path: '/HedgeSubmit',
           name: 'HedgeSubmit',
           component: HedgeSubmit
+=======
+          path: '/loan/modeOfRepayment',
+          name: 'modeOfRepayment',
+          component: modeOfRepayment
+>>>>>>> shenfei
       }
     ]
 })
