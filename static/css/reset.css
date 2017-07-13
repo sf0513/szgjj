@@ -90,7 +90,10 @@ input,textarea{resize:none; overflow: auto; outline:none;}
 html, body {
     width: 100%;
 }
-
+html {
+    font-size: 100px;
+    font-family: 'PingFangSC-Regular', "Helvetica Neue", "Helvetica", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
 body {
     -webkit-text-size-adjust: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
