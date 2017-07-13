@@ -8,12 +8,7 @@
 			<div class="top">请选择预约网点的区域</div>
 			<div class="hr30-efefef"></div>
 			<ul class="item">
-				<li>福田区</li>
-				<li>龙岗区</li>
-				<li>罗湖区</li>
-				<li>南山区</li>
-				<li>盐田区</li>
-				<li>宝安区</li>
+				<li v-for='item in areaArr'>{{item.title}}</li>
 			</ul>
 			<div class="footer"></div>
 		</div>
@@ -27,7 +22,15 @@ export default{
 	name:'appointment',
 	data(){
 		return{
-			title:'预约区域'
+			title:'预约区域',
+			areaArr:[
+				{title:'福田区'},
+				{title:'龙岗区'},
+				{title:'罗湖区'},
+				{title:'南山区'},
+				{title:'盐田区'},
+				{title:'宝安区'},
+			]
 		}
 	},
 	components:{

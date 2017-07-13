@@ -9,6 +9,7 @@ import completeAppoint from '../pages/appointment/complete-appoint'
 import appointBank from '../pages/appointment/appoint-bank'
 import appointArea from '../pages/appointment/appoint-area'
 import appointDot from '../pages/appointment/appoint-dot'
+import appointSuccess from '../pages/appointment/appoint-success'
 import changeAppoint from '../pages/appointment/change-appoint'
 import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
@@ -71,6 +72,11 @@ export default new Router({
           path: '/appointment/appointDot',
           name: 'appointDot',
           component: appointDot
+      },
+      {
+          path: '/appointment/appointSuccess',
+          name: 'appointSuccess',
+          component: appointSuccess
       },
       {
           path:'/forgetpsw',
