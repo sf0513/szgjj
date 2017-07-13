@@ -8,7 +8,7 @@
              <p class="title_style">{{title}}</p>
         </div>
         <div class="right_header_style">
-            <img src="../assets/btn_shut_down.png" class="back_btn_style"/>
+            <img src="../assets/more.png" class="more_btn_style"/>
         </div>
     </div>
 </template>
@@ -23,33 +23,36 @@
 <style>
     .header_zone{
         background-color: #3e3a39;
-        height: 0.78rem;
+        height: 1rem;
         display: flex;
     }
     .left_header_style{
-        /*float: left;*/
-        background-color: #084CE6;
         height: 0.78rem;
         flex: 1;
     }
     .right_header_style{
-        /*float: right;*/
-        background-color: yellow;
         height: 0.78rem;
         flex: 1;
     }
     .back_btn_style{
-        width: 0.32rem;
-        height: 0.32rem;
+        width: 0.36rem;
+        height: 0.36rem;
         position: absolute;
-        left: 0.1rem;
-
+        left: 0.08rem;
+        top:0.3rem
     }
     .title_style{
         color: white;
-        font-size: 14px;
-        /*position: absolute;*/
-        /*left: 0.52rem;*/
-        line-height: 0.78rem;
+        font-size: 18px;
+        position: absolute;
+        left: 0.54rem;
+        line-height: 1rem;
+    }
+    .more_btn_style{
+        width: 8px;
+        height: 7px;
+        position: absolute;
+        right: 0.25rem;
+        top: 0.5rem;
     }
 </style>
