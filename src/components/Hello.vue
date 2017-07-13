@@ -14,7 +14,8 @@
         <button @click="goToMyLoan">Go to MyLoan</button>
         <br/>
         <button @click="goToMyNotes">Go to MyNotes</button>
-
+        <br/>
+        <button @click="goToIWantToExtract">Go to IWantToExtract</button>
     </div>
 </template>
 
@@ -44,6 +45,9 @@
             },
             goToMyNotes(){
                 this.$router.push('/notes')
+            },
+            goToIWantToExtract(){
+                this.$router.push('/pages/extract/IWantToExtract')
             }
         }
     }
@@ -53,6 +57,7 @@
     h1, h2 {
         font-weight: normal;
     }
+
     ul {
         list-style-type: none;
         padding: 0;

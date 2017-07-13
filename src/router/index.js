@@ -13,76 +13,92 @@ import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
 import MyLoan from '../pages/loan/MyLoan'
 import MyNotes from '@/pages/notes/NotesBoard'
-
+import IWantToExtract from '../pages/extract/IWantToExtract'
+import ImmediateExtraction from '../pages/extract/ImmediateExtraction'
+import MoreExtraction from '../pages/extract/MoreExtraction'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-      {
-        path: '/',
-        name: 'Hello',
-        component: Hello
-      },
-      {
-        path: '/pages/account/myAccount',
-        name: 'myAccount',
-        component: myAccount
-      },
-      {
-        path: '/pages/account/MyInformation',
-        name: 'MyInformation',
-        component: MyInformation
-      },
-      {
-          path: '/appointment',
-          name: 'Appointment',
-          component: Appointment
-      },
-      {
-          path: '/appointment/myAppointment',
-          name: 'myAppointment',
-          component: myAppointment
-      },
-      {
-          path: '/appointment/completeAppoint',
-          name: 'completeAppoint',
-          component: completeAppoint
-      },
-      {
-          path: '/appointment/changeAppoint',
-          name: 'changeAppoint',
-          component: changeAppoint
-      },
-      {
-          path: '/appointment/appointBank',
-          name: 'appointBank',
-          component: appointBank
-      },
-      {
-          path:'/forgetpsw',
-          name:'ForgetPsw',
-          component:ForgetPsw
-      },
-      {
-          path: '/pages/login/login',
-          name: 'login',
-          component: Login
-      },
-      {
-          path: '/Message',
-          name: 'Message',
-          component: Message
-      },
-      {
-          path: '/pages/loan/MyLoan',
-          name: 'MyLoan',
-          component: MyLoan
-      },
-      {
-          path: '/notes',
-          name: 'MyNotes',
-          component: MyNotes
-      }
+    routes: [
+        {
+            path: '/',
+            name: 'Hello',
+            component: Hello
+        },
+        {
+            path: '/pages/account/myAccount',
+            name: 'myAccount',
+            component: myAccount
+        },
+        {
+            path: '/pages/account/MyInformation',
+            name: 'MyInformation',
+            component: MyInformation
+        },
+        {
+            path: '/appointment',
+            name: 'Appointment',
+            component: Appointment
+        },
+        {
+            path: '/appointment/myAppointment',
+            name: 'myAppointment',
+            component: myAppointment
+        },
+        {
+            path: '/appointment/completeAppoint',
+            name: 'completeAppoint',
+            component: completeAppoint
+        },
+        {
+            path: '/appointment/changeAppoint',
+            name: 'changeAppoint',
+            component: changeAppoint
+        },
+        {
+            path: '/appointment/appointBank',
+            name: 'appointBank',
+            component: appointBank
+        },
+        {
+            path: '/forgetpsw',
+            name: 'ForgetPsw',
+            component: ForgetPsw
+        },
+        {
+            path: '/pages/login/login',
+            name: 'login',
+            component: Login
+        },
+        {
+            path: '/Message',
+            name: 'Message',
+            component: Message
+        },
+        {
+            path: '/pages/loan/MyLoan',
+            name: 'MyLoan',
+            component: MyLoan
+        },
+        {
+            path: '/notes',
+            name: 'MyNotes',
+            component: MyNotes
+        },
+        {
+            path: '/pages/extract/IWantToExtract',
+            name: 'IWantToExtract',
+            component: IWantToExtract,
+            children: [
+                {
+                    path: '/pages/extract/ImmediateExtraction',
+                    component: ImmediateExtraction
+                }, {
+                    path: '/pages/extract/MoreExtraction',
+                    component: MoreExtraction
+                }
+            ]
+        }
     ]
 })
