@@ -12,6 +12,7 @@ import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
 import Message from '../pages/message/Message'
 import MyLoan from '../pages/loan/MyLoan'
+import ReimbursementDetail from '../pages/loan/ReimbursementDetail'
 
 Vue.use(Router)
 
@@ -76,6 +77,11 @@ export default new Router({
           path: '/pages/loan/MyLoan',
           name: 'MyLoan',
           component: MyLoan
+      },
+      {
+          path: '/pages/loan/ReimbursementDetail',
+          name: 'ReimbursementDetail',
+          component: ReimbursementDetail
       }
     ]
 })
