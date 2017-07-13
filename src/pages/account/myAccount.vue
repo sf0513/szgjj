@@ -203,7 +203,7 @@
         margin-left: 10px;
     }
     .line{
-        background: gray;
+        background: rgb(188,188,188);
         width: 85%;
         height: 1px;
         display: block;

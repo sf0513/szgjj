@@ -2,7 +2,7 @@
 	<div class="">
 		<div>
 			<top-bar></top-bar>
-			<nav-header :title="title" :showLeft="true" :showImg='true' :class="{'color':false}"></nav-header>
+			<nav-header :title="title" :showLeft="true" :showImg='true' :src='image' :class="{'color':false}"></nav-header>
 		</div>
 		<div class="wrap">
 			<div class="top">请选择预约网点的区域</div>
@@ -25,7 +25,8 @@ export default{
 	name:'appointment',
 	data(){
 		return{
-			title:'预约网点'
+			title:'预约网点',
+			image:require('../../assets/appointment-a.png')
 		}
 	},
 	components:{

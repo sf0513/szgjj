@@ -3,11 +3,11 @@
  */
 <template>
     <div class="header" v-bind:class="{'color':false}">
-            <div class="is-left" v-if="showLeft">
+            <div class="is-left" v-if="showLeft" @click='back()'>
             </div>
             <div class="is-center">
                 <div>{{title}}</div>
-                <img src="../assets/appointment-a.png" v-if='showImg'></img>
+                <img :src='src' v-if='showImg'></img>
             </div>
             <div class="is-right">
             </div>
@@ -18,6 +18,7 @@
 	export default {
 		props:{
             title:String, //导航条文本
+            src:String,     //中间小图标
             showLeft:{    //是否显示左边按钮
                 type:Boolean,
                 default:true,
@@ -29,6 +30,11 @@
             color:{
                 type:Boolean,
                 default:false,
+            }
+        },
+        methods:{
+            back:function(){
+                history.back();
             }
         }
 	}
