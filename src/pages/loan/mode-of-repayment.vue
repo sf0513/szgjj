@@ -11,7 +11,7 @@
 		<cell leftString="贷款到期日" :centerString="maturityDate" rightString="0" ></cell>
 		<cell leftString="剩余贷款利息总和" :centerString="sum" rightString="0" :isLine="false"></cell>
 		<div>
-			<button class="submit">提交</button>
+			<button class="submit">提  交</button>
 		</div>
 		
 	</div>
@@ -64,5 +64,9 @@ export default{
 	background-image: url(../../assets/success-btn-normal@2x.png);
 	border-style: none;	
     border-radius: 25px;
+        height: 60px;
+    width: 5.6rem;
+        color: #fff;
+    font-size: 18px;
 }
 </style>
