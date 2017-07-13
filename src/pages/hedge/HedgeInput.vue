@@ -71,7 +71,7 @@
 </template>
 
 
-<style type="text/css">
+<style type="text/css" scoped>
 
     .repayperson-div, .my-information-title-div {
         background-color: whitesmoke;

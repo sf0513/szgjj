@@ -64,7 +64,7 @@
 
 
 
-<style type="text/css">
+<style type="text/css" scoped>
 
     .my-information-div {
         background-color: whitesmoke;
