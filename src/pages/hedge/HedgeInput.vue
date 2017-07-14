@@ -15,7 +15,7 @@
                 </tr>
                 <tr>
                     <td>余额</td>
-                    <td>¥56436.45</td>
+                    <td id="money-td">¥56436.45</td>
                 </tr>
             </table>
         </div>
@@ -54,7 +54,7 @@
                 </tr>
                 <tr>
                     <td>提前还款金额区间</td>
-                    <td>¥56436.45—¥208436.45</td>
+                    <td id="money-td">¥56436.45—¥208436.45</td>
                     <td></td>
                 </tr>
                 <tr>
@@ -103,6 +103,9 @@
         width: 100px;
         padding: 10px;
         font-size: 15px;
+    }
+    #money-td {
+        color: orange;
     }
     h4 {
         font-size: 24px;
