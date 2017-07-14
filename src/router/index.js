@@ -24,6 +24,9 @@ import ImmediateExtraction from '../pages/extract/ImmediateExtraction'
 import MoreExtraction from '../pages/extract/MoreExtraction'
 import HedgeSign from '../pages/hedge/HedgeSign'
 
+
+import HedgeResult from '../pages/hedge/HedgeResult'
+
 Vue.use(Router)
 
 export default new Router({
@@ -122,6 +125,11 @@ export default new Router({
             path: '/HedgeSign',
             name: 'HedgeSign',
             component: HedgeSign
+        },
+        {
+            path: '/HedgeResult',
+            name: 'HedgeResult',
+            component: HedgeResult
         },
         {
             path: '/pages/extract/IWantToExtract',
