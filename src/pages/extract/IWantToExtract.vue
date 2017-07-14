@@ -1,12 +1,24 @@
 <template>
     <div class="extract">
         <top-bar></top-bar>
-        <router-link to="/pages/extract/ImmediateExtraction">
-            <span>立即提取</span></router-link>
-        <router-link to="/pages/extract/MoreExtraction">
-            <span>更多提取</span>
-        </router-link>
-        <router-view></router-view>
+        <div class="item_select">
+            <span @click="show_first" id="select_1">
+                   立即提取
+                </span>
+            <span @click="show_second" id="select_2">
+                    更多提取
+                </span>
+        </div>
+
+        <!-- 立即提前-->
+        <div v-if="show_item === 'index_first'">
+            <p>立即提前</p>
+        </div>
+
+        <!--更多提取-->
+        <div v-else-if="show_item === 'index_second'">
+            <p>更多提前</p>
+        </div>
     </div>
 </template>
 
@@ -15,11 +27,45 @@
 
     export default {
         data () {
-            return {}
+            return {
+                show_item: "index_first"
+            }
         },
         components: {
             topBar
-        },
+        }, methods: {
+            show_first(){
+                this.show_item = "index_first";
+                this.showSelect();
+            },
+            show_second(){
+                this.show_item = "index_second";
+                this.showSelect();
+            },
+            showSelect(){
+                var select_1 = document.getElementById("select_1");
+                var select_2 = document.getElementById("select_2");
+                var select_3 = document.getElementById("select_3");
+                if (this.show_item === "index_first") {
+                    select_1.style.color = "orange";
+                    select_1.style.borderBottom = "3px solid orange";
+                    select_1.style.height = "0.4rem";
+
+                    select_2.style.color = "black";
+                    select_2.style.borderBottom = "none";
+
+
+                } else if (this.show_item === "index_second") {
+                    select_2.style.color = "orange";
+                    select_2.style.borderBottom = "3px solid orange";
+                    select_2.style.height = "0.4rem";
+
+                    select_1.style.color = "black";
+                    select_1.style.borderBottom = "none";
+
+                }
+            }
+        }
 
 //        beforeRouteUpdate (to, from, next) {
 //            this.$router.push("/pages/extract/ImmediateExtraction");
@@ -38,7 +84,32 @@
 </script>
 
 <style scoped>
-    span {
+    .extract {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #EFEFEF;
+    }
+
+    div {
         font-size: 16px;
+    }
+
+    .item_select {
+        display: flex;
+        vertical-align: middle;
+        height: 30px;
+    }
+
+    .item_select span {
+        flex: 1;
+        margin-left: 4px;
+        margin-right: 5px;
+    }
+
+    #select_1 {
+        color: orange;
+        border-bottom: 3px solid orange;
+        height: 0.4rem;
     }
 </style>
