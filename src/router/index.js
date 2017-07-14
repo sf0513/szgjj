@@ -30,7 +30,7 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/',
+            path: '/Hello',
             name: 'Hello',
             component: Hello
         },
@@ -125,7 +125,7 @@ export default new Router({
             component: modeOfRepayment
         },
         {
-            path: '/HedgeSign',
+            path: '/',
             name: 'HedgeSign',
             component: HedgeSign
         },
