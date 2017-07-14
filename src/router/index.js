@@ -17,7 +17,6 @@ import Message from '../pages/message/Message'
 import MyLoan from '../pages/loan/MyLoan'
 import ReimbursementDetail from '../pages/loan/ReimbursementDetail'
 import MyNotes from '@/pages/notes/NotesBoard'
-import HedgeSubmit from '../pages/hedge/HedgeSubmit'
 import HedgeInput from '../pages/hedge/HedgeInput'
 import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 import IWantToExtract from '../pages/extract/IWantToExtract'
@@ -30,7 +29,7 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/Hello',
+            path: '/',
             name: 'Hello',
             component: Hello
         },
@@ -115,17 +114,12 @@ export default new Router({
             component: HedgeInput
         },
         {
-            path: '/HedgeSubmit',
-            name: 'HedgeSubmit',
-            component: HedgeSubmit
-        },
-        {
             path: '/loan/modeOfRepayment',
             name: 'modeOfRepayment',
             component: modeOfRepayment
         },
         {
-            path: '/',
+            path: '/HedgeSign',
             name: 'HedgeSign',
             component: HedgeSign
         },
