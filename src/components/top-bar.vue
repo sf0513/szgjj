@@ -5,11 +5,22 @@
 	<div class="top-bar">
 		<img src="../assets/top_bar_img.jpg" height="48">
 		<span class="text">深圳市住房公积金管理中心</span>
-		<input type="button" value="退出">
+		<input type="button" value="退出" @click="loginOut()">
 	</div>
 </template>
 <script type="text/javascript">
-	
+export default{
+	data(){
+		return{
+
+		}
+	},
+	methods:{
+		loginOut:function(){
+			this.$router.push('/')
+		}
+	}
+}
 </script>
 <style type="text/css">
 	.top-bar{ height: 0.7rem; line-height: 0.7rem; background: url(../assets/top_bar_bg.jpg) ; display: -webkit-flex; display: flex;}

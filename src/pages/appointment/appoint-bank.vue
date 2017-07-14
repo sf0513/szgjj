@@ -40,7 +40,7 @@ export default{
 	}
 }
 </script>
-<style type="text/css">
+<style type="text/css" scoped>
 .hr30-efefef{height: 0.3rem; background: #efefef;}
 .wrap{font-size: 0.28rem;}
 .wrap .top{height: 0.9rem; background: #f7f8f8; line-height: 0.9rem; font-size: 0.32rem; text-align:left; text-indent: 0.46rem;}

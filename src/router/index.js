@@ -9,6 +9,7 @@ import completeAppoint from '../pages/appointment/complete-appoint'
 import appointBank from '../pages/appointment/appoint-bank'
 import appointArea from '../pages/appointment/appoint-area'
 import appointDot from '../pages/appointment/appoint-dot'
+import appointSuccess from '../pages/appointment/appoint-success'
 import changeAppoint from '../pages/appointment/change-appoint'
 import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
@@ -21,6 +22,7 @@ import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 import IWantToExtract from '../pages/extract/IWantToExtract'
 import ImmediateExtraction from '../pages/extract/ImmediateExtraction'
 import MoreExtraction from '../pages/extract/MoreExtraction'
+import HedgeSign from '../pages/hedge/HedgeSign'
 
 Vue.use(Router)
 
@@ -115,6 +117,11 @@ export default new Router({
             path: '/loan/modeOfRepayment',
             name: 'modeOfRepayment',
             component: modeOfRepayment
+        },
+        {
+            path: '/HedgeSign',
+            name: 'HedgeSign',
+            component: HedgeSign
         },
         {
             path: '/pages/extract/IWantToExtract',

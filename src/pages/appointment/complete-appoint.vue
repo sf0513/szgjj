@@ -76,7 +76,7 @@ export default{
 	}
 }
 </script>
-<style type="text/css">
+<style type="text/css" scoped>
 .my-appointment{font-size: 0.28rem;}
 .hr30-efefef{height: 0.3rem; background: #efefef;}
 .appoint-tabs .tabs{height: 0.9rem; background: #efefef; font-size: 0.28rem;}
