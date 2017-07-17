@@ -136,7 +136,7 @@ const router = new Router({
     routes: [
         //导航页
         {
-            path: '/Hello',
+            path: '/',
             name: 'Hello',
             component: (resolve) => {
                 require(['../components/Hello'], resolve)
@@ -213,7 +213,7 @@ const router = new Router({
             component: MyNotes
         },
         {
-            path: '/',
+            path: '/HedgeInput',
             name: 'HedgeInput',
             component: HedgeInput
         },
