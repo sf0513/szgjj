@@ -2,23 +2,32 @@
  * 顶部bar组件
  */
 <template>
-	<div class="top-bar">
-		<img src="../assets/top_bar_img.jpg" height="48">
-		<span class="text">深圳市住房公积金管理中心</span>
-		<input type="button" value="退出" @click="loginOut()">
+	<div>
+		<div class="top-bar">
+			<img src="../assets/top_bar_img.jpg" height="48">
+			<span class="text">深圳市住房公积金管理中心</span>
+			<input type="button" value="退出" @click="loginOut()">
+		</div>
+		<exit-popup></exit-popup>
 	</div>
 </template>
 <script type="text/javascript">
+import exitPopup from '../components/exit-popup.vue';
 export default{
 	data(){
 		return{
-
+			showFlag:true,
 		}
 	},
 	methods:{
 		loginOut:function(){
-			this.$router.push('/')
+			debugger;
+			//this.$router.push('/')
+			//this.showFlag=true;
 		}
+	},
+	components:{
+		exitPopup
 	}
 }
 </script>

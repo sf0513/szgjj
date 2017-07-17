@@ -2,7 +2,7 @@
 	<div class="">
 		<div>
 			<top-bar></top-bar>
-			<nav-header :title="title" :showLeft="true" :showImg='true' :class="{'color':true}"></nav-header>
+			<nav-header :title="title" :showLeft="true" :showImg='true' :src='image' color='true'></nav-header>
 		</div>
 		<div class="wrap">
 			<div class="top">请选择预约网点的区域</div>
@@ -23,6 +23,7 @@ export default{
 	data(){
 		return{
 			title:'预约区域',
+			image:require('../../assets/appointment-a.png'),
 			areaArr:[
 				{title:'福田区'},
 				{title:'龙岗区'},

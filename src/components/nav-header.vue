@@ -2,7 +2,7 @@
  * 头部导航组件
  */
 <template>
-    <div class="header" v-bind:class="{'color':false}">
+    <div class="header" v-bind:class="{'color':color}">
             <div class="is-left" v-if="showLeft" @click='back()'>
             </div>
             <div class="is-center">
@@ -28,7 +28,7 @@
                 default:true,
             },
             color:{
-                type:Boolean,
+                type:String,
                 default:false,
             }
         },
@@ -41,7 +41,7 @@
 </script>
 <style>
 	.header{ height: 1rem; line-height: 1rem; background-color: #fff; display: -webkit-flex; display: flex; font-size: 0.36rem; }
-    .header .is-left{width: 0.7rem; height: 1rem; background: url(../assets/back_icon.png) no-repeat center center; background-size: 0.29rem 0.29rem;}
+    .header .is-left{width: 0.7rem; height: 1rem; background: url(../assets/btn_return@2x.png) no-repeat center center; background-size: 0.29rem 0.29rem;}
     .header .is-center{flex: 1; -webkit-flex: 1; position: relative;}
     .header .is-center img{display: inline-block; width: 0.26rem; height: 0.26rem; line-height: 0.26rem; position: absolute; left: 4.2rem; top: 0.36rem;}
     .header .is-right{width: 0.7rem; height: 1rem;}

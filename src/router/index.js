@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import myAccount from '@/pages/account/myAccount.vue'
 import MyInformation from '../pages/account/MyInformation'
-import Appointment from '../pages/appointment/appointment'
 import myAppointment from '../pages/appointment/my-appointment'
 import completeAppoint from '../pages/appointment/complete-appoint'
 import appointBank from '../pages/appointment/appoint-bank'
@@ -17,7 +16,6 @@ import Message from '../pages/message/Message'
 import MyLoan from '../pages/loan/MyLoan'
 import ReimbursementDetail from '../pages/loan/ReimbursementDetail'
 import MyNotes from '@/pages/notes/NotesBoard'
-import HedgeSubmit from '../pages/hedge/HedgeSubmit'
 import HedgeInput from '../pages/hedge/HedgeInput'
 import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 import IWantToExtract from '../pages/extract/IWantToExtract'
@@ -46,11 +44,6 @@ export default new Router({
         },
         {
             path: '/appointment',
-            name: 'Appointment',
-            component: Appointment
-        },
-        {
-            path: '/appointment/myAppointment',
             name: 'myAppointment',
             component: myAppointment
         },
@@ -113,11 +106,6 @@ export default new Router({
             path: '/pages/hedge/HedgeInput',
             name: 'HedgeInput',
             component: HedgeInput
-        },
-        {
-            path: '/HedgeSubmit',
-            name: 'HedgeSubmit',
-            component: HedgeSubmit
         },
         {
             path: '/loan/modeOfRepayment',
