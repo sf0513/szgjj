@@ -87,7 +87,7 @@
     }
 
     .login_code input {
-        max-width: 68%;
+        max-width: 65%;
     }
 
     .login_row_code {

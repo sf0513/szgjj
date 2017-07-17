@@ -19,9 +19,10 @@ import MyNotes from '@/pages/notes/NotesBoard'
 import HedgeInput from '../pages/hedge/HedgeInput'
 import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 import IWantToExtract from '../pages/extract/IWantToExtract'
-import ImmediateExtraction from '../pages/extract/ImmediateExtraction'
-import MoreExtraction from '../pages/extract/MoreExtraction'
 import HedgeSign from '../pages/hedge/HedgeSign'
+
+
+import HedgeResult from '../pages/hedge/HedgeResult'
 
 Vue.use(Router)
 
@@ -118,18 +119,14 @@ export default new Router({
             component: HedgeSign
         },
         {
+            path: '/HedgeResult',
+            name: 'HedgeResult',
+            component: HedgeResult
+        },
+        {
             path: '/pages/extract/IWantToExtract',
             name: 'IWantToExtract',
             component: IWantToExtract,
-            children: [
-                {
-                    path: '/pages/extract/ImmediateExtraction',
-                    component: ImmediateExtraction
-                }, {
-                    path: '/pages/extract/MoreExtraction',
-                    component: MoreExtraction
-                }
-            ]
         }
     ]
 })

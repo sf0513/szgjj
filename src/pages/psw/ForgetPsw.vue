@@ -1,30 +1,28 @@
 <template>
 	<div class="app">
-		<div class="title_bar">
-			<img src="../../assets/back_icon.png" width="16px" class="back_icon" @click="backHome">
-            <h1 class="title">{{title}}</h1>
-		</div>
-		<div class="edit_zone" v-if="show_verification==false">
-            <span class="label_style">{{gjj_acc_label}}</span>
-			<input type="text" :placeholder="gjj_acc_holder" v-model="acc_info" class="holder_style">
-		</div>
-		<div v-else="show_verification==true">
-			<span class="phone_info">已经发送验证码至138****5025手机</span>
-			<button class="inner_btn_style" v-on:click="other_phone">我已换号</button>
-		</div>
+		<NavHeader :title="title" :showImg="false" :isshowcolor="true"></NavHeader>
 
-		<div class="edit_zone" v-if="show_verification==false">
-            <span class="label_style">{{identity_no}}</span>
-            <input type="text" :placeholder="identity_holder" v-model="id_info" class="holder_style">
-		</div>
-		<div class="edit_zone" v-else="show_verification==true">
-			<span class="label_style">{{verification_code}}</span>
-			<input type="text" :placeholder="verification_holder" v-model="verification_info" class="holder_style">
-			<input type="button" :value="count_zero" class="inner_btn_style" v-on:click="repeat_verification"/>
-		</div>
-		<div>
-			<button type="submit" @click="submitInfo" class="submit_btn">{{submit}}</button>
-		</div>
+        <div class="gjj_acc_zone_style">
+            <EditText :labelStr="gjj_acc_label" :holderStr="gjj_acc_holder"
+                      v-if="show_verification==false" @son_to_father="saveacc"></EditText>
+            <div v-else="show_verification==true" class="hint_info_style">
+                <p>
+                    <span class="phone_info">已经发送验证码至138****5025手机</span>&nbsp;&nbsp;
+                    <span class="small_btn_style" v-on:click="other_phone">我已换号</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="identity_no_zone_style">
+            <EditText :labelStr="identity_no" :holderStr="identity_holder"
+                      v-if="show_verification==false" @son_to_father="saveid"></EditText>
+            <CountZero :countDown="timer" :default_start="true" :labelStr="verification_code_label"
+                       :holderStr="verification_holder" v-else="show_verification==true"></CountZero>
+        </div>
+
+        <SubmitBtn :btn_name="btnName" :afun="submitInfo" v-if="show_verification==false"></SubmitBtn>
+        <SubmitBtn :btn_name="btnName" :afun="submit_success" v-else="show_verification==true"></SubmitBtn>
+
         <p class="err_info_style">
             <span v-if="show_acc_err">{{acc_err_info}}</span>
             <br/>
@@ -36,6 +34,10 @@
 </template>
 
 <script>
+	import NavHeader from '@/components/nav-header'
+    import EditText from '@/components/EditText'
+    import SubmitBtn from '@/components/SubmitBtn'
+    import CountZero from '@/components/CountZero'
 export default{
 	data(){
 		return{
@@ -43,7 +45,7 @@ export default{
             gjj_acc_label:'公积金账号：',
 			gjj_acc_holder:'请输入个人公积金账号',
 			identity_no:'身份证号码：',
-            identity_holder:'请输入个人身份证号码',
+            identity_holder:'请输入个人身份证账号',
 			submit:'提交',
 			acc_info:'21121121121',
 			id_info:'223123133443231411',
@@ -52,16 +54,24 @@ export default{
             show_verification:false,
             show_acc_err:false,
             show_id_err:false,
-            verification_code:'验证码：',
+            verification_code_label:'验证码：',
             count_zero:'重发60s',
             verification_holder:'请输入收到的验证码',
 			verification_info:'',
             right_verification_info:'',
             verification_err_info:'验证码只有四位数，请输入正确的的验证码',
             show_verification_err:false,
+            btnName:'提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交',
+            timer:3, //默认倒计时30s
 		}
 	},
 	methods:{
+        saveacc(msg){
+            this.acc_info=msg;
+        },
+        saveid(msg){
+            this.id_info=msg;
+        },
 		submitInfo(){
 		   if(this.checkGjjAcc(this.acc_info)&&this.checkID(this.id_info)) {
 		       this.show_acc_err= false;
@@ -96,15 +106,14 @@ export default{
             if (this.show_verification===false){
                 this.$router.push('/');
             }else{
-//                this.$router.push('/forgetpsw');
                 this.show_verification=false
             }
 		},
         other_phone(){
             alert('我已换号');
         },
-        repeat_verification(){
-            alert('重发验证码');
+        submit_success(){
+            this.$router.push('/');
         }
 	},
     watch:{
@@ -122,6 +131,12 @@ export default{
                 this.show_verification_err=false;
             }
         }
+    },
+    components:{
+        NavHeader,
+        EditText,
+        SubmitBtn,
+        CountZero
     }
 }
 </script>
@@ -137,48 +152,6 @@ export default{
         font-size:16px;
         font-family: '微软雅黑';
     }
-    .title_bar{
-        text-align: center;
-		width: 100%;
-        padding: 20px 0;
-        margin-bottom: 45px;
-    }
-    .back_icon{
-        position: absolute;
-        left: 10px;
-    }
-    .title{
-        font-weight: bold;
-        color: #333333;
-    }
-    .edit_zone {
-        background-color: white;
-        padding: 2px;
-        margin: 20px 10px;
-        border-radius: 10px;
-        box-shadow:0 0 5px #666666;
-    }
-    .submit_btn{
-        background-color: #00afec;
-        width: 200px;
-        color: white;
-        margin-top: 58px;
-        font-size: 16px;
-        padding: 8px;
-        border-radius: 20px;
-        font-family: '微软雅黑';
-        border: none;
-    }
-    .holder_style{
-        font-size: 12px;
-        margin-left: 20px;
-        padding: 10px;
-		width: 3.6rem;
-    }
-    .label_style{
-        font-size: 14px;
-		width:100px;
-    }
     .err_info_style{
         color: red;
         font-size: 14px;
@@ -187,11 +160,21 @@ export default{
 	.phone_info{
 		font-size: 16px;
 	}
-	.inner_btn_style{
-		font-size: xx-small;
-		background-color: #f7ab00;
-		color: white;
-		border: none;
-		padding: 0.05rem;
-	}
+    .hint_info_style{
+        margin-top: 50px;
+    }
+    .small_btn_style{
+        font-size: xx-small;
+        background-color: #f7ab00;
+        color: white;
+        padding: 0.05rem;
+        border-radius: 3px;
+    }
+    .gjj_acc_zone_style{
+        margin-top: 42px;
+    }
+    .identity_no_zone_style{
+        margin-top: 20px;
+        margin-bottom: 68px;
+    }
 </style>

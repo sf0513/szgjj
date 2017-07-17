@@ -2,7 +2,7 @@
  * 头部导航组件
  */
 <template>
-    <div class="header" v-bind:class="{'color':color}">
+    <div class="header" v-bind:class="{'color':isshowcolor}">
             <div class="is-left" v-if="showLeft" @click='back()'>
             </div>
             <div class="is-center">
@@ -27,8 +27,8 @@
                 type:Boolean,
                 default:true,
             },
-            color:{
-                type:String,
+            isshowcolor:{
+                type:Boolean,
                 default:false,
             }
         },
