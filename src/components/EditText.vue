@@ -1,49 +1,58 @@
 <!--输入框公共组件-->
 <template>
 	<div class="edit_zone_style" >
-			<span class="label_style">{{labelStr}}</span>
-			<input type="text" :placeholder="holderStr" class="holder_style">
+			<label class="label_style" v-show="showLabel">{{labelStr}}</label>
+			<input type="text" :placeholder="holderStr" class="holder_style" v-model="input_data"
+                v-if="showLabel===true"/>
+            <input type="text" :placeholder="holderStr" class="whole_line_style" v-model="input_data"
+                v-if="showLabel===false"/>
 	</div>
 </template>
 <script type="text/javascript">
 	export default {
+	    data() {
+            return{
+                input_data:''
+            }
+        },
 		props:{
             labelStr:String, //左边标签文字
             holderStr:String, //占位符提示文字
-//            isShowLeft: {    //是否显示左边
-//                type: Boolean,
-//                default: true,
-//            }
-        },
-		
-		methods: {
-			back(){
-                if(typeof this.leftFunc === 'function'){
-                    this.leftFunc();
-                }else{
-                    this.$router.back();
-
-                    //返回时删除缓存
-                    if(this.isKeepAlive){
-                        this.$store.dispatch('popKeepAlive');
-                    }
-                    //设置返回标志，在动画里面处理
-                    this.$store.dispatch('setPageAnimationBack', true);
-                    console.log("back");
-                }
-            },
-		}
+            showLabel:{
+                type:Boolean,
+                default:true
+            }
+    	},
+        watch:{
+            input_data:function (input_data) {
+                this.$emit('son_to_father',this.input_data)
+            }
+        }
 	}
 </script>
 <style type="text/css" scoped>
 	.edit_zone_style{
         background-color: white;
-        padding: 2px;
-        margin: 20px 10px;
-        border-radius: 8px;
-        box-shadow:0 0 3px #999999;
+        border-radius: 10px;
+        box-shadow: 0 0 3px #999;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        display: flex;
+        height: 50px;
+        font-size: 14px;
+        text-align: center;
     }
-	.label_style{}
-	.holder_style{}
+	.label_style{
+        line-height: 50px;
+        width: 2.6rem;
+    }
+	.holder_style{
+        width:3.8rem;
+    }
+    .whole_line_style{
+        width: 100%;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+    }
 
 </style>

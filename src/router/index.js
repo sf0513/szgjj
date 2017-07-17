@@ -17,7 +17,6 @@ import Message from '../pages/message/Message'
 import MyLoan from '../pages/loan/MyLoan'
 import ReimbursementDetail from '../pages/loan/ReimbursementDetail'
 import MyNotes from '@/pages/notes/NotesBoard'
-// import HedgeSubmit from '../pages/hedge/HedgeSubmit'
 import HedgeInput from '../pages/hedge/HedgeInput'
 import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 import IWantToExtract from '../pages/extract/IWantToExtract'
@@ -113,11 +112,6 @@ export default new Router({
             path: '/pages/hedge/HedgeInput',
             name: 'HedgeInput',
             component: HedgeInput
-        },
-        {
-            path: '/HedgeSubmit',
-            name: 'HedgeSubmit',
-            component: HedgeSubmit
         },
         {
             path: '/loan/modeOfRepayment',
