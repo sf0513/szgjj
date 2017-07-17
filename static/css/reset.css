@@ -92,6 +92,7 @@ html, body {
 }
 html {
     font-size: 100px;
+    /*暂不设置默认字体*/
     font-family: 'PingFangSC-Regular', "Helvetica Neue", "Helvetica", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 body {

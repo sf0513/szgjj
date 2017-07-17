@@ -16,6 +16,9 @@
         <button @click="goToMyNotes">Go to MyNotes</button>
         <br/>
         <button @click="goToIWantToExtract">Go to IWantToExtract</button>
+        <button @click="goToRepay">还款方式变更</button>
+        
+
     </div>
 </template>
 
@@ -49,6 +52,9 @@
             goToIWantToExtract(){
                 this.$router.push('/pages/extract/IWantToExtract')
             }
+            goToRepay(){
+            	this.$router.push('/loan/modeOfRepayment')
+            },
         }
     }
 </script>
