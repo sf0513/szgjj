@@ -1,11 +1,8 @@
 <template>
     <div class="repayperson-div">
 
-        <div class="my-information-title-div">
-            <button id="back-button">返回</button>
-            <h4>对冲还贷</h4>
-        </div>
-
+        <top-bar></top-bar>
+        <nav-header title="对冲还贷" :showImg="false" :isshowcolor="true"></nav-header>
 
         <div class="detail-information-div">
             <table class="repayperson-table">
@@ -27,16 +24,16 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td><input id="person-radio" name="pereson" type="radio" />王小花</td>
-                    <td>43200********002</td>
+                    <td><input id="person-radio" name="pereson" type="radio" value="43200********001" v-model="personRadioSelect" />王小花</td>
+                    <td>43200********001</td>
                 </tr>
                 <tr>
                     <td>父女</td>
                     <td>借款合同:123456789</td>
                 </tr>
                 <tr>
-                    <td><input id="person-radio" name="pereson" type="radio" />王小梨</td>
-                    <td>43200********001</td>
+                    <td><input id="person-radio" name="pereson" type="radio" value="43200********002" v-model="personRadioSelect" />王小梨</td>
+                    <td>43200********002</td>
                 </tr>
                 <tr>
                     <td>父女</td>
@@ -49,8 +46,8 @@
             <table class="inputmoney-table">
                 <tr>
                     <td>是否全额还款</td>
-                    <td><input id="yes-no-radio" name="yes-no" type="radio" value="" />是</td>
-                    <td><input id="yes-no-radio" name="yes-no" type="radio" value="" />否</td>
+                    <td><input id="yes-no-radio" name="yes-no" type="radio" value="1" v-model="yesnoRadioSelect" />是</td>
+                    <td><input id="yes-no-radio" name="yes-no" type="radio" value="0" v-model="yesnoRadioSelect" />否</td>
                 </tr>
                 <tr>
                     <td>提前还款金额区间</td>
@@ -59,30 +56,48 @@
                 </tr>
                 <tr>
                     <td>提前还款金额</td>
-                    <input placeholder="请输入" />
+                    <input id="money-input" placeholder="请输入" v-model=inputText />
                     <td></td>
                 </tr>
             </table>
         </div>
 
-        <button>提交</button>
+        <button @click="submitAction">提交</button>
 
     </div>
 </template>
 
+<script type="application/javascript">
+    import TopBar from '../../components/top-bar.vue'
+    import NavHeader from '../../components/nav-header.vue'
+    export default {
+        name: 'hedge-input',
+        data() {
+            return {
+                inputText: '',
+                personRadioSelect: '',
+                yesnoRadioSelect: ''
+            }
+        },
+        components: {
+            TopBar,
+            NavHeader
+        },
+        methods: {
+            submitAction: function () {
+                console.log('输入框:' + this.inputText + '选择的人:' + this.personRadioSelect + '是否全额:' + this.yesnoRadioSelect)
+            }
+        }
+    }
+
+</script>
 
 <style type="text/css" scoped>
 
-    .repayperson-div, .my-information-title-div {
+    .repayperson-div {
         background-color: whitesmoke;
     }
-    /* 返回按钮 */
-    #back-button {
-        width: 60px;
-        height: 30px;
-        display: inline;
-        position: relative;
-    }
+
     .detail-information-div {
         background-color: white;
     }
@@ -111,14 +126,14 @@
         font-size: 24px;
         display: inline-block;
     }
-    input {
+    #money-input {
         width: 70%;
         height: 30px;
         font-size: 15px;
         border-radius: 10px;
-        border-color: #1d9620;
-        border-width: 10px;
-        background-color: #e5fbfc;
+        /*border: 1px solid #CCC;*/
+        box-shadow:1px 1px 5px 2px #eaeaea inset;
+        background-color: #f4ffff;
     }
     #person-radio, #yes-no-radio {
         width: 20px;

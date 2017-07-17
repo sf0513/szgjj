@@ -29,7 +29,7 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/',
+            path: '/Hello',
             name: 'Hello',
             component: Hello
         },
@@ -104,7 +104,7 @@ export default new Router({
             component: MyNotes
         },
         {
-            path: '/pages/hedge/HedgeInput',
+            path: '/',
             name: 'HedgeInput',
             component: HedgeInput
         },
