@@ -14,6 +14,8 @@
         <button @click="goToMyLoan">Go to MyLoan</button>
         <br/>
         <button @click="goToMyNotes">Go to MyNotes</button>
+        <button @click="goToRepay">还款方式变更</button>
+        
 
     </div>
 </template>
@@ -44,7 +46,10 @@
             },
             goToMyNotes(){
                 this.$router.push('/notes')
-            }
+            },
+            goToRepay(){
+            	this.$router.push('/loan/modeOfRepayment')
+            },
         }
     }
 </script>
