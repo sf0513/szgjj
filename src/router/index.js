@@ -130,11 +130,11 @@ Vue.use(Router)
 //    }
 //  ]
 //})
-const router =  new Router({
+const router = new Router({
     // mode: 'history',
     base: __dirname,
     routes: [
-    		//导航页
+        //导航页
         {
             path: '/',
             name: 'Hello',
@@ -158,6 +158,23 @@ const router =  new Router({
                 require(['../pages/loan/mode-of-repayment-ok'], resolve)
             }
         },
+        //登录
+        {
+            path: '/pages/login/login',
+            name: 'login',
+            component: (resolve) => {
+                require(['../pages/login/Login'], resolve)
+            }
+        },
+        //我要提取
+        {
+            path: '/pages/extract/IWantToExtract',
+            name: 'iWantToExtract',
+            component: (resolve) => {
+                require(['../pages/extract/IWantToExtract'], resolve)
+            }
+
+        }
     ]
 });
 
