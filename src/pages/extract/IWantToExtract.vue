@@ -12,23 +12,66 @@
         </div>
         <!-- 立即提前-->
         <div v-if="show_item === 'index_first'">
-            <div class="immediate_extraction_item">
-                <div class="type">
-                    <img class="img " src="../../assets/u27.png">
-                    <div class="title">
-                        <span>租房</span>
+            <div class="immediate_extraction" v-for="item in immediateExtractionArr">
+
+                <div class="immediate_extraction_item">
+                    <div class="type">
+                        <img class="img " src="../../assets/bg_apply_type.png">
+                        <div class="title">
+                            <span>{{item.type}}</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="column_one">
+                            <img :src="item.img">
+                            <div class="row">
+                                <span>{{item.title}}</span>
+                                <div v-if="item.which_num==='1'">
+                                    <div class="row_one">
+                                        <span class="num1">月缴存额度的</span>
+                                        <span class="num">{{item.num}}</span>
+                                    </div>
+                                </div>
+                                <div v-else="true">
+                                    <div class="row_one">
+                                        <span class="num_all">{{item.num}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column_two">
+                            <button v-if="item.able==='1'" class="able">{{item.operate}}</button>
+                            <button v-else-if="item.able='2'" class="disable">{{item.operate}}</button>
+                        </div>
+
                     </div>
                 </div>
-                <div class="content">
-                    <img src="../../assets/card_rent_house@2x.png">
-                </div>
-                <button>申请</button>
+                <p class="line"></p>
             </div>
         </div>
 
         <!--更多提取-->
         <div v-else-if="show_item === 'index_second'">
-            <p>更多提前</p>
+            <div class="more_extraction" v-for="item in moreExtractionArr">
+
+                <div class="more_extraction_item">
+                    <div class="content">
+                        <div class="column_one">
+                            <img :src="item.img">
+                            <div class="column_column_two">
+                                <span>{{item.title}}</span>
+                                <span class="service_guide">办事指南</span>
+                            </div>
+                        </div>
+                        <div class="column_two">
+                            <button v-if="item.able==='1'" class="able">{{item.operate}}</button>
+                            <button v-else-if="item.able='2'" class="disable">{{item.operate}}</button>
+                        </div>
+
+                    </div>
+                </div>
+                <p class="line"></p>
+            </div>
         </div>
     </div>
 </template>
@@ -39,7 +82,99 @@
     export default {
         data () {
             return {
-                show_item: "index_first"
+                show_item: "index_first",
+                immediateExtractionArr: [
+                    {
+                        type: "租 房",
+                        img: require("../../assets/card_rent_house@2x.png"),
+                        title: "家庭成员在深圳无房产",
+                        which_num: "1",
+                        operate: "申请",
+                        num: "50%x 可提取月份",
+                        able: "1"
+                    },
+                    {
+                        type: "其 他",
+                        img: require("../../assets/card_other@2x.png"),
+                        title: "物业，装修等住房消费",
+                        which_num: "1",
+                        operate: "撤销",
+                        num: "30%x 可提取月份",
+                        able: "1"
+                    },
+                    {
+                        type: "非深户离深销户",
+                        img: require("../../assets/card_Pin_households@2x.png"),
+                        title: "非深圳户籍人员离开深圳",
+                        which_num: "2",
+                        operate: "申请",
+                        num: "全额提取",
+                        able: "1"
+                    },
+                    {
+                        type: "退休销户",
+                        img: require("../../assets/card_retired@2x.png"),
+                        title: "男满60周岁，女满55周岁或有退休证",
+                        which_num: "2",
+                        operate: "撤销",
+                        num: "全额提取",
+                        able: "2"
+                    }
+
+                ],
+                moreExtractionArr: [
+                    {
+                        img: require("../../assets/card_house_purchase@2x.png"),
+                        title: "购房",
+                        operate: "申请",
+                        able: "1"
+                    },
+                    {
+                        img: require("../../assets/card_repay@2x.png"),
+                        title: "还贷",
+                        operate: "撤销",
+                        able: "2"
+                    },
+                    {
+                        img: require("../../assets/card_social_security@2x.png"),
+                        title: "社保存量",
+                        operate: "申请",
+                        able: "1"
+                    },
+                    {
+                        img: require("../../assets/card_overhaul@2x.png"),
+                        title: "大修，翻建房屋",
+                        operate: "撤销",
+                        able: "1"
+                    },
+                    {
+                        img: require("../../assets/card_low@2x.png"),
+                        title: "低保",
+                        operate: "申请",
+                        able: "1"
+                    },
+                    {
+                        img: require("../../assets/card_foreign@2x.png"),
+                        title: "定居国外或港澳台",
+                        operate: "撤销",
+                        able: "2"
+                    },
+                    {
+                        img: require("../../assets/card_unemployment@2x.png"),
+                        title: "失业",
+                        operate: "申请",
+                        able: "1"
+                    },
+                    {
+                        img: require("../../assets/card_move_census_register@2x.png"),
+                        title: "户籍迁出本市",
+                        operate: "申请",
+                        able: "2"
+
+                    }
+
+                ]
+
             }
         },
         components: {
@@ -84,7 +219,7 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        background-color: #EFEFEF;
+        background-color: white;
     }
 
     div {
@@ -140,7 +275,7 @@
 
     .immediate_extraction_item .type .title {
         position: absolute;
-        left: 2px;
+        left: 0.5rem;
         top: 8px;
         word-wrap: break-word;
     }
@@ -148,4 +283,203 @@
     .immediate_extraction_item .type span {
         color: white;
     }
+
+    .immediate_extraction_item .content {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .immediate_extraction_item .content img {
+        width: 0.8rem;
+        margin-top: 0.2rem;
+        margin-left: 0.3rem;
+    }
+
+    .immediate_extraction_item .content .column_one {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .immediate_extraction_item .content .column_one .row {
+        height: 100%;
+        display: flex;
+        margin-top: 0.2rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-left: 0.1rem;
+    }
+
+    .immediate_extraction_item .content .column_one .row .row_one {
+        margin-top: 0.1rem;
+    }
+
+    .immediate_extraction_item .content .column_one .row .row_one span {
+        font-size: 14px;
+        font-weight: bold;
+        color: black;
+    }
+
+    .immediate_extraction_item .content .column_one .row .row_one .num {
+        color: #0086D4;
+    }
+
+    .immediate_extraction_item .content .column_one .row .row_one .num_all {
+        color: #0086D4;
+        margin-left: 0.5rem;
+    }
+
+    .immediate_extraction_item .content .column_one .row span {
+        font-size: 8px;
+    }
+
+    .immediate_extraction_item .content .column_two {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .immediate_extraction_item .content .column_two .able {
+        margin-right: 0.5rem;
+        width: 1.5rem;
+        height: 35px;
+        font-size: 16px;
+        margin-top: 0.1rem;
+        background-image: url(../../assets/btn_apply_n@2x.png);
+        border-radius: 3rem;
+        cursor: pointer;
+        color: white;
+        background-repeat: no-repeat;
+        background-position: 50% center;
+        background-color: transparent;
+        overflow: hidden;
+        outline: none;
+        border: none;
+    }
+
+    .immediate_extraction_item .content .column_two .disable {
+        margin-right: 0.5rem;
+        width: 1.5rem;
+        height: 35px;
+        font-size: 16px;
+        margin-top: 0.1rem;
+        background-image: url(../../assets/btn_apply_d@2x.png);
+        border-radius: 3rem;
+        cursor: pointer;
+        color: black;
+        background-repeat: no-repeat;
+        background-position: 50% center;
+        background-color: transparent;
+        overflow: hidden;
+        outline: none;
+        border: none;
+    }
+
+    .immediate_extraction .line {
+        height: 20px;
+        background: #EFEFEF;
+    }
+
+    /*更多提取每一块*/
+    .more_extraction_item {
+        position: relative;
+        height: 1.5rem;
+        background: white;
+    }
+
+    .more_extraction_item .content {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .more_extraction_item .content img {
+        width: 0.6rem;
+        margin-top: 0.2rem;
+        margin-left: 0.3rem;
+    }
+
+    .more_extraction_item .content .column_one {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .more_extraction_item .content .column_one .column_column_two {
+        height: 100%;
+        display: flex;
+        margin-top: 0.2rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-left: 0.3rem;
+    }
+
+    .more_extraction_item .content .column_one .column_column_two .service_guide {
+        font-size: 12px;
+        color: gray;
+        margin-top: 0.2rem;
+    }
+
+    .more_extraction_item .content .column_two {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .more_extraction_item .content .column_two .able {
+        margin-right: 0.5rem;
+        width: 1.5rem;
+        height: 35px;
+        font-size: 16px;
+        margin-top: 0.1rem;
+        background-image: url(../../assets/btn_apply_n@2x.png);
+        border-radius: 3rem;
+        cursor: pointer;
+        color: white;
+        background-repeat: no-repeat;
+        background-position: 50% center;
+        background-color: transparent;
+        overflow: hidden;
+        outline: none;
+        border: none;
+    }
+
+    .more_extraction_item .content .column_two .disable {
+        margin-right: 0.5rem;
+        width: 1.5rem;
+        height: 35px;
+        font-size: 16px;
+        margin-top: 0.1rem;
+        background-image: url(../../assets/btn_apply_d@2x.png);
+        border-radius: 3rem;
+        cursor: pointer;
+        color: black;
+        background-repeat: no-repeat;
+        background-position: 50% center;
+        background-color: transparent;
+        overflow: hidden;
+        outline: none;
+        border: none;
+    }
+
+    .more_extraction .line {
+        height: 2px;
+        background: #EFEFEF;
+        margin-left: 0.1rem;
+        margin-right: 0.1rem;
+    }
+
 </style>

@@ -130,17 +130,92 @@ Vue.use(Router)
 //    }
 //  ]
 //})
-const router =  new Router({
+const router = new Router({
     // mode: 'history',
     base: __dirname,
     routes: [
-    		//导航页
+        //导航页
         {
             path: '/',
             name: 'Hello',
             component: (resolve) => {
                 require(['../components/Hello'], resolve)
             }
+        },
+        {
+            path: '/pages/account/myAccount',
+            name: 'myAccount',
+            component: myAccount
+        },
+        {
+            path: '/pages/account/MyInformation',
+            name: 'MyInformation',
+            component: MyInformation
+        },
+        {
+            path: '/appointment',
+            name: 'myAppointment',
+            component: myAppointment
+        },
+        {
+            path: '/appointment/completeAppoint',
+            name: 'completeAppoint',
+            component: completeAppoint
+        },
+        {
+            path: '/appointment/changeAppoint',
+            name: 'changeAppoint',
+            component: changeAppoint
+        },
+        {
+            path: '/appointment/appointBank',
+            name: 'appointBank',
+            component: appointBank
+        },
+        {
+            path: '/appointment/appointArea',
+            name: 'appointArea',
+            component: appointArea
+        },
+        {
+            path: '/appointment/appointDot',
+            name: 'appointDot',
+            component: appointDot
+        },
+        {
+            path: '/forgetpsw',
+            name: 'ForgetPsw',
+            component: ForgetPsw
+        },
+        {
+            path: '/pages/login/login',
+            name: 'login',
+            component: Login
+        },
+        {
+            path: '/pages/message/Message',
+            name: 'Message',
+            component: Message
+        },
+        {
+            path: '/pages/loan/MyLoan',
+            name: 'MyLoan',
+            component: MyLoan
+        },
+        {
+            path: '/pages/loan/ReimbursementDetail',
+            name: 'ReimbursementDetail',
+            component: ReimbursementDetail
+        },
+        {
+            path: '/notes',
+            name: 'MyNotes',
+            component: MyNotes
+        },
+        {
+            path: '/HedgeInput',
+            name: 'HedgeInput',
+            component: HedgeInput
         },
         //贷款-还款方式变更
         {
@@ -166,6 +241,23 @@ const router =  new Router({
                 require(['../pages/loan/loan-calculator'], resolve)
             }
         },
+        //登录
+        {
+            path: '/pages/login/login',
+            name: 'login',
+            component: (resolve) => {
+                require(['../pages/login/Login'], resolve)
+            }
+        },
+        //我要提取
+        {
+            path: '/pages/extract/IWantToExtract',
+            name: 'iWantToExtract',
+            component: (resolve) => {
+                require(['../pages/extract/IWantToExtract'], resolve)
+            }
+
+        }
     ]
 });
 
