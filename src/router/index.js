@@ -158,6 +158,14 @@ const router =  new Router({
                 require(['../pages/loan/mode-of-repayment-ok'], resolve)
             }
         },
+        //贷款-月供计算器
+        {
+            path: '/loan/loan-calculator',
+            name: 'loanCalculator',
+            component: (resolve) => {
+                require(['../pages/loan/loan-calculator'], resolve)
+            }
+        },
     ]
 });
 

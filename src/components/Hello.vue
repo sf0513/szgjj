@@ -51,7 +51,7 @@
             },
             goToIWantToExtract(){
                 this.$router.push('/pages/extract/IWantToExtract')
-            }
+            },
             goToRepay(){
             	this.$router.push('/loan/modeOfRepayment')
             },
