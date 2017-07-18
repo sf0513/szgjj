@@ -21,7 +21,7 @@ import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 import IWantToExtract from '../pages/extract/IWantToExtract'
 import HedgeSign from '../pages/hedge/HedgeSign'
 
-
+import ExpandIDCard from '../pages/account/ExpandIDCard'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 Vue.use(Router)
@@ -147,10 +147,17 @@ const router = new Router({
             name: 'myAccount',
             component: myAccount
         },
+        // 我的信息
         {
-            path: '/pages/account/MyInformation',
+            path: '/MyInformation',
             name: 'MyInformation',
             component: MyInformation
+        },
+        // 升位 身份证
+        {
+            path: '/pages/account/ExpandIDCard',
+            name: 'ExpandIDCard',
+            component: ExpandIDCard
         },
         {
             path: '/appointment',
