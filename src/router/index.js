@@ -264,6 +264,13 @@ const router = new Router({
                 require(['../pages/extract/IWantToExtract'], resolve)
             }
 
+        },{
+            path: '/pages/extract/ExtractSuccess',
+            name: 'ExtractSuccess',
+            component: (resolve) => {
+                require(['../pages/extract/ExtractSuccess'], resolve)
+            }
+
         }
     ]
 });
