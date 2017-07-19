@@ -201,11 +201,6 @@ const router = new Router({
             component: ForgetPsw
         },
         {
-            path: '/pages/login/login',
-            name: 'login',
-            component: Login
-        },
-        {
             path: '/pages/message/Message',
             name: 'Message',
             component: Message
