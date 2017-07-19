@@ -22,7 +22,7 @@ import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 import IWantToExtract from '../pages/extract/IWantToExtract'
 import HedgeSign from '../pages/hedge/HedgeSign'
 
-
+import ExpandIDCard from '../pages/account/ExpandIDCard'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 Vue.use(Router)
@@ -148,10 +148,17 @@ const router = new Router({
             name: 'myAccount',
             component: myAccount
         },
+        // 我的信息
         {
-            path: '/pages/account/MyInformation',
+            path: '/MyInformation',
             name: 'MyInformation',
             component: MyInformation
+        },
+        // 升位 身份证
+        {
+            path: '/pages/account/ExpandIDCard',
+            name: 'ExpandIDCard',
+            component: ExpandIDCard
         },
         {
             path: '/appointment',
@@ -239,6 +246,14 @@ const router = new Router({
                 require(['../pages/loan/mode-of-repayment-ok'], resolve)
             }
         },
+        //贷款-月供计算器
+        {
+            path: '/loan/loan-calculator',
+            name: 'loanCalculator',
+            component: (resolve) => {
+                require(['../pages/loan/loan-calculator'], resolve)
+            }
+        },
         //登录
         {
             path: '/pages/login/login',
@@ -253,6 +268,13 @@ const router = new Router({
             name: 'iWantToExtract',
             component: (resolve) => {
                 require(['../pages/extract/IWantToExtract'], resolve)
+            }
+
+        },{
+            path: '/pages/extract/ExtractSuccess',
+            name: 'ExtractSuccess',
+            component: (resolve) => {
+                require(['../pages/extract/ExtractSuccess'], resolve)
             }
 
         }

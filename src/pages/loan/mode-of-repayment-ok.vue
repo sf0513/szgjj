@@ -5,7 +5,7 @@
 		<div class="mode-of-repayment-ok-content">
 			<img src="../../assets/card_successful@2x.png" />
 			<p>您已成功办理还款方式变更</p>
-			<button class="submit">完  成</button>
+			<button class="submit" @click="success">完  成</button>
 		</div>
 	</div>
 </template>
@@ -22,8 +22,10 @@ export default{
 			title:'还款方式变更',
 		}
 	},
-	method:{
-		
+	methods:{
+		success(){
+			this.$router.push('/');
+		}
 		
 	},
 	components:{
@@ -42,7 +44,6 @@ export default{
 	left: 0;
 	bottom: 0;
 	right: 0;
-	
 	.mode-of-repayment-ok-content{
 		img{
 			width: 77px;
