@@ -149,7 +149,7 @@ const router = new Router({
         },
         // 我的信息
         {
-            path: '/MyInformation',
+            path: '/pages/account/MyInformation',
             name: 'MyInformation',
             component: MyInformation
         },
