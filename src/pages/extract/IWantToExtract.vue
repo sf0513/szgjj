@@ -89,7 +89,7 @@
                 <div class="title"></div>
                 <div class="cont">
                     <div class="tip">{{tip}}</div>
-                    <input type="button" value="确 定" class="sure fl" @click='quit()'>
+                    <input type="button" value="确 定" class="sure fl" @click='extractSuccess()'>
                     <input type="button" value="取 消" class="cancel fr" @click='showFlag=false'>
                 </div>
             </div>
@@ -248,6 +248,9 @@
             operate(str){
                 this.tip = "你是否确认" + str.operate;
                 this.showFlag = true;
+            },
+            extractSuccess(){
+                this.$router.push('/pages/extract/ExtractSuccess');
             }
         }
     }
