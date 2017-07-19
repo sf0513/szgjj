@@ -2,13 +2,14 @@
 	<div class="">
 		<div>
 			<top-bar></top-bar>
-			<nav-header :title="title" :showLeft="true" :showImg='true' :class="{'color':true}"></nav-header>
+			<nav-header :title="title" :showLeft="true" :showImg='true' :src='image' :isshowcolor='true'></nav-header>
+			<pormpt-pop :tip='tip' :showTipFlag='showTipFlag' @on-flag-change="onFlagChange"></pormpt-pop>
 		</div>
 		<div class="wrap">
 			<div class="top">请选择预约银行</div>
 			<div class="hr30-efefef"></div>
 			<ul class="item">
-				<li>建设银行</li>
+				<li  @click='change()'>建设银行</li>
 				<li>中国银行</li>
 				<li>招商银行</li>
 				<li>兴业银行</li>
@@ -27,16 +28,29 @@
 
 import navHeader from '../../components/nav-header.vue';
 import topBar from '../../components/top-bar.vue';
+import pormptPop from '../../components/pormpt-popup.vue';
 export default{
 	name:'appointment',
 	data(){
 		return{
-			title:'预约银行'
+			title:'预约银行',
+			tip:'只能查询提取预约',
+			image:require('../../assets/appointment-a.png'),
+			showTipFlag:false
+		}
+	},
+	methods:{
+		change(){
+			this.showTipFlag = !this.showTipFlag;
+		},
+		onFlagChange(val){
+			this.showTipFlag = val;
 		}
 	},
 	components:{
 		navHeader,
-		topBar
+		topBar,
+		pormptPop
 	}
 }
 </script>

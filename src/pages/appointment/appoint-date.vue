@@ -5,12 +5,8 @@
 			<nav-header :title="title" :showLeft="true" :showImg='true' :src='image' :isshowcolor='true'></nav-header>
 		</div>
 		<div class="wrap">
-			<div class="top">请选择预约网点的区域</div>
+			<div class="top">请选择预约时间</div>
 			<div class="hr30-efefef"></div>
-			<ul class="item">
-				<li v-for='item in areaArr'>{{item.title}}</li>
-			</ul>
-			<div class="footer"></div>
 		</div>
 	</div>
 </template>
@@ -22,17 +18,12 @@ export default{
 	name:'appointment',
 	data(){
 		return{
-			title:'预约区域',
+			title:'预约时间',
 			image:require('../../assets/appointment-a.png'),
-			areaArr:[
-				{title:'福田区'},
-				{title:'龙岗区'},
-				{title:'罗湖区'},
-				{title:'南山区'},
-				{title:'盐田区'},
-				{title:'宝安区'},
-			]
 		}
+	},
+	methods:{
+		
 	},
 	components:{
 		navHeader,
@@ -40,7 +31,7 @@ export default{
 	}
 }
 </script>
-<style type="text/css">
+<style type="text/css" scoped>
 .hr30-efefef{height: 0.3rem; background: #efefef;}
 .wrap{font-size: 0.28rem;}
 .wrap .top{height: 0.9rem; background: #f7f8f8; line-height: 0.9rem; font-size: 0.32rem; text-align:left; text-indent: 0.46rem;}

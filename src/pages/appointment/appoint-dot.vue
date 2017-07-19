@@ -2,7 +2,7 @@
 	<div class="">
 		<div>
 			<top-bar></top-bar>
-			<nav-header :title="title" :showLeft="true" :showImg='true' :src='image' :class="{'color':true}"></nav-header>
+			<nav-header :title="title" :showLeft="true" :showImg='true' :src='image' ></nav-header>
 		</div>
 		<div class="wrap">
 			<div class="top">请选择预约网点的区域</div>

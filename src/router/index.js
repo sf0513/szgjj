@@ -9,6 +9,7 @@ import appointBank from '../pages/appointment/appoint-bank'
 import appointArea from '../pages/appointment/appoint-area'
 import appointDot from '../pages/appointment/appoint-dot'
 import appointSuccess from '../pages/appointment/appoint-success'
+import appointDate from '../pages/appointment/appoint-date'
 import changeAppoint from '../pages/appointment/change-appoint'
 import ForgetPsw from '@/pages/psw/ForgetPsw'
 import Login from '../pages/login/Login'
@@ -181,6 +182,11 @@ const router = new Router({
             path: '/appointment/appointDot',
             name: 'appointDot',
             component: appointDot
+        },
+        {
+            path: '/appointment/appointDate',
+            name: 'appointDate',
+            component: appointDate
         },
         {
             path: '/forgetpsw',
