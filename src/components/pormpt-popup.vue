@@ -1,3 +1,12 @@
+/**
+ * 提示弹窗
+ * 传出参数：
+ * tip：提示信息
+ * showTipFlag：是否显示提示弹窗
+ *
+ * 传入参数
+ * on-flag-change：
+ */
 <template>
 	<div class=""  v-if='showTipFlag'>
 		<div class="tip-pop">
