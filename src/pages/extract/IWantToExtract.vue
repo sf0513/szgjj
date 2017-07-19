@@ -40,8 +40,12 @@
                             </div>
                         </div>
                         <div class="column_two">
-                            <button v-if="item.able==='1'" class="able">{{item.operate}}</button>
-                            <button v-else-if="item.able='2'" class="disable">{{item.operate}}</button>
+                            <button v-if="item.able==='1'" class="able" @click="operate(item.operate)">
+                                {{item.operate}}
+                            </button>
+                            <button v-else-if="item.able='2'" disabled class="disable" @click="operate(item.operate)">
+                                {{item.operate}}
+                            </button>
                         </div>
 
                     </div>
@@ -59,13 +63,20 @@
                         <div class="column_one">
                             <img :src="item.img">
                             <div class="column_column_two">
-                                <span>{{item.title}}</span>
+                                <div>
+                                    <span>{{item.title}}</span>
+                                    <span v-if="item.exit" class="age_limit">男满50周岁，女满45周岁</span>
+                                </div>
                                 <span class="service_guide">办事指南</span>
                             </div>
                         </div>
                         <div class="column_two">
-                            <button v-if="item.able==='1'" class="able">{{item.operate}}</button>
-                            <button v-else-if="item.able='2'" class="disable">{{item.operate}}</button>
+                            <button v-if="item.able==='1'" class="able" @click="operate(item.operate)">
+                                {{item.operate}}
+                            </button>
+                            <button v-else-if="item.able='2'" disabled class="disable" @click="operate(item.operate)">
+                                {{item.operate}}
+                            </button>
                         </div>
 
                     </div>
@@ -80,6 +91,7 @@
     import topBar from '../../components/top-bar.vue';
 
     export default {
+        name: 'IWantToExtract',
         data () {
             return {
                 show_item: "index_first",
@@ -127,48 +139,56 @@
                         img: require("../../assets/card_house_purchase@2x.png"),
                         title: "购房",
                         operate: "申请",
+                        exit: false,
                         able: "1"
                     },
                     {
                         img: require("../../assets/card_repay@2x.png"),
                         title: "还贷",
                         operate: "撤销",
+                        exit: false,
                         able: "2"
                     },
                     {
                         img: require("../../assets/card_social_security@2x.png"),
                         title: "社保存量",
                         operate: "申请",
+                        exit: false,
                         able: "1"
                     },
                     {
                         img: require("../../assets/card_overhaul@2x.png"),
                         title: "大修，翻建房屋",
                         operate: "撤销",
+                        exit: false,
                         able: "1"
                     },
                     {
                         img: require("../../assets/card_low@2x.png"),
                         title: "低保",
                         operate: "申请",
+                        exit: false,
                         able: "1"
                     },
                     {
                         img: require("../../assets/card_foreign@2x.png"),
                         title: "定居国外或港澳台",
                         operate: "撤销",
+                        exit: false,
                         able: "2"
                     },
                     {
                         img: require("../../assets/card_unemployment@2x.png"),
                         title: "失业",
                         operate: "申请",
+                        exit: true,
                         able: "1"
                     },
                     {
                         img: require("../../assets/card_move_census_register@2x.png"),
                         title: "户籍迁出本市",
                         operate: "申请",
+                        exit: false,
                         able: "2"
 
                     }
@@ -179,7 +199,8 @@
         },
         components: {
             topBar
-        }, methods: {
+        },
+        methods: {
             show_first(){
                 this.show_item = "index_first";
                 this.showSelect();
@@ -209,6 +230,9 @@
                     select_1.style.borderBottom = "none";
 
                 }
+            },
+            operate(str){
+                alert(str)
             }
         }
     }
@@ -424,6 +448,12 @@
         justify-content: center;
         align-items: flex-start;
         margin-left: 0.3rem;
+    }
+
+    .more_extraction_item .content .column_one .column_column_two .age_limit {
+        font-size: 12px;
+        color: gray;
+        margin-top: 0.2rem;
     }
 
     .more_extraction_item .content .column_one .column_column_two .service_guide {
