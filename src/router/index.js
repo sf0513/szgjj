@@ -5,6 +5,7 @@ import myAccount from '@/pages/account/myAccount.vue'
 import MyInformation from '../pages/account/MyInformation'
 import myAppointment from '../pages/appointment/my-appointment'
 import completeAppoint from '../pages/appointment/complete-appoint'
+import wantAppoint from '../pages/appointment/want-appoint.vue'
 import appointBank from '../pages/appointment/appoint-bank'
 import appointArea from '../pages/appointment/appoint-area'
 import appointDot from '../pages/appointment/appoint-dot'
@@ -160,15 +161,23 @@ const router = new Router({
             name: 'ExpandIDCard',
             component: ExpandIDCard
         },
+        //我的预约
         {
-            path: '/appointment',
+            path: '/appointment/myAppointment',
             name: 'myAppointment',
             component: myAppointment
         },
+        //已完成预约
         {
             path: '/appointment/completeAppoint',
             name: 'completeAppoint',
             component: completeAppoint
+        },
+        //我要预约
+        {
+            path: '/appointment/wantAppoint',
+            name: 'wantAppoint',
+            component: wantAppoint
         },
         {
             path: '/appointment/changeAppoint',
