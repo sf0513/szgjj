@@ -25,6 +25,7 @@ import HedgeSign from '../pages/hedge/HedgeSign'
 
 import ExpandIDCard from '../pages/account/ExpandIDCard'
 import ExpandSuccess from '../pages/account/ExpandSuccess'
+import PhoneBind from '../pages/bind/PhoneBind'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 Vue.use(Router)
@@ -167,6 +168,12 @@ const router = new Router({
             path: '/pages/account/ExpandSuccess',
             name: 'ExpandSuccess',
             component: ExpandSuccess
+        },
+        // 绑定手机
+        {
+            path: '/PhoneBind',
+            name: 'PhoneBind',
+            component: PhoneBind
         },
         {
             path: '/appointment/myAppointment',
