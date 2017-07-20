@@ -25,7 +25,9 @@
     export default {
         name: 'expand-id-card',
         data() {
+            return {
 
+            }
         },
         components: {
             TopBar,
@@ -34,7 +36,7 @@
         methods: {
             sureAction: function () {
                 // 升位成功 跳转
-                this.$router.push({path:'/pages/account/ExpandSuccess', query:{isSuccess:'true'}})
+                this.$router.push({path:'/pages/account/ExpandSuccess', query:{isSuccess:false}})
             }
         }
     }

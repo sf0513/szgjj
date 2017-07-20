@@ -4,11 +4,11 @@
         <top-bar></top-bar>
         <nav-header title="身份证升位" :showImg="false"></nav-header>
 
-        <img src="../../assets/card_successful.png">
+        <img :src="src">
 
         <span id="success-span">{{ spanTitle }}</span>
 
-        <!--<span id="false-span">您可申请预约到公积金管理中心办理</span>-->
+        <span id="false-span" v-if="!isSuccess">您可申请预约到公积金管理中心办理</span>
 
         <button @click="srueAction">完成</button>
     </div>
@@ -23,15 +23,23 @@
 
         data() {
             return {
-                spanTitle: this.isSuccess ? '你已成功升级身份证号码':'您的身份证号码升级失败',
+                isSuccess: Boolean,
+                spanTitle: String,
+                src: String
             }
         },
+
         created() {
             this.isSuccess = this.$route.query.isSuccess;
             console.log(this.isSuccess)
-        },
-        props: {
-            isSuccess: String,
+            if (this.isSuccess === true) {
+                this.spanTitle = '你已成功升级身份证号码';
+                this.src = require('../../assets/card_successful.png');
+            }else  {
+                this.spanTitle = '您的身份证号码升级失败';
+                this.src = require('../../assets/card_failure.png');
+            }
+            console.log(this.src)
         },
         methods: {
             srueAction: function () {
@@ -54,6 +62,7 @@
     span {
         font-size: 15px;
         display: block;
+        padding: 10px;
         /*background-color: greenyellow;*/
     }
     #false-span {
