@@ -11,7 +11,7 @@
             <div class="hr30"></div>
         </div>
         <!-- 立即提前-->
-        <div v-if="show_item === 'index_first'">
+        <div v-show="showItemFlag">
             <div class="immediate_extraction" v-for="item in immediateExtractionArr">
 
                 <div class="immediate_extraction_item">
@@ -55,7 +55,7 @@
         </div>
 
         <!--更多提取-->
-        <div v-else-if="show_item === 'index_second'">
+        <div v-show="!showItemFlag">
             <div class="more_extraction" v-for="item in moreExtractionArr">
 
                 <div class="more_extraction_item">
@@ -84,7 +84,7 @@
                 <p class="line"></p>
             </div>
         </div>
-        <div class="pop" v-if='showFlag'>
+        <div class="pop" v-show='showFlag'>
             <div class="confirm">
                 <div class="title"></div>
                 <div class="cont">
@@ -107,6 +107,7 @@
         data () {
             return {
                 show_item: "index_first",
+                showItemFlag: true,
                 showFlag: false,
                 tip: "",
                 immediateExtractionArr: [
@@ -217,10 +218,12 @@
         methods: {
             show_first(){
                 this.show_item = "index_first";
+                this.showItemFlag = true;
                 this.showSelect();
             },
             show_second(){
                 this.show_item = "index_second";
+                this.showItemFlag = false;
                 this.showSelect();
             },
             showSelect(){
