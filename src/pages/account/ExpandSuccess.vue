@@ -27,10 +27,11 @@
             }
         },
         created() {
+            this.isSuccess = this.$route.query.isSuccess;
             console.log(this.isSuccess)
         },
         props: {
-            isSuccess: this.$route.query.isSuccess,
+            isSuccess: String,
         },
         methods: {
             srueAction: function () {
