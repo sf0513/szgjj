@@ -151,7 +151,7 @@ const router = new Router({
         },
         // 我的信息
         {
-            path: '/MyInformation',
+            path: '/pages/account/MyInformation',
             name: 'MyInformation',
             component: MyInformation
         },
@@ -208,11 +208,6 @@ const router = new Router({
             path: '/forgetpsw',
             name: 'ForgetPsw',
             component: ForgetPsw
-        },
-        {
-            path: '/pages/login/login',
-            name: 'login',
-            component: Login
         },
         {
             path: '/pages/message/Message',
