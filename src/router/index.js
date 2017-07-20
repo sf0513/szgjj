@@ -24,6 +24,7 @@ import IWantToExtract from '../pages/extract/IWantToExtract'
 import HedgeSign from '../pages/hedge/HedgeSign'
 
 import ExpandIDCard from '../pages/account/ExpandIDCard'
+import ExpandSuccess from '../pages/account/ExpandSuccess'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 Vue.use(Router)
@@ -161,7 +162,12 @@ const router = new Router({
             name: 'ExpandIDCard',
             component: ExpandIDCard
         },
-        //我的预约
+        // 升位 成功
+        {
+            path: '/pages/account/ExpandSuccess',
+            name: 'ExpandSuccess',
+            component: ExpandSuccess
+        },
         {
             path: '/appointment/myAppointment',
             name: 'myAppointment',
