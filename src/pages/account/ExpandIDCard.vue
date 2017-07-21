@@ -74,7 +74,8 @@
         line-height: 20px;
     }
     button {
-        width: 3rem;
+        font-size: 15px;
+        width: 5rem;
         height: 40px;
         background-color: #a899fb;
         outline: none;

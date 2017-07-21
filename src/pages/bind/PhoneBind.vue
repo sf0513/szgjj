@@ -10,8 +10,15 @@
         </div>
         <div class="code-div">
             校验码:<input id="code-input" type="text" onkeypress="value=value.replace(/[^\d]/g,'')" maxlength="6" placeholder="请输入校验码">
-            <button @click="getCodeAction">获取验证码</button>
+            <button id="code-button" @click="getCodeAction">获取验证码</button>
         </div>
+
+        <div class="agreement-div">
+            <input id="agreement-input" type="checkbox">
+            <span>我同意<a>《深圳市住房公积金业务自助办理服务协议》</a></span>
+        </div>
+
+        <button id="srue-button" @click="srueAction">确定</button>
 
     </div>
 </template>
@@ -34,6 +41,9 @@
         methods: {
             getCodeAction: function () {
                 console.log('获取验证码')
+            },
+            srueAction: function () {
+                console.log('确定')
             }
         }
     }
@@ -56,9 +66,17 @@
         margin-top: 10px;
         font-size: 13px;
         /*text-align: center;*/
+        /*background-color: #0000ed;*/
+    }
+    .agreement-div {
+        width: 90%;
+        height: 20px;
+        text-align: center;
+        display: inline-block;
     }
 
     input {
+        font-size: 10px;
         width: 50%;
         /*background-color: #00ee00;*/
         margin-left: 10px;
@@ -74,5 +92,29 @@
         outline: none;
         text-align: center;
         margin-left: 10px;
+    }
+    span, a {
+        font-size: 12px;
+        display: inline;
+        text-align: center;
+    }
+    #agreement-input {
+        width: 15px;
+        height: 15px;
+        display: inline;
+        background-color: #00ee00;
+    }
+    #srue-button {
+        font-size: 15px;
+        width: 5rem;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        color: white;
+        background-color: #a899fb;
+    }
+    a {
+        color: #8080ff;
     }
 </style>

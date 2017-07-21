@@ -26,6 +26,7 @@ import HedgeSign from '../pages/hedge/HedgeSign'
 import ExpandIDCard from '../pages/account/ExpandIDCard'
 import ExpandSuccess from '../pages/account/ExpandSuccess'
 import PhoneBind from '../pages/bind/PhoneBind'
+import EmailBind from '../pages/bind/EmailBind'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 Vue.use(Router)
@@ -171,9 +172,15 @@ const router = new Router({
         },
         // 绑定手机
         {
-            path: '/PhoneBind',
+            path: '/pages/bind/PhoneBind',
             name: 'PhoneBind',
             component: PhoneBind
+        },
+        // 绑定邮箱
+        {
+            path: '/pages/bind/EmailBind',
+            name: 'EmailBind',
+            component: EmailBind
         },
         {
             path: '/appointment/myAppointment',
