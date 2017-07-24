@@ -10,13 +10,13 @@
                     <td>姓名:</td>
                     <td>王小花</td>
                     <td></td>
-                    <td><a @click="">修改密码 ></a></td>
+                    <td><a @click="goToPage(1)">修改密码 ></a></td>
                 </tr>
                 <tr id="even-tr">
                     <td>省份证:</td>
                     <td>4320000000000000</td>
                     <td></td>
-                    <td><a @click="expandIDCard">升位 ></a></td>
+                    <td><a @click="goToPage(2)">升位 ></a></td>
                 </tr>
                 <tr id="odd-tr">
                     <td>缴存单位:</td>
@@ -27,14 +27,14 @@
                 <tr id="even-tr">
                     <td>手机号码:</td>
                     <td>13812345678</td>
-                    <td><a href="/index.html">立即绑定</a></td>
-                    <td><a href="#">修改 ></a></td>
+                    <td><a @click="goToPage(3)">立即绑定</a></td>
+                    <td><a @click="goToPage(4)">修改 ></a></td>
                 </tr>
                 <tr id="odd-tr">
                     <td>邮箱:</td>
                     <td>12345678@163.com</td>
                     <td></td>
-                    <td><a href="#">修改 ></a></td>
+                    <td><a @click="goToPage(5)">修改 ></a></td>
                 </tr>
                 <tr id="even-tr">
                     <td>婚姻状况:</td>
@@ -67,7 +67,7 @@
         name: 'my-information',
         data() {
             return {
-
+                pageNumber: '',
             }
         },
         components: {
@@ -75,10 +75,28 @@
             NavHeader
         },
         methods: {
-            expandIDCard: function () {
-                // 跳转 升位 身份证
-                this.$router.push('/pages/account/ExpandIDCard')
+            goToPage: function (pageIndex) {
+                if (pageIndex === 1) {
+                    // 修改密码
+
+                }else if (pageIndex === 2) {
+                    // 跳转 升位 身份证
+                    this.$router.push('/pages/account/ExpandIDCard')
+
+                }else if (pageIndex === 3) {
+                    // 绑定手机号
+                    this.$router.push('/pages/bind/PhoneBind')
+
+                }else if (pageIndex === 4) {
+                    // 修改手机号
+
+                }else if (pageIndex === 5) {
+                    // 修改邮箱
+                    this.$router.push('/pages/bind/EmailBind')
+                }
+                console.log(this.pageNumber,pageIndex)
             }
+
         }
     }
 </script>

@@ -13,7 +13,7 @@
             升位后身份证号码: <input type="text" onkeypress="value=value.replace(/[^0-9-]+/,'')" ng-pattern="/[^a-zA-Z]/" maxlength="16" />
         </div>
         <span>请仔细核对升级后的身份证号码是否与本人身份证号码相符<br>如果不符,您可预约到深圳公积金管理中心办理此项业务</span>
-        <button>确定</button>
+        <button @click="sureAction">确定</button>
 
     </div>
 </template>
@@ -23,16 +23,21 @@
     import NavHeader from  '../../components/nav-header.vue'
 
     export default {
-        name: 'expand-idcard',
+        name: 'expand-id-card',
         data() {
+            return {
 
+            }
         },
         components: {
             TopBar,
             NavHeader
         },
         methods: {
-
+            sureAction: function () {
+                // 升位成功 跳转
+                this.$router.push({path:'/pages/account/ExpandSuccess', query:{isSuccess:false}})
+            }
         }
     }
 </script>
@@ -69,7 +74,8 @@
         line-height: 20px;
     }
     button {
-        width: 3rem;
+        font-size: 15px;
+        width: 5rem;
         height: 40px;
         background-color: #a899fb;
         outline: none;

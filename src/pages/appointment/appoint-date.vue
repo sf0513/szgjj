@@ -2,7 +2,7 @@
 	<div class="">
 		<div>
 			<top-bar></top-bar>
-			<nav-header :title="title" :showLeft="true" :showImg='true' :src='image' :isshowcolor='true'></nav-header>
+			<nav-header :title="title" :showLeft="true" :showImg='false' :showText="true" :src='image' :isshowcolor='true'></nav-header>
 		</div>
 		<div class="wrap">
 			<div class="top">请选择预约时间</div>

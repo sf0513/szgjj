@@ -5,14 +5,12 @@
         <img :src="src"/>
         <h1>您已成功撤销非深户销户提取</h1>
         <button class="finish">完成</button>
-        <edit-text></edit-text>
 
     </div>
 </template>
 
 <script>
     import topBar from '../../components/top-bar.vue';
-    import editText from '../../components/exit-popup.vue';
 
     export default {
         name: 'ExtractSuccess',
@@ -24,7 +22,6 @@
         },
         components: {
             topBar,
-            editText
         }
     }
 </script>

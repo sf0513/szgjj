@@ -5,6 +5,7 @@ import myAccount from '@/pages/account/myAccount.vue'
 import MyInformation from '../pages/account/MyInformation'
 import myAppointment from '../pages/appointment/my-appointment'
 import completeAppoint from '../pages/appointment/complete-appoint'
+import wantAppoint from '../pages/appointment/want-appoint.vue'
 import appointBank from '../pages/appointment/appoint-bank'
 import appointArea from '../pages/appointment/appoint-area'
 import appointDot from '../pages/appointment/appoint-dot'
@@ -23,6 +24,9 @@ import IWantToExtract from '../pages/extract/IWantToExtract'
 import HedgeSign from '../pages/hedge/HedgeSign'
 
 import ExpandIDCard from '../pages/account/ExpandIDCard'
+import ExpandSuccess from '../pages/account/ExpandSuccess'
+import PhoneBind from '../pages/bind/PhoneBind'
+import EmailBind from '../pages/bind/EmailBind'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 Vue.use(Router)
@@ -150,7 +154,7 @@ const router = new Router({
         },
         // 我的信息
         {
-            path: '/MyInformation',
+            path: '/pages/account/MyInformation',
             name: 'MyInformation',
             component: MyInformation
         },
@@ -160,15 +164,40 @@ const router = new Router({
             name: 'ExpandIDCard',
             component: ExpandIDCard
         },
+        // 升位 成功
         {
-            path: '/appointment',
+            path: '/pages/account/ExpandSuccess',
+            name: 'ExpandSuccess',
+            component: ExpandSuccess
+        },
+        // 绑定手机
+        {
+            path: '/pages/bind/PhoneBind',
+            name: 'PhoneBind',
+            component: PhoneBind
+        },
+        // 绑定邮箱
+        {
+            path: '/pages/bind/EmailBind',
+            name: 'EmailBind',
+            component: EmailBind
+        },
+        {
+            path: '/appointment/myAppointment',
             name: 'myAppointment',
             component: myAppointment
         },
+        //已完成预约
         {
             path: '/appointment/completeAppoint',
             name: 'completeAppoint',
             component: completeAppoint
+        },
+        //我要预约
+        {
+            path: '/appointment/wantAppoint',
+            name: 'wantAppoint',
+            component: wantAppoint
         },
         {
             path: '/appointment/changeAppoint',
@@ -199,11 +228,6 @@ const router = new Router({
             path: '/forgetpsw',
             name: 'ForgetPsw',
             component: ForgetPsw
-        },
-        {
-            path: '/pages/login/login',
-            name: 'login',
-            component: Login
         },
         {
             path: '/pages/message/Message',

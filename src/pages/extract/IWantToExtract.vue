@@ -11,7 +11,7 @@
             <div class="hr30"></div>
         </div>
         <!-- 立即提前-->
-        <div v-if="show_item === 'index_first'">
+        <div v-show="showItemFlag">
             <div class="immediate_extraction" v-for="item in immediateExtractionArr">
 
                 <div class="immediate_extraction_item">
@@ -40,10 +40,10 @@
                             </div>
                         </div>
                         <div class="column_two">
-                            <button v-if="item.able==='1'" class="able" @click="operate(item.operate)">
+                            <button v-if="item.able==='1'" class="able" @click="operate(item)">
                                 {{item.operate}}
                             </button>
-                            <button v-else-if="item.able='2'" disabled class="disable" @click="operate(item.operate)">
+                            <button v-else-if="item.able='2'" disabled class="disable" @click="operate(item)">
                                 {{item.operate}}
                             </button>
                         </div>
@@ -55,7 +55,7 @@
         </div>
 
         <!--更多提取-->
-        <div v-else-if="show_item === 'index_second'">
+        <div v-show="!showItemFlag">
             <div class="more_extraction" v-for="item in moreExtractionArr">
 
                 <div class="more_extraction_item">
@@ -71,10 +71,10 @@
                             </div>
                         </div>
                         <div class="column_two">
-                            <button v-if="item.able==='1'" class="able" @click="operate(item.operate)">
+                            <button v-if="item.able==='1'" class="able" @click="operate(item)">
                                 {{item.operate}}
                             </button>
-                            <button v-else-if="item.able='2'" disabled class="disable" @click="operate(item.operate)">
+                            <button v-else-if="item.able='2'" disabled class="disable" @click="operate(item)">
                                 {{item.operate}}
                             </button>
                         </div>
@@ -84,6 +84,18 @@
                 <p class="line"></p>
             </div>
         </div>
+        <div class="pop" v-show='showFlag'>
+            <div class="confirm">
+                <div class="title"></div>
+                <div class="cont">
+                    <div class="tip">{{tip}}</div>
+                    <input type="button" value="确 定" class="sure fl" @click='extractSuccess()'>
+                    <input type="button" value="取 消" class="cancel fr" @click='showFlag=false'>
+                </div>
+            </div>
+            <div class="overlay"></div>
+        </div>
+
     </div>
 </template>
 
@@ -95,6 +107,9 @@
         data () {
             return {
                 show_item: "index_first",
+                showItemFlag: true,
+                showFlag: false,
+                tip: "",
                 immediateExtractionArr: [
                     {
                         type: "租 房",
@@ -203,10 +218,12 @@
         methods: {
             show_first(){
                 this.show_item = "index_first";
+                this.showItemFlag = true;
                 this.showSelect();
             },
             show_second(){
                 this.show_item = "index_second";
+                this.showItemFlag = false;
                 this.showSelect();
             },
             showSelect(){
@@ -232,7 +249,11 @@
                 }
             },
             operate(str){
-                alert(str)
+                this.tip = "你是否确认" + str.operate;
+                this.showFlag = true;
+            },
+            extractSuccess(){
+                this.$router.push('/pages/extract/ExtractSuccess');
             }
         }
     }
@@ -512,4 +533,64 @@
         margin-right: 0.1rem;
     }
 
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 200;
+    }
+
+    .confirm {
+        position: fixed;
+        top: 45%;
+        left: 50%;
+        width: 7.12rem;
+        height: 3.56rem;
+        visibility: visible;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        z-index: 201;
+        border-radius: 0.1rem;
+        background: white;
+        box-shadow: 0.03rem 0.03rem 0.03rem white;
+    }
+
+    .confirm .title {
+        height: 0.6rem;
+        background: url(../../assets/pop_bg.jpg) repeat-x;
+        border-radius: 0.1rem;
+    }
+
+    .confirm .cont {
+        height: 2.96rem;
+    }
+
+    .confirm .cont .tip {
+        height: 2rem;
+        font-size: 0.34rem;
+        line-height: 2rem;
+    }
+
+    .confirm .cont input {
+        width: 1.4rem;
+        height: 0.6rem;
+        background: #00afec;
+        border-radius: 0.22rem;
+        color: #fff;
+        font-size: 0.32rem;
+    }
+
+    .confirm .cont .sure {
+        margin-left: 1.8rem;
+    }
+
+    .confirm .cont .cancel {
+        margin-right: 1.8rem;
+        background: #DFDFDF;
+        color: black;
+    }
 </style>
