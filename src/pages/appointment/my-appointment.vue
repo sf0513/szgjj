@@ -53,7 +53,9 @@
 			<div class="btn-area">
 				<input type="button" name="" value="取 消">
 			</div>
-			<div class="map"></div>
+			<div class="map-wrapper">
+		    	<el-amap :vid="'amap-vue'" :scrollWheel="true"></el-amap>
+		    </div>
 		</div>
 	</div>
 </template>
@@ -101,5 +103,5 @@ export default{
 .btn-area{height: 1.56rem;}
 .btn-area input{width: 2.8rem; height: 0.7rem; margin-top: 0.3rem; background: #00afec; border-radius: 0.4rem; font-size: 0.36rem; color:#fff;}
 
-.map{height: 3.5rem; background: pink;}
+.map-wrapper{height: 3.5rem; width: 7.5rem;}
 </style>

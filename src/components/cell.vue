@@ -1,6 +1,9 @@
-
+/*
+ *信息展示单元格组件（两列或3列）
+ *
+ */
 <template>
-	<div class="cell" >
+	<div class="cell-input" >
 		<div class="cell-content" :class="{ line: isLine }">
 			<div class="cell-left">
 				<span v-if="isShowLeft">{{leftString}}</span>
@@ -43,68 +46,35 @@
         },
 		
 		methods: {
-			back(){
-                if(typeof this.leftFunc === 'function'){
-                    this.leftFunc();
-                }else{
-                    this.$router.back();
-
-                    //返回时删除缓存
-                    if(this.isKeepAlive){
-                        this.$store.dispatch('popKeepAlive');
-                    }
-                    //设置返回标志，在动画里面处理
-                    this.$store.dispatch('setPageAnimationBack', true);
-                    console.log("back");
-                }
-            },
-            right(){
-                if(typeof this.rightFunc === 'function'){
-                    this.rightFunc();
-                }
-                // else{
-                //     console.log("home");
-                //     this.$store.dispatch('popRootKeepAlive');
-                //     this.$router.replace('/home');
-                // }
-            }
+			
 		}
 	}
 </script>
-<style type="text/css">
-.cell{
+<style lang="less" >
+.cell-input{
 	background-color:#fff;
 	font-size:16px;
     height: 50px;
     vertical-align: middle;
     line-height: 50px;
     color:#333;
-
-    
-}
-.cell-content{
-    height: 49px;
-	display:flex;
-
-	margin: 0 15px;
-}
-.line{
-	border-bottom: 1px solid #ccc;
-	
-}
-.cell-left{
-	flex: 2;
-	color:#686767;
-	
-}
-.cell-center{
-	flex: 2;
-	
-	
-}
-.cell-right{
-	flex: 1;
-	
-	
+    .cell-content{
+	    height: 49px;
+		display:flex;
+		margin: 0 15px;
+	}
+	.line{
+		border-bottom: 1px solid #ccc;
+	}
+	.cell-left{
+		flex: 2;
+		color:#686767;
+	}
+	.cell-center{
+		flex: 2;
+	}
+	.cell-right{
+		flex: 1;
+	}
 }
 </style>

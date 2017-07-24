@@ -1,7 +1,7 @@
 <template>
     <div class="content-background">
         <top-bar></top-bar>
-        <nav-header title="对冲还贷" :showImg="false"></nav-header>
+        <nav-header title="对冲还贷" :showImg="false" :isshowcolor="true"></nav-header>
 
         <div class="span-div">
             <span id="icon-span">
