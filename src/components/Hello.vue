@@ -8,11 +8,11 @@
         <button @click="goToMyAccount">Go to MyAccount</button>
         <br/>
         <button @click="goToLogin">Go to Login</button>
-        <br/>
+        <br/> <br/>
         <button @click="goToForgetPsw">忘记密码</button>
         <button @click="goToMyNotes">留言板</button>
         <button @click="goToChangeRepaymentDate">还款日变更</button>
-        <br/>
+        <br/> <br/>
         <button @click="goToMyLoan">Go to MyLoan</button>
         <br/>
         <button @click="goToIWantToExtract">Go to IWantToExtract</button>
