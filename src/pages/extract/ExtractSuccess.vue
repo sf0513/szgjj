@@ -17,7 +17,6 @@
         data () {
             return {
                 src: require('../../assets/appoint_success.png'),
-
             }
         },
         components: {

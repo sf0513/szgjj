@@ -6,14 +6,25 @@
                 <option v-for="item in items" :value="item.value">{{item.text}}</option>
             </select>
         </div>
-        <EditText :showLabel="false"  :holderStr="title_label" class="margin_top_style"></EditText>
-
+        <EditText :showLabel="false"  @son_to_father="save_title" :holderStr="title_label" class="margin_top_style"></EditText>
         <div class="margin_top_style">
             <textarea v-model="content" class="textarea_style" :placeholder="content_holder"></textarea>
         </div>
-        <EditText :showLabel="false"  :holderStr="phone_label" class="margin_top_style"></EditText>
+        <EditText @son_to_father="save_phone" :showLabel="false"  :holderStr="phone_label" class="margin_top_style"></EditText>
 
-        <SubmitBtn :btn_name="btnName" :afun="submitInfo" class="submit_btn_style"></SubmitBtn>
+        <SubmitBtn :btn_name="btnName" :afun="popDialog" class="submit_btn_style"></SubmitBtn>
+
+        <div :class="{pop_background_style:showFlag}">
+            <div v-show='showFlag' class="pop_dialog_style">
+                <p class="top_line_style"></p>
+                <div>
+                    <div class="tip_style">{{tip}}</div>
+                    <input type="button" value="确 定" class="confirm_style" @click='submitInfo' v-if="err_flag===false">
+                    <input type="button" value="取 消" class="confirm_style" @click='showFlag=false' v-if="err_flag===false">
+                    <input type="button" value="确 认" class="confirm_style" @click='errConfirm' v-else="err_flag===true">
+                </div>
+            </div>
+        </div>
 	</div>
 </template>
 
@@ -30,11 +41,50 @@ export default{
             phone_label:'联系电话',
             btnName:'提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交',
             content_holder:'请输入内容',
+            title:'',
+            content:'',
+            phone:'',
+            msg:'您已留言成功',
+            showFlag:false,
+            tip:'',
+            tip_confirm:'请确认是否提交',
+            tip_error:'内容不合法或者手机格式有误，请检查！',
+            err_flag:false
 		}
 	},
 	methods: {
+        save_title(msg){
+            this.title=msg;
+        },
+        save_phone(msg){
+            this.phone=msg;
+        },
 	    submitInfo(){
-	        alert('提交成功！')
+	        if(this.title.length>0&&this.content.length>0&&this.checkPhone(this.phone)){
+                this.$router.push({
+                    path:'./SubmitSuccess',
+                    query:{msg:this.msg,show_nav:false,show_img:false,title:''}
+                });
+            } else{
+	            this.tip=this.tip_error;
+	            this.err_flag=true;
+                this.showFlag=true;
+            }
+        },
+        checkPhone(phone){
+            const reg = /^1\d{10}$/;
+            if (reg.test(parseInt(phone))===false){
+                return  false;
+            }
+            return true;
+        },
+        popDialog(){
+            this.tip=this.tip_confirm;
+            this.showFlag=true;
+        },
+        errConfirm(){
+            this.showFlag=false;
+            this.err_flag=false;
         }
     },
     components:{
@@ -79,5 +129,43 @@ export default{
         margin-right: 0.25rem;
         text-indent: 1em;
         padding-top: 10px;
+    }
+    .pop_dialog_style{
+        position: fixed;
+        top: 45%;
+        left: 50%;
+        width: 7.12rem;
+        height: 3.98rem;
+        visibility: visible;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        z-index: 201;
+        border-radius: 0.1rem;
+        background: white;
+        /*box-shadow: 0 0 7rem rgba(0,0,0,0.4);*/
+    }
+    .tip_style{
+        height: 2rem;
+        font-size: 0.34rem;
+        line-height: 2rem;
+    }
+    .confirm_style{
+        height: 38px;
+        font-size: 0.34rem;
+        padding: 5px;
+    }
+    .top_line_style{
+        height: 0.6rem;
+        width: 100%;
+        background-color: #00afec;
+    }
+    .pop_background_style{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.4);
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 </style>
