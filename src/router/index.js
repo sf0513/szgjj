@@ -27,6 +27,7 @@ import ExpandIDCard from '../pages/account/ExpandIDCard'
 import ExpandSuccess from '../pages/account/ExpandSuccess'
 import PhoneBind from '../pages/bind/PhoneBind'
 import EmailBind from '../pages/bind/EmailBind'
+import DepositRecord from '../pages/record/DepositRecord'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 import SubmitSuccess from '@/pages/notes/SubmitSuccess'
@@ -184,6 +185,12 @@ const router = new Router({
             path: '/pages/bind/EmailBind',
             name: 'EmailBind',
             component: EmailBind
+        },
+        // 缴存记录
+        {
+            path: '/DepositRecord',
+            name: 'DepositRecord',
+            component: DepositRecord
         },
         {
             path: '/appointment/myAppointment',
