@@ -3,27 +3,30 @@
         <ul>
             <li v-for="(title, index) in menuTitls" @click="menuClick(title, index)" :class="{active: isActive === index}">{{ title }}</li>
         </ul>
+
+        <record-list></record-list>
+
     </div>
 </template>
 
 
 <script type="application/javascript">
+    import RecordList from '../../pages/record/RecordList.vue'
+
     export default {
         name: 'deposit-record',
         data() {
             return {
-                isActive: {
-                    type: Boolean,
-                    default: true
-                },
-                clickIndex: Number,
+                isActive: 0,
                 menuTitls: ['缴存','提取','全部'],
             }
+        },
+        components: {
+            RecordList
         },
         methods: {
             menuClick: function (title, index) {
                 this.isActive = index;
-                this.clickIndex = index;
                 console.log('title:' + title + 'index:' + index + '//////' + this.isActive)
             }
         }

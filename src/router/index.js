@@ -185,7 +185,7 @@ const router = new Router({
         },
         // 缴存记录
         {
-            path: '/pages/record/DepositRecord',
+            path: '/DepositRecord',
             name: 'DepositRecord',
             component: DepositRecord
         },
