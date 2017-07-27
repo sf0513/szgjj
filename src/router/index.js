@@ -323,7 +323,7 @@ const router = new Router({
             path: '/ChangeRepaymentDate',
             name: 'ChangeRepaymentDate',
             component: ChangeRepaymentDate
-        }
+        },
 
     ]
 });
