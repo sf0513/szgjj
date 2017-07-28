@@ -301,6 +301,13 @@ const router = new Router({
                 require(['../pages/extract/ExtractSuccess'], resolve)
             }
 
+        },{
+            path: '/pages/extract/ExtractDetails',
+            name: 'ExtractSuccess',
+            component: (resolve) => {
+                require(['../pages/extract/ExtractDetails'], resolve)
+            }
+
         }
     ]
 });
