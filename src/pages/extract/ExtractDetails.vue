@@ -1,20 +1,59 @@
 <template>
     <div class="extract_details">
-        <div class="title">
-            <img class="btn_return" src="../../assets/btn_return@2x.png">
-            <span class="title_content">{{title}}</span>
+        <NavHeader :title="title" :showImg="false" :isshowcolor="true"></NavHeader>
+
+        <div class="content">
+            <div class="content_item" v-show="is_show_content_one">
+                <div class="step">
+                    <div class="step_one item selected">
+                        <div class="selected circle">
+                            <span>1</span>
+                        </div>
+                        <span>提取金额</span>
+                    </div>
+                    <div class="step_two item unchecked">
+                        <span>信息确认</span>
+                    </div>
+                    <div class="step_three item unchecked">
+                        <span>提取结果</span>
+                    </div>
+
+                </div>
+                <div class="amount_money">
+                    <span>￥</span>
+                    <input value="20,000.00">
+                    <img class="delete" src="../../assets/card_delete_1@2x.png">
+                </div>
+            </div>
+            <div class="content_item" v-show="is_show_content_two">
+                <div class="step">
+                    <div class="step_one">
+
+                    </div>
+                    <div class="step_two"></div>
+                    <div class="step_three"></div>
+                </div>
+            </div>
+            <div class="content_item" v-show="is_show_content_three"></div>
         </div>
-        <span>提取详情</span>
     </div>
 </template>
 
 <script>
+    import NavHeader from '@/components/nav-header'
     export default {
         name: "ExtractDetails",
         data () {
             return {
-                title: '租房提取'
+                title: '租房提取',
+                is_show_content_one: true,
+                is_show_content_two: false,
+                is_show_content_three: false
             }
+        },
+        components: {
+            NavHeader,
+
         }
     }
 </script>
@@ -27,23 +66,54 @@
         background-color: #EFEFEF;
         font-size: 0.38rem;
     }
-
-    .title {
-        font-size: 0.38rem;
-        height: 1rem;
+    .content_item{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
+    }
+    .step {
+        display: flex;
+        height: 3rem;
+        width: 100%;
+    }
+
+    .item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
-    .title .btn_return {
-        width: 0.35rem;
-        height: 0.35rem;
-        align-self: flex-end;
+
+    .selected.circle {
+        width: 1.2rem;
+        height: 1.2rem;
+        background-image: url(../../assets/card_steps_s@2x.png);
+        background-repeat: no-repeat;
+
     }
 
-    .title .title_content:nth-child(1) {
-        align-self: flex-start;
+    .selected {
+        font-size: 0.35rem;
+        color: blue;
+    }
+
+    .unchecked {
+        font-size: 0.3rem;
+    }
+
+    .amount_money {
+        background-color: white;
+        width: 5rem;
+    }
+
+    .amount_money input {
+        width: 3rem;
+        font-size: 0.5rem;
+    }
+
+    .delete {
+        width: 0.4rem;
     }
 </style>
