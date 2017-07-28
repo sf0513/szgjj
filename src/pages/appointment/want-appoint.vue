@@ -24,18 +24,27 @@ export default{
 	name:'appointment',
 	data(){
 		return{
-			serviceTypeArr:[
-				{name:'自助协议' , image:require("../../assets/appoint/card_business_1@2x.png")},
-				{name:'按月还贷' , image:require("../../assets/appoint/card_business_2@2x.png")},
-				{name:'非按月还贷' , image:require("../../assets/appoint/card_business_3@2x.png")},
-				{name:'本市购房提取' , image:require("../../assets/appoint/card_business_4@2x.png")},
-				{name:'异地购房提取' , image:require("../../assets/appoint/card_business_5@2x.png")},
-				{name:'缴存证明' , image:require("../../assets/appoint/card_business_6@2x.png")},
-				{name:'异地转入' , image:require("../../assets/appoint/card_business_7@2x.png")},
-				{name:'异地转出' , image:require("../../assets/appoint/card_business_7@2x.png")},
-				{name:'更多' , image:require("../../assets/appoint/card_business_8@2x.png")},
-			]
+			// serviceTypeArr:[
+			// 	{name:'自助协议' , image:require("../../assets/appoint/card_business_1@2x.png")},
+			// 	{name:'按月还贷' , image:require("../../assets/appoint/card_business_2@2x.png")},
+			// 	{name:'非按月还贷' , image:require("../../assets/appoint/card_business_3@2x.png")},
+			// 	{name:'本市购房提取' , image:require("../../assets/appoint/card_business_4@2x.png")},
+			// 	{name:'异地购房提取' , image:require("../../assets/appoint/card_business_5@2x.png")},
+			// 	{name:'缴存证明' , image:require("../../assets/appoint/card_business_6@2x.png")},
+			// 	{name:'异地转入' , image:require("../../assets/appoint/card_business_7@2x.png")},
+			// 	{name:'异地转出' , image:require("../../assets/appoint/card_business_7@2x.png")},
+			// 	{name:'更多' , image:require("../../assets/appoint/card_business_8@2x.png")},
+			// ]
+			serviceTypeArr:[],
 		}
+	},
+	created: function() {
+      	this.$http.get('../../data/appoint/want-appoint.json').then((response) => {
+        	this.json = response.body.result.serviceTypeArr;
+        	this.serviceTypeArr=eval("(" + json +")");
+      	}).catch(function(response) {
+        	console.log(response)
+      	});
 	},
 	components:{
 		navHeader,
