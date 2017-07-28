@@ -117,6 +117,7 @@
                         title: "家庭成员在深圳无房产",
                         which_num: "1",
                         operate: "申请",
+                        status: 1,
                         num: "50%x 可提取月份",
                         able: "1"
                     },
@@ -125,7 +126,8 @@
                         img: require("../../assets/card_other@2x.png"),
                         title: "物业，装修等住房消费",
                         which_num: "1",
-                        operate: "撤销",
+                        operate: "申请",
+                        status: 1,
                         num: "30%x 可提取月份",
                         able: "1"
                     },
@@ -134,7 +136,8 @@
                         img: require("../../assets/card_Pin_households@2x.png"),
                         title: "非深圳户籍人员离开深圳",
                         which_num: "2",
-                        operate: "申请",
+                        operate: "撤销",
+                        status: 1,
                         num: "全额提取",
                         able: "1"
                     },
@@ -143,9 +146,10 @@
                         img: require("../../assets/card_retired@2x.png"),
                         title: "男满60周岁，女满55周岁或有退休证",
                         which_num: "2",
-                        operate: "撤销",
+                        operate: "申请",
+                        status: 1,
                         num: "全额提取",
-                        able: "2"
+                        able: "1"
                     }
 
                 ],
@@ -154,27 +158,31 @@
                         img: require("../../assets/card_house_purchase@2x.png"),
                         title: "购房",
                         operate: "申请",
+                        status: 2,
                         exit: false,
                         able: "1"
                     },
                     {
                         img: require("../../assets/card_repay@2x.png"),
                         title: "还贷",
-                        operate: "撤销",
+                        operate: "申请",
+                        status: 2,
                         exit: false,
-                        able: "2"
+                        able: "1"
                     },
                     {
                         img: require("../../assets/card_social_security@2x.png"),
                         title: "社保存量",
                         operate: "申请",
+                        status: 2,
                         exit: false,
                         able: "1"
                     },
                     {
                         img: require("../../assets/card_overhaul@2x.png"),
                         title: "大修，翻建房屋",
-                        operate: "撤销",
+                        operate: "申请",
+                        status: 2,
                         exit: false,
                         able: "1"
                     },
@@ -182,20 +190,23 @@
                         img: require("../../assets/card_low@2x.png"),
                         title: "低保",
                         operate: "申请",
+                        status: 2,
                         exit: false,
                         able: "1"
                     },
                     {
                         img: require("../../assets/card_foreign@2x.png"),
                         title: "定居国外或港澳台",
-                        operate: "撤销",
+                        operate: "申请",
+                        status: 2,
                         exit: false,
-                        able: "2"
+                        able: "1"
                     },
                     {
                         img: require("../../assets/card_unemployment@2x.png"),
                         title: "失业",
                         operate: "申请",
+                        status: 2,
                         exit: true,
                         able: "1"
                     },
@@ -203,8 +214,9 @@
                         img: require("../../assets/card_move_census_register@2x.png"),
                         title: "户籍迁出本市",
                         operate: "申请",
+                        status: 2,
                         exit: false,
-                        able: "2"
+                        able: "1"
 
                     }
 
@@ -249,10 +261,19 @@
                 }
             },
             operate(str){
-                this.tip = "你是否确认" + str.operate;
-                this.showFlag = true;
+                if (str.status === 1) {//立即提取
+                    if (str.operate === "撤销") {//撤销
+                        this.tip = "你是否确认撤销非深户销户提取";
+                        this.showFlag = true;
+                    } else {//申请
+                        this.$router.push('/pages/extract/ExtractDetails');
+                    }
+                } else {//更多提取
+                    alert("功能正在开发...,请稍后！");
+                }
             },
-            extractSuccess(){
+            extractSuccess()
+            {
                 this.$router.push('/pages/extract/ExtractSuccess');
             }
         }

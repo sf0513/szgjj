@@ -30,6 +30,9 @@ import EmailBind from '../pages/bind/EmailBind'
 import DepositRecord from '../pages/record/DepositRecord'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
+import SubmitSuccess from '@/pages/notes/SubmitSuccess'
+import ChangeRepaymentDate from '@/pages/repayment/ChangeRepaymentDate'
+
 Vue.use(Router)
 
 //export default new Router({
@@ -185,7 +188,7 @@ const router = new Router({
         },
         // 缴存记录
         {
-            path: '/pages/record/DepositRecord',
+            path: '/DepositRecord',
             name: 'DepositRecord',
             component: DepositRecord
         },
@@ -252,7 +255,7 @@ const router = new Router({
             component: ReimbursementDetail
         },
         {
-            path: '/notes',
+            path: '/notes',//我要留言页面
             name: 'MyNotes',
             component: MyNotes
         },
@@ -301,11 +304,30 @@ const router = new Router({
                 require(['../pages/extract/IWantToExtract'], resolve)
             }
 
-        },{
+        },
+        {
             path: '/pages/extract/ExtractSuccess',
             name: 'ExtractSuccess',
             component: (resolve) => {
                 require(['../pages/extract/ExtractSuccess'], resolve)
+            }
+
+        },
+        // 提交成功 公共页面
+        {
+            path: '/SubmitSuccess',
+            name: 'SubmitSuccess',
+            component: SubmitSuccess
+        },
+        {//更改还款日期
+            path: '/ChangeRepaymentDate',
+            name: 'ChangeRepaymentDate',
+            component: ChangeRepaymentDate
+        }, {
+            path: '/pages/extract/ExtractDetails',
+            name: 'ExtractSuccess',
+            component: (resolve) => {
+                require(['../pages/extract/ExtractDetails'], resolve)
             }
 
         }
