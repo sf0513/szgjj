@@ -4,20 +4,40 @@
 
         <div class="content">
             <div class="content_item" v-show="is_show_content_one">
-                <div class="step">
-                    <div class="step_one item selected">
-                        <div class="selected circle">
-                            <span>1</span>
+                <div class="top">
+                    <div class="step">
+                        <div class="step_one item selected">
+                            <div class="selected circle">
+                                <img src="../../assets/card_steps_s@2x.png">
+                                <span>1</span>
+                            </div>
                         </div>
-                        <span>提取金额</span>
-                    </div>
-                    <div class="step_two item unchecked">
-                        <span>信息确认</span>
-                    </div>
-                    <div class="step_three item unchecked">
-                        <span>提取结果</span>
-                    </div>
+                        <div class="step_two item unchecked">
+                            <div class="unchecked circle">
+                                <img src="../../assets/card_steps_n@2x.png">
+                                <span>2</span>
+                            </div>
+                        </div>
+                        <div class="step_three item unchecked">
+                            <div class="unchecked circle">
+                                <img src="../../assets/card_steps_n@2x.png">
+                                <span>3</span>
+                            </div>
+                        </div>
 
+                    </div>
+                    <div class="step">
+                        <div class="step_one item selected">
+                            <span>提取金额</span>
+                        </div>
+                        <div class="step_two item unchecked">
+                            <span>信息确认</span>
+                        </div>
+                        <div class="step_three item unchecked">
+                            <span>提取结果</span>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="amount_money">
                     <span>￥</span>
@@ -66,15 +86,26 @@
         background-color: #EFEFEF;
         font-size: 0.38rem;
     }
-    .content_item{
+
+    .content_item {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
+    .top {
+        height: 3rem;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
     .step {
         display: flex;
-        height: 3rem;
         width: 100%;
+        margin-bottom: 0.2rem;
     }
 
     .item {
@@ -85,18 +116,37 @@
         justify-content: center;
     }
 
+    .circle {
+        position: relative;
+        width: 100%;
+    }
 
-    .selected.circle {
-        width: 1.2rem;
-        height: 1.2rem;
-        background-image: url(../../assets/card_steps_s@2x.png);
-        background-repeat: no-repeat;
+    .selected.circle img {
+        width: 0.6rem;
+
+    }
+
+     .circle span {
+        width: 50%;
+        height: 50%;
+        /*overflow: auto;*/
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
 
     }
 
     .selected {
         font-size: 0.35rem;
         color: blue;
+    }
+
+    .unchecked.circle img {
+        width: 0.55rem;
+
     }
 
     .unchecked {
