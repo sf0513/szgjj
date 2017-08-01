@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="extract_details">
         <NavHeader :title="title" :showImg="false" :isshowcolor="true"></NavHeader>
 
@@ -41,7 +41,7 @@
                 </div>
                 <div class="amount_money">
                     <span class="money_num">￥</span>
-                    <input class="money_num"   v-model="money">
+                    <input class="money_num" v-model="money">
                     <img class="delete" src="../../assets/card_delete_1@2x.png">
                 </div>
                 <div class="phone bg_item">
@@ -63,7 +63,9 @@
                         <span>最大提取月份：</span><span class="time">12</span><span>个月</span>
                     </div>
                 </div>
-                <button class="my_button one" @click="extract">提取</button>
+                <div v-bind:class="[is_show_rule ? 'operate_two': 'operate']">
+                    <button class="my_button one" @click="extract">提&nbsp;&nbsp;&nbsp;&nbsp;取</button>
+                </div>
             </div>
             <div class="content_item" v-show="is_show_content_two">
                 <div class="top">
@@ -108,13 +110,13 @@
                     <span>{{phone}}</span>
                 </div>
                 <div class="bg_item bg_item_font">
-                    <span>卡   号：</span>
+                    <span>卡&nbsp;&nbsp;&nbsp;号：</span>
                     <span>6225****1111</span>
                     <span class="bank">(中国建设银行)</span>
                 </div>
-                <div>
+                <div class="operate">
                     <button class="my_button two" @click="previousStep">上一步</button>
-                    <button class="my_button one" @click="sure">确 认</button>
+                    <button class="my_button one" @click="sure">确&nbsp;&nbsp;&nbsp;&nbsp;认</button>
                 </div>
             </div>
             <div class="content_item" v-show="is_show_content_three">
@@ -137,8 +139,8 @@
                 is_show_content_three: false,
                 is_show_rule: false,
                 src: require('../../assets/appoint_success.png'),
-                money:20000,
-                phone:13800000000,
+                money: 20000,
+                phone: 13800000000,
 
             }
         },
@@ -170,7 +172,8 @@
     .extract_details {
         width: 100%;
         height: 100%;
-        position: absolute;
+        /*position: relative;*/
+        background-repeat: repeat-x;
         background-color: #EFEFEF;
         font-size: 0.38rem;
     }
@@ -330,12 +333,18 @@
         border: none;
     }
 
+    .operate {
+        margin-top: 1rem;
+    }
+
+    .operate_two {
+        margin-top: 0.5rem;
+    }
+
     .my_button {
-        position: relative;
-        width: 2.6rem;
-        height: 35px;
+        width: 3rem;
+        height: 0.8rem;
         font-size: 16px;
-        margin: 48px 20px 10px;
         -webkit-transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
         transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
         border-radius: 3rem;
@@ -348,11 +357,12 @@
     }
 
     .one {
-        background-image: url(../../assets/btn.png);
+        background-image: url(../../assets/bg_extract_details_one.png);
+        margin-left: 0.5rem;
     }
 
     .two {
-        background-image: url(../../assets/btn_apply_d@2x.png);
+        background-image: url(../../assets/bg_extract_details_two.png);
         color: black;
     }
 </style>
