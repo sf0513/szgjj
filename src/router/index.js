@@ -29,6 +29,7 @@ import PhoneBind from '../pages/bind/PhoneBind'
 import EmailBind from '../pages/bind/EmailBind'
 import DepositRecord from '../pages/record/DepositRecord'
 import ReduceDate from '../pages/reduce/ReduceDate'
+import ReduceSuccess from '../pages/reduce/ReduceSuccess'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 import SubmitSuccess from '@/pages/notes/SubmitSuccess'
@@ -198,6 +199,12 @@ const router = new Router({
             path: '/ReduceDate',
             name: 'ReduceDate',
             component: ReduceDate
+        },
+        // 缩期 成功
+        {
+            path: '/pages/reduce/ReduceSuccess',
+            name: 'ReduceSuccess',
+            component: ReduceSuccess
         },
         {
             path: '/appointment/myAppointment',
