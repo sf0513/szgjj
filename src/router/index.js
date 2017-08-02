@@ -4,8 +4,11 @@ import Hello from '@/components/Hello'
 import myAccount from '@/pages/account/myAccount.vue'
 import MyInformation from '../pages/account/MyInformation'
 import myAppointment from '../pages/appointment/my-appointment'
+//axios
+import Axios1 from '../components/axiosDemo.vue'
 import completeAppoint from '../pages/appointment/complete-appoint'
 import wantAppoint from '../pages/appointment/want-appoint.vue'
+import moreService from '../pages/appointment/moreService.vue'
 import appointBank from '../pages/appointment/appoint-bank'
 import appointArea from '../pages/appointment/appoint-area'
 import appointDot from '../pages/appointment/appoint-dot'
@@ -210,11 +213,21 @@ const router = new Router({
             name: 'completeAppoint',
             component: completeAppoint
         },
+        {
+            path: '/appointment',
+            name: 'Axios1',
+            component: Axios1
+        },
         //我要预约
         {
             path: '/appointment/wantAppoint',
             name: 'wantAppoint',
             component: wantAppoint
+        },
+        {
+            path: '/appointment/moreService',
+            name: 'moreService',
+            component: moreService
         },
         {
             path: '/appointment/changeAppoint',

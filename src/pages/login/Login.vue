@@ -17,7 +17,7 @@
             </div>
             <img class="image_code" src="../../assets/card_email_registered_validation.png">
         </div>
-        <button class="login_submit">登录</button>
+        <button class="login_submit" @click='Login()'>登录</button>
         <div class="forget">
             <router-link to="/forgetpsw"><p>忘记密码</p></router-link>
         </div>
@@ -28,7 +28,9 @@
     {
         name: 'login',
         data(){
-            return {}
+            return {
+                
+            }
         }
     }
 </script>
