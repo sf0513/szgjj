@@ -343,14 +343,23 @@ const router = new Router({
             path: '/ChangeRepaymentDate',
             name: 'ChangeRepaymentDate',
             component: ChangeRepaymentDate
-        }, {
+        },
+        {
             path: '/pages/extract/ExtractDetails',
-            name: 'ExtractSuccess',
+            name: 'ExtractDetails',
             component: (resolve) => {
                 require(['../pages/extract/ExtractDetails'], resolve)
             }
 
-        }
+        },
+        {
+            path: '/pages/loan/loan-plan',
+            name: 'loan-plan',
+            component: (resolve) => {
+                require(['../pages/loan/loan-plan'], resolve)
+            }
+
+        },
     ]
 });
 
