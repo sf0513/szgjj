@@ -28,6 +28,7 @@ import ExpandSuccess from '../pages/account/ExpandSuccess'
 import PhoneBind from '../pages/bind/PhoneBind'
 import EmailBind from '../pages/bind/EmailBind'
 import DepositRecord from '../pages/record/DepositRecord'
+import ReduceDate from '../pages/reduce/ReduceDate'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 import SubmitSuccess from '@/pages/notes/SubmitSuccess'
@@ -192,6 +193,12 @@ const router = new Router({
             name: 'DepositRecord',
             component: DepositRecord
         },
+        // 缩期
+        {
+            path: '/ReduceDate',
+            name: 'ReduceDate',
+            component: ReduceDate
+        },
         {
             path: '/appointment/myAppointment',
             name: 'myAppointment',
@@ -326,7 +333,7 @@ const router = new Router({
         },
         {
             path: '/pages/extract/ExtractDetails',
-            name: 'ExtractSuccess',
+            name: 'ExtractDetails',
             component: (resolve) => {
                 require(['../pages/extract/ExtractDetails'], resolve)
             }
