@@ -118,6 +118,7 @@
                         which_num: "1",
                         operate: "申请",
                         status: 1,
+                        type_sign: 1,
                         num: "50%x 可提取月份",
                         able: "1"
                     },
@@ -128,6 +129,7 @@
                         which_num: "1",
                         operate: "申请",
                         status: 1,
+                        type_sign: 2,
                         num: "30%x 可提取月份",
                         able: "1"
                     },
@@ -138,6 +140,7 @@
                         which_num: "2",
                         operate: "撤销",
                         status: 1,
+                        type_sign: 3,
                         num: "全额提取",
                         able: "1"
                     },
@@ -148,6 +151,7 @@
                         which_num: "2",
                         operate: "申请",
                         status: 1,
+                        type_sign: 4,
                         num: "全额提取",
                         able: "1"
                     }
@@ -266,7 +270,7 @@
                         this.tip = "你是否确认撤销非深户销户提取";
                         this.showFlag = true;
                     } else {//申请
-                        this.$router.push('/pages/extract/ExtractDetails');
+                        this.$router.push({path: '/pages/extract/ExtractDetails',query: {typeSign: str.type_sign}});
                     }
                 } else {//更多提取
                     alert("功能正在开发...,请稍后！");

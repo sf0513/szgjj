@@ -339,7 +339,7 @@ const router = new Router({
         },
         {
             path: '/pages/extract/ExtractDetails',
-            name: 'ExtractSuccess',
+            name: 'ExtractDetails',
             component: (resolve) => {
                 require(['../pages/extract/ExtractDetails'], resolve)
             }
