@@ -4,7 +4,7 @@
 
         <div class="gjj_acc_zone_style">
             <EditText :labelStr="gjj_acc_label" :holderStr="gjj_acc_holder"
-                      v-if="show_verification==false" @son_to_father="saveacc"></EditText>
+                      v-if="show_verification==false" @son_to_father="saveacc" :max_length="11"></EditText>
             <div v-else="show_verification==true" class="hint_info_style">
                 <p>
                     <span class="phone_info">已经发送验证码至138****5025手机</span>&nbsp;&nbsp;
@@ -15,7 +15,7 @@
 
         <div class="identity_no_zone_style">
             <EditText :labelStr="identity_no" :holderStr="identity_holder"
-                      v-if="show_verification==false" @son_to_father="saveid"></EditText>
+                      v-if="show_verification==false" @son_to_father="saveid" :max_length="18"></EditText>
             <CountZero :countDown="timer" :default_start="true" :labelStr="verification_code_label"
                        :holderStr="verification_holder" v-else="show_verification==true"></CountZero>
         </div>

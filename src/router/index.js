@@ -33,6 +33,7 @@ import HedgeResult from '../pages/hedge/HedgeResult'
 
 import SubmitSuccess from '@/pages/notes/SubmitSuccess'
 import ChangeRepaymentDate from '@/pages/repayment/ChangeRepaymentDate'
+import ChangeRepaymentAcc from '@/pages/repayment/ChangeRepaymentAcc'
 
 Vue.use(Router)
 
@@ -330,7 +331,13 @@ const router = new Router({
             path: '/ChangeRepaymentDate',
             name: 'ChangeRepaymentDate',
             component: ChangeRepaymentDate
-        }, {
+        },
+        {//还款账户信息变更
+            path: '/ChangeRepaymentAcc',
+            name: 'ChangeRepaymentAcc',
+            component: ChangeRepaymentAcc
+        },
+        {
             path: '/pages/extract/ExtractDetails',
             name: 'ExtractSuccess',
             component: (resolve) => {

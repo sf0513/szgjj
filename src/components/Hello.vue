@@ -12,7 +12,9 @@
         <button @click="goToForgetPsw">忘记密码</button>
         <button @click="goToMyNotes">留言板</button>
         <button @click="goToChangeRepaymentDate">还款日变更</button>
-        <br/> <br/>
+        <br/>
+        <button @click="goToChangeRepaymentAcc">还款账户信息变更</button>
+        <br/>
         <button @click="goToMyLoan">Go to MyLoan</button>
         <br/>
         <button @click="goToIWantToExtract">Go to IWantToExtract</button>
@@ -55,6 +57,9 @@
             },
             goToChangeRepaymentDate(){
                 this.$router.push('/ChangeRepaymentDate')
+            },
+            goToChangeRepaymentAcc(){
+                this.$router.push('/ChangeRepaymentAcc')
             },
         }
     }

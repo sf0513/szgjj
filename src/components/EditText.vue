@@ -3,13 +3,16 @@
 	<div class="edit_zone_style" >
 			<label class="label_style" v-show="showLabel">{{labelStr}}</label>
 			<input type="text" :placeholder="holderStr" class="holder_style" v-model="input_data"
-                v-if="showLabel===true"/>
+                   :maxlength="max_length"
+                   v-if="showLabel===true" />
             <input type="text" :placeholder="holderStr" class="whole_line_style" v-model="input_data"
-                v-if="showLabel===false"/>
+                   :maxlength="max_length"
+                   v-else="showLabel===false" />
 	</div>
 </template>
+
 <script type="text/javascript">
-	export default {
+    export default {
 	    data() {
             return{
                 input_data:''
@@ -21,7 +24,8 @@
             showLabel:{
                 type:Boolean,
                 default:true
-            }
+            },
+            max_length:Number,//可输入最大位数
     	},
         watch:{
             input_data:function (input_data) {
@@ -30,6 +34,7 @@
         }
 	}
 </script>
+
 <style type="text/css" scoped>
 	.edit_zone_style{
         background-color: white;

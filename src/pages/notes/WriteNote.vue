@@ -10,7 +10,8 @@
         <div class="margin_top_style">
             <textarea v-model="content" class="textarea_style" :placeholder="content_holder"></textarea>
         </div>
-        <EditText @son_to_father="save_phone" :showLabel="false"  :holderStr="phone_label" class="margin_top_style"></EditText>
+        <EditText @son_to_father="save_phone" :showLabel="false"  :holderStr="phone_label"
+                  :max_length="11" class="margin_top_style"></EditText>
 
         <SubmitBtn :btn_name="btnName" :afun="popDialog" class="submit_btn_style"></SubmitBtn>
 

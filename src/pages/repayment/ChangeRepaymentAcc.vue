@@ -5,24 +5,37 @@
 
         <div v-if="submit_success_flag===false">
             <div class="div_style">
+                <p class="raw_style bank_background_style">
+                    <span class="left_style">委托银行</span>
+                    <span class="right_style">中国银行</span>
+                </p>
+            </div>
+            <div class="div_style">
                 <p class="raw_style">
                     <span class="left_style">原还款人姓名</span>
-                    <span class="right_style">王小花</span>
+                    <span class="right_style black_font_style">王达</span>
                 </p>
                 <div class="line_zone_style">
                     <p class="line_style"></p>
                 </div>
                 <p class="raw_style">
-                    <span class="left_style">原还款日</span>
-                    <span class="right_style repay_font_style">24日</span>
+                    <span class="left_style red_color_style">新还款人姓名</span>
+                    <span class="right_style black_font_style">王小花</span>
                 </p>
-            </div>
-
-            <div class="div_style margin_top_style">
+                <div class="line_zone_style">
+                    <p class="line_style"></p>
+                </div>
                 <p class="raw_style">
-                    <span class="left_style red_color_style">新还款日</span>
-                    <input type="text" placeholder="请输入新的还款日" class="right_style new_repay_font_style" pattern="[0-9]"
-                           autofocus="autofocus" maxlength="2" onkeyup="this.value=this.value.replace(/[\D]/,'');"/>
+                    <span class="left_style">原还款账户</span>
+                    <span class="right_style black_font_style">622112 3478965673388</span>
+                </p>
+                <div class="line_zone_style">
+                    <p class="line_style"></p>
+                </div>
+                <p class="raw_style">
+                    <span class="left_style red_color_style">新还款账户</span>
+                    <input type="text" placeholder="请输入" class="right_style black_font_style" pattern="[0-9]"
+                           autofocus="autofocus" maxlength="20" onkeyup="this.value=this.value.replace(/[\D]/,'');"/>
                 </p>
             </div>
 
@@ -30,7 +43,7 @@
         </div>
 
         <div>
-            <ChangeRepaySubmitSuccess :msg="submit_success_msg" :info="submit_success_info"
+            <ChangeRepaySubmitSuccess :msg="submit_success_msg"
                                           v-if="submit_success_flag===true"></ChangeRepaySubmitSuccess>
         </div>
 	</div>
@@ -45,11 +58,10 @@
 export default{
 	data(){
 		return{
-			title:'还款日变更',
+			title:'还款账户信息变更',
             btnName:'提&nbsp;&nbsp;&nbsp;&nbsp;交',
             submit_success_flag:false,
-            submit_success_msg:'您已成功办理还款日变更!',
-            submit_success_info:'下一次还款日期为2017年7月27日',
+            submit_success_msg:'您已成功办理还款账户变更!',
 		}
 	},
 	methods:{
@@ -101,16 +113,14 @@ export default{
         width: 97%;
         background-color:#EFEFEF;
     }
-    .repay_font_style{
-        font-size: 21px;
-    }
-    .margin_top_style{
-        margin-top: 30px;
-    }
     .red_color_style{
         color: red;
     }
-    .new_repay_font_style{
-        font-size: 16px;
+    .bank_background_style{
+        background-color: #F7F8F8;
+        margin-bottom: 30px;
+    }
+    .black_font_style{
+        color: #000000;
     }
 </style>
