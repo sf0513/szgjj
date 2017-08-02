@@ -45,13 +45,13 @@
                 </div>
                 <div class="phone bg_item">
                     <span>请确认您正在使用的手机：</span>
-                    <input v-model="phone">
+                    <input v-model="phone" type="number">
                     <img class="delete" @click="clearPhoneNumber" src="../../assets/card_delete_1@2x.png">
                 </div>
                 <div class="rule" v-if="is_show_rule">
                     <div>
                         <span>本次最高可提取</span><span class="highest_money">{{totalMoney}}</span><span>元</span>
-                        <span class="calculation_rule">查看计算规则</span>
+                        <span class="calculation_rule" @click="showFlag=true">查看计算规则</span>
                     </div>
                     <div>
                         <span>提取起止时间：</span><span class="time">2015</span><span>年</span><span
@@ -139,14 +139,55 @@
                 </div>
             </div>
         </div>
+        <div class="pop" v-show='showFlag'>
+            <div class="confirm">
+                <div class="title">
+                    <span class="rule_title">{{title}}</span>
+                    <img src="../../assets/btn_shut_down@2x.png" @click="showFlag=false">
+                </div>
+                <div class="cont">
+                    <div class="extract_quota cont_item">
+                        <span>提取额度</span>
+                        <div>
+                            <div>
+                                <span>=当前月缴存额x</span><span class="number">50%</span><span>x可提取月份</span>
+                            </div>
+                            <div class="extract_quota_number">
+                                <span>=2000</span>
+                                <sapn>x</sapn>
+                                <span class="number">50%</span>
+                                <span>x</span><span class="number">20</span><span>=</span>
+                                <span class="number">20000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont_item month">
+                        <span class="month_title">可提取月:</span>
+                        <div>
+                            <div>
+                                <span>您的上一次提取月份为</span><span class="number extract_month">2014</span>
+                                <span>年</span><span class="number extract_month">4</span><span>月</span>
+                            </div>
+                            <div class="can_extract_month">
+                                <span>可提取月为</span><span class="number extract_month">20</span><span>个月</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="overlay"></div>
+        </div>
+
     </div>
 </template>
 
 <script>
     import NavHeader from '@/components/nav-header'
+
     export default {
         name: "ExtractDetails",
-        data () {
+        data() {
             return {
                 title: '',
                 is_show_content_one: true,
@@ -155,8 +196,10 @@
                 is_show_rule: false,
                 src: require('../../assets/appoint_success.png'),
                 totalMoney: 25000,
-                money: '',
+                money: 0,
                 phone: 13800000000,
+                showFlag: false,
+
 
             }
         },
@@ -193,6 +236,33 @@
         methods: {
             //提取
             extract: function () {
+                if (this.money === "") {
+                    alert('提取金额不能为空');
+                    return;
+                }
+                if (this.phone === "") {
+                    alert('正在使用的手机号码不能为空');
+                    return;
+                }
+                if (this.money > this.totalMoney) {
+                    alert('提取金额不能大于最高可以提前金额');
+                    return;
+                }
+                var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+                if (!reg.test(this.money)) {
+                    alert("提取金额格式错误！");
+                    return;
+                }
+                if (this.money === 0) {
+                    alert('提取金额不能等于0')
+                    return;
+                }
+//                以1开始后面加10位数字
+                var re = /^1[3|4|5|8][0-9]\d{4,8}$/;
+                if (!re.test(this.phone)) {
+                    alert("手机号格式错误！");
+                    return;
+                }
                 this.is_show_content_one = false;
                 this.is_show_content_two = true;
                 this.is_show_content_three = false;
@@ -214,12 +284,18 @@
                 history.back();
 
             },
+            //提取金额清空
             clearMoney: function () {
-                this.money='';
+                this.money = '';
             },
-            clearPhoneNumber:function () {
-                this.phone='';
+            //正在使用电话清空
+            clearPhoneNumber: function () {
+                this.phone = '';
+            },
+            showRule: function () {
+
             }
+
         },
         components: {
             NavHeader,
@@ -451,4 +527,93 @@
     .remind_two {
         margin-top: 0.1rem;
     }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 200;
+    }
+
+    .confirm {
+        position: fixed;
+        top: 45%;
+        left: 50%;
+        width: 7.12rem;
+        height: 3.56rem;
+        visibility: visible;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        z-index: 201;
+        border-radius: 0.1rem;
+        background: white;
+        box-shadow: 0.03rem 0.03rem 0.03rem white;
+    }
+
+    .confirm .title {
+        height: 0.6rem;
+        background: url(../../assets/pop_bg.jpg) repeat-x;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 0.1rem;
+    }
+
+    /*.rule_title:nth-child(1){*/
+    /*align-self: center;*/
+    /*}*/
+    .confirm .cont {
+        height: 2.96rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cont_item {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .extract_quota {
+        font-size: 0.28rem;
+    }
+
+    /*计算规则对话框可提取月*/
+    .month {
+        font-size: 0.01rem;
+        margin-top: 0.5rem;
+    }
+
+    /*计算规则中可提取月 第一列*/
+    .month_title {
+        font-size: 0.2rem;
+    }
+
+    /*计算规则对话框中的蓝色字*/
+    .number {
+        color: blue;
+    }
+
+    /*计算规则对话框中可提取月份那一行*/
+    .can_extract_month {
+        margin-top: 0.2rem;
+    }
+
+    /*计算规则对话框中可提取月份中的数字*/
+    .extract_month {
+        font-size: 0.2rem;
+    }
+
+    /*计算规则对话框中提取额度第二行*/
+    .extract_quota_number {
+        margin-top: 0.2rem;
+    }
+
+
 </style>
