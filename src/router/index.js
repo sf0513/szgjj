@@ -34,6 +34,7 @@ import HedgeResult from '../pages/hedge/HedgeResult'
 import SubmitSuccess from '@/pages/notes/SubmitSuccess'
 import ChangeRepaymentDate from '@/pages/repayment/ChangeRepaymentDate'
 import ChangeRepaymentAcc from '@/pages/repayment/ChangeRepaymentAcc'
+import AdvanceRepayment from '@/pages/repayment/AdvanceRepayment'
 
 Vue.use(Router)
 
@@ -336,6 +337,11 @@ const router = new Router({
             path: '/ChangeRepaymentAcc',
             name: 'ChangeRepaymentAcc',
             component: ChangeRepaymentAcc
+        },
+        {//提前还款
+            path: '/AdvanceRepayment',
+            name: 'AdvanceRepayment',
+            component: AdvanceRepayment
         },
         {
             path: '/pages/extract/ExtractDetails',

@@ -14,6 +14,7 @@
         <button @click="goToChangeRepaymentDate">还款日变更</button>
         <br/>
         <button @click="goToChangeRepaymentAcc">还款账户信息变更</button>
+        <button @click="goToAdvanceRepayment">提前还款</button>
         <br/>
         <button @click="goToMyLoan">Go to MyLoan</button>
         <br/>
@@ -60,6 +61,9 @@
             },
             goToChangeRepaymentAcc(){
                 this.$router.push('/ChangeRepaymentAcc')
+            },
+            goToAdvanceRepayment(){
+                this.$router.push('/AdvanceRepayment')
             },
         }
     }
