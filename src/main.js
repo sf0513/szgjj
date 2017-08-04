@@ -5,7 +5,12 @@ import App from './App'
 import router from './router'
 import AMap from 'vue-amap'
 
-
+//导入服务接口
+  var ServerAPI = require('./api/server-api')
+  
+  var serverApi = new ServerAPI(app);
+  Vue.prototype.serverApi = serverApi;
+  
 Vue.config.productionTip = false
 
 Vue.use(AMap);
