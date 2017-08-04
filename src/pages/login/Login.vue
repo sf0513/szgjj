@@ -4,11 +4,11 @@
         <br/>
         <div class="login_row name">
             <label class="login_name" for="acount">账户：</label>
-            <input type="text" class="login_input" id="acount" placeholder="公积金账户/手机账户">
+            <input type="text" class="login_input" id="acount" v-model="username" placeholder="公积金账户/手机账户">
         </div>
         <div class="login_row">
             <label class="login_name" for="password">密码：</label>
-            <input type="password" class="login_input" id="password">
+            <input type="password" class="login_input" id="password" v-model="password">
         </div>
         <div class="login_row_code">
             <div class="login_code">
@@ -17,7 +17,7 @@
             </div>
             <img class="image_code" src="../../assets/card_email_registered_validation.png">
         </div>
-        <button class="login_submit" @click='Login()'>登录</button>
+        <button class="login_submit" @click="login">登录</button>
         <div class="forget">
             <router-link to="/forgetpsw"><p>忘记密码</p></router-link>
         </div>
@@ -29,8 +29,23 @@
         name: 'login',
         data(){
             return {
-                
+            	username:'',
+            	password:''
             }
+        },
+        methods:{
+        	login(){
+        		this.serverApi.login({
+        			username:this.username,
+        			password:this.password},(error, data) => {
+        				if (error) {
+		                    alert(error.message);
+		                    return;
+		                }
+        				alert(data.username);
+        			});
+        		
+        	}
         }
     }
 </script>

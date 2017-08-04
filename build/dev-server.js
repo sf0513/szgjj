@@ -12,6 +12,10 @@ var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')//使用代理的中间件
 var webpackConfig = require('./webpack.dev.conf')//webpack的配置
+//mock时用到
+var fs = require('fs')
+//mock解析body
+var bodyParser = require('body-parser');
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port//端口号
@@ -74,8 +78,38 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-//zyh add
-// app.use('/mock',express.static('./mock'))
+// 配置app使用bodyParser插件
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
+//mock
+var mockDir = path.resolve(__dirname, '../src/mock/');
+fs.readdirSync(mockDir).forEach(function (file) {
+    if (file.indexOf('.')!=0)
+    {
+      var fullPath = path.resolve(mockDir, file);
+      fs.stat(fullPath, function(err, stat){
+        if(stat.isDirectory()) { 
+            fs.readdirSync(fullPath).forEach(function (file) {
+                var subFullPath = path.resolve(fullPath, file);
+                // console.log(subFullPath);
+                if (file.indexOf('.')!=0) {
+                  var mock = require(subFullPath);
+                  app.use(mock.api, mock.response);
+                }
+            });
+        }
+        else {
+          // console.log(fullPath);
+          var mock = require(fullPath);
+          app.use(mock.api, mock.response);
+        }
+
+      });
+    }
+});
 
 var uri = 'http://localhost:' + port
 
