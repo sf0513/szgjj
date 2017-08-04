@@ -4,8 +4,11 @@ import Hello from '@/components/Hello'
 import myAccount from '@/pages/account/myAccount.vue'
 import MyInformation from '../pages/account/MyInformation'
 import myAppointment from '../pages/appointment/my-appointment'
+//axios
+import Axios1 from '../components/axiosDemo.vue'
 import completeAppoint from '../pages/appointment/complete-appoint'
 import wantAppoint from '../pages/appointment/want-appoint.vue'
+import moreService from '../pages/appointment/moreService.vue'
 import appointBank from '../pages/appointment/appoint-bank'
 import appointArea from '../pages/appointment/appoint-area'
 import appointDot from '../pages/appointment/appoint-dot'
@@ -23,12 +26,15 @@ import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 import IWantToExtract from '../pages/extract/IWantToExtract'
 import HedgeSign from '../pages/hedge/HedgeSign'
 
+import ModifyPsw from '../pages/psw/ModifyPsw'
 import ExpandIDCard from '../pages/account/ExpandIDCard'
 import ExpandSuccess from '../pages/account/ExpandSuccess'
 import PhoneBind from '../pages/bind/PhoneBind'
 import EmailBind from '../pages/bind/EmailBind'
 import DepositRecord from '../pages/record/DepositRecord'
 import ReduceDate from '../pages/reduce/ReduceDate'
+import ReduceSuccess from '../pages/reduce/ReduceSuccess'
+import Success from '../pages/psw/Success'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 import SubmitSuccess from '@/pages/notes/SubmitSuccess'
@@ -201,6 +207,24 @@ const router = new Router({
             name: 'ReduceDate',
             component: ReduceDate
         },
+        // 缩期 成功
+        {
+            path: '/pages/reduce/ReduceSuccess',
+            name: 'ReduceSuccess',
+            component: ReduceSuccess
+        },
+        // 修改 密码
+        {
+            path: '/pages/psw/ModifyPsw',
+            name: 'ModifyPsw',
+            component: ModifyPsw
+        },
+        // 成功 页面
+        {
+            path: '/pages/psw/Success',
+            name: 'Success',
+            component: Success
+        },
         {
             path: '/appointment/myAppointment',
             name: 'myAppointment',
@@ -212,11 +236,21 @@ const router = new Router({
             name: 'completeAppoint',
             component: completeAppoint
         },
+        {
+            path: '/appointment',
+            name: 'Axios1',
+            component: Axios1
+        },
         //我要预约
         {
             path: '/appointment/wantAppoint',
             name: 'wantAppoint',
             component: wantAppoint
+        },
+        {
+            path: '/appointment/moreService',
+            name: 'moreService',
+            component: moreService
         },
         {
             path: '/appointment/changeAppoint',
@@ -350,7 +384,15 @@ const router = new Router({
                 require(['../pages/extract/ExtractDetails'], resolve)
             }
 
-        }
+        },
+        {
+            path: '/pages/loan/loan-plan',
+            name: 'loan-plan',
+            component: (resolve) => {
+                require(['../pages/loan/loan-plan'], resolve)
+            }
+
+        },
     ]
 });
 

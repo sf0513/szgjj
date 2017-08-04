@@ -8,7 +8,7 @@
 		</div>
 		<div class="item">
 			<ul>
-				<li class="fl" v-for='item in serviceTypeArr'>
+				<li class="fl" v-for='(item,index) in serviceTypeArr' @click="menuClick(item, index)">
 					<img :src="item.image">
 					<span>{{item.name}}</span>
 				</li>
@@ -24,6 +24,7 @@ export default{
 	name:'appointment',
 	data(){
 		return{
+			isActive: 0 ,
 			serviceTypeArr:[
 				{name:'自助协议' , image:require("../../assets/appoint/card_business_1@2x.png")},
 				{name:'按月还贷' , image:require("../../assets/appoint/card_business_2@2x.png")},
@@ -37,13 +38,22 @@ export default{
 			]
 		}
 	},
+	methods:{
+		menuClick: function (item, index) {
+            this.isActive = index;
+            //console.log('item:' + item + 'index:' + index + '//////' + this.isActive)
+            if(this.isActive ==8 ){
+            	this.$router.push('/appointment/moreService')
+            }
+        }
+	},
 	components:{
 		navHeader,
 		topBar
 	}
 }
 </script>
-<style type="text/css">
+<style type="text/css" scoped>
 .appointment{width: 7.5rem; font-size: 0.34rem;}
 .appointment .appoint-head .head{height: 0.9rem; line-height: 0.9rem; background: #f8f8f8; text-align: left; text-indent: 0.8rem;}
 .hr30-efefef{height: 0.3rem; background: #efefef;}
