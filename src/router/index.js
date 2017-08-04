@@ -26,12 +26,15 @@ import modeOfRepayment from '@/pages/loan/mode-of-repayment'
 import IWantToExtract from '../pages/extract/IWantToExtract'
 import HedgeSign from '../pages/hedge/HedgeSign'
 
+import ModifyPsw from '../pages/psw/ModifyPsw'
 import ExpandIDCard from '../pages/account/ExpandIDCard'
 import ExpandSuccess from '../pages/account/ExpandSuccess'
 import PhoneBind from '../pages/bind/PhoneBind'
 import EmailBind from '../pages/bind/EmailBind'
 import DepositRecord from '../pages/record/DepositRecord'
 import ReduceDate from '../pages/reduce/ReduceDate'
+import ReduceSuccess from '../pages/reduce/ReduceSuccess'
+import Success from '../pages/psw/Success'
 import HedgeResult from '../pages/hedge/HedgeResult'
 
 import SubmitSuccess from '@/pages/notes/SubmitSuccess'
@@ -201,6 +204,24 @@ const router = new Router({
             path: '/ReduceDate',
             name: 'ReduceDate',
             component: ReduceDate
+        },
+        // 缩期 成功
+        {
+            path: '/pages/reduce/ReduceSuccess',
+            name: 'ReduceSuccess',
+            component: ReduceSuccess
+        },
+        // 修改 密码
+        {
+            path: '/pages/psw/ModifyPsw',
+            name: 'ModifyPsw',
+            component: ModifyPsw
+        },
+        // 成功 页面
+        {
+            path: '/pages/psw/Success',
+            name: 'Success',
+            component: Success
         },
         {
             path: '/appointment/myAppointment',
