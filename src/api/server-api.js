@@ -3,7 +3,7 @@
 
 var axios = require('axios');
 var API = require('./mock-urls'); //本地mock调试
-
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 const CODE_INVALIDE_SESSION_TOKEN = '000109'; //无效session的返回码（会话超时）
 
 var ServerAPI = function (app) {
