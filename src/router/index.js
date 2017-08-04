@@ -308,6 +308,14 @@ const router = new Router({
                 require(['../pages/loan/loan-calculator'], resolve)
             }
         },
+        //贷款-试算 zyh
+        {
+            path: '/loan/loanTrial',
+            name: 'loanTrial',
+            component: (resolve) => {
+                require(['../pages/loan/loan-trial'], resolve)
+            }
+        },
         //登录
         {
             path: '/pages/login/login',
