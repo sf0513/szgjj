@@ -13,7 +13,7 @@
         <div class="login_row_code">
             <div class="login_code">
                 <label class="login_name" for="code">验证码：</label>
-                <input type="text" class="login_input" id="code">
+                <input type="text" class="login_input" v-model="code" id="code">
             </div>
             <img class="image_code" src="../../assets/card_email_registered_validation.png">
         </div>
@@ -24,28 +24,31 @@
     </div>
 </template>
 <script>
-    export default
-    {
+    export default {
         name: 'login',
-        data(){
+        data() {
             return {
-            	username:'',
-            	password:''
+                username: '',
+                password: '',
+                code: ''
             }
         },
-        methods:{
-        	login(){
-        		this.serverApi.login({
-        			username:this.username,
-        			password:this.password},(error, data) => {
-        				if (error) {
-		                    alert(error.message);
-		                    return;
-		                }
-        				alert(data.username);
-        			});
-        		
-        	}
+        methods: {
+            login() {
+                this.serverApi.login({
+                    username: this.username,
+                    password: this.password,
+                    code:this.code,
+                    flag:2
+                }, (error, data) => {
+                    if (error) {
+                        alert(error.message);
+                        return;
+                    }
+                    alert(data.username);
+                });
+
+            }
         }
     }
 </script>
