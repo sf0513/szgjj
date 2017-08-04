@@ -63,7 +63,7 @@ var ServerAPI = function(app){
         } else {
             /*网络异常*/
             error = {
-                code: 'APP_999999',
+                code: 'APP_999999',//需对照接口文档定义
                 message: '网络异常'
             }
         }
