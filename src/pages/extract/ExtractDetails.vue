@@ -40,12 +40,12 @@
                 </div>
                 <div class="amount_money">
                     <span class="money_num">{{moneySymbol}}</span>
-                    <input class="money_num" v-model.number="money" type="number">
+                    <input class="money_num" v-model.number="money" type="number" step="0.01" >
                     <img class="delete" @click="clearMoney" :src="deleteImg">
                 </div>
                 <div class="phone bg_item">
                     <span>请确认您正在使用的手机：</span>
-                    <input v-model="phone" type="number">
+                    <input v-model="phone" type="tel" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" >
                     <img class="delete" @click="clearPhoneNumber" :src="deleteImg">
                 </div>
                 <div class="rule" v-if="is_show_rule">
@@ -66,6 +66,7 @@
                 <div v-bind:class="[is_show_rule ? 'operate_two': 'operate']">
                     <button class="my_button one" @click="extract">提&nbsp;&nbsp;&nbsp;&nbsp;取</button>
                 </div>
+                <span v-show="isShowRemind" class="important_remind error_remind">{{remind}}</span>
             </div>
             <div class="content_item" v-show="is_show_content_two">
                 <div class="top">
@@ -123,11 +124,11 @@
                 <img class="success_sign" :src="src"/>
                 <span class="success_remind">恭喜你，受理成功！</span>
                 <div class="success_rule_remind">
-                    <div v-show="isShowSuccessRuleRemindOne">资金将在<span class="important_remind">3个工作日</span> 内转入您的联名卡
+                    <div v-if="isShowSuccessRuleRemindOne">资金将在<span class="important_remind">3个工作日</span> 内转入您的联名卡
                     </div>
-                    <div class="remind_two" v-show="isShowSuccessRuleRemindTwo">在资金转入前
+                    <div class="remind_two" v-if="isShowSuccessRuleRemindTwo">在资金转入前
                         <span class="important_remind">请勿</span>将联名卡注销
-                        <span class="calculation_rule" v-show="isShowSuccessRuleRemindTwoRule" @click="showFlag=true">查看结算规则</span>
+                        <span class="calculation_rule" v-if="isShowSuccessRuleRemindTwoRule" @click="showFlag=true">查看结算规则</span>
                     </div>
                 </div>
                 <div class="bg_item bg_item_font">
@@ -142,6 +143,7 @@
                     <button class="my_button one" @click="finish">完&nbsp;&nbsp;&nbsp;&nbsp;成</button>
                 </div>
             </div>
+
         </div>
         <div class="pop" v-show='showFlag'>
             <div class="confirm">
@@ -181,7 +183,6 @@
             </div>
             <div class="overlay"></div>
         </div>
-
     </div>
 </template>
 
@@ -227,6 +228,8 @@
                 isShowSuccessRuleRemindTwoRule: false,
                 currentMonthlyDeposit: 2000,
                 percentage: 0.5,
+                remind:'',
+                isShowRemind:false,
 
             }
         },
@@ -276,31 +279,47 @@
         methods: {
             //提取
             extract: function () {
-                if (this.money === "") {
-                    alert('提取金额不能为空');
+                var myMoney = this.money + "";
+                console.log(myMoney);
+                this.isShowRemind=false;
+                if (myMoney === "") {
+//                    alert('提取金额不能为空');
+                    this.remind='提取金额不能为空';
+                    this.isShowRemind=true;
                     return;
                 }
                 if (this.phone === "") {
-                    alert('正在使用的手机号码不能为空');
+//                    alert('正在使用的手机号码不能为空');
+                    this.remind='正在使用的手机号码不能为空';
+                    this.isShowRemind=true;
                     return;
                 }
-                if (this.money > this.totalMoney) {
-                    alert('提取金额不能大于最高可以提前金额');
-                    return;
-                }
+
                 var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
-                if (!reg.test(this.money)) {
-                    alert("提取金额格式错误！");
+                if (!reg.test(myMoney)) {
+//                    alert("提取金额格式错误！");
+                    this.remind='提取金额格式错误';
+                    this.isShowRemind=true;
                     return;
                 }
                 if (this.money === 0) {
-                    alert('提取金额不能等于0')
+//                    alert('提取金额不能等于0')
+                    this.remind='提取金额不能等于0';
+                    this.isShowRemind=true;
                     return;
                 }
 //                以1开始后面加10位数字
                 var re = /^1[3|4|5|8][0-9]\d{4,8}$/;
                 if (!re.test(this.phone)) {
-                    alert("手机号格式错误！");
+//                    alert("手机号格式错误！");
+                    this.remind='手机号格式错误';
+                    this.isShowRemind=true;
+                    return;
+                }
+                if (this.money > this.totalMoney) {
+//                    alert('提取金额不能大于最高可以提前金额');
+                    this.remind='提取金额不能大于最高可以提前金额';
+                    this.isShowRemind=true;
                     return;
                 }
                 this.is_show_content_one = false;
@@ -680,5 +699,9 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+
+  .extract_details .error_remind{
+        margin-top: 0.5rem;
     }
 </style>
