@@ -78,7 +78,7 @@
             goToPage: function (pageIndex) {
                 if (pageIndex === 1) {
                     // 修改密码
-
+                    this.$router.push('/pages/psw/ModifyPsw')
                 }else if (pageIndex === 2) {
                     // 跳转 升位 身份证
                     this.$router.push('/pages/account/ExpandIDCard')

@@ -1,0 +1,13 @@
+{
+	"name":"szgjj",
+	"result":{
+	    "totalMoney":0,
+	    "productList":[
+	    {
+	        "productId":"10001",
+	        "productName":"11",
+	        "productPrice":18,
+	        "productQuentity":1	      }
+	    ]
+	}
+}

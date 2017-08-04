@@ -68,7 +68,7 @@ export default{
 	},
 	methods:{
 		myAppoint:function(){
-			this.$router.push('/appointment')
+			this.$router.push('/appointment/myAppointment')
 		}
 	},
 	components:{

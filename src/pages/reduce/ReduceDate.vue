@@ -34,12 +34,29 @@
             </ul>
         </div>
 
-        <button>提交</button>
+        <button @click="submintAction">提交</button>
 
     </div>
 
 </template>
 
+
+
+<script type="application/javascript">
+    export default {
+        name: 'reduce-date',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            submintAction: function () {
+                this.$router.push('/pages/reduce/ReduceSuccess')
+            }
+        }
+    }
+</script>
 
 
 <style scoped>

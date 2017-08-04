@@ -7,101 +7,103 @@
                     <div class="step">
                         <div class="step_one item selected">
                             <div class="selected circle">
-                                <img src="../../assets/card_steps_s@2x.png">
-                                <span>1</span>
+                                <img :src="selected">
+                                <span>{{one}}</span>
                             </div>
                         </div>
                         <div class="step_two item unchecked">
                             <div class="unchecked circle">
-                                <img src="../../assets/card_steps_n@2x.png">
-                                <span>2</span>
+                                <img :src="unchecked">
+                                <span>{{two}}</span>
                             </div>
                         </div>
                         <div class="step_three item unchecked">
                             <div class="unchecked circle">
-                                <img src="../../assets/card_steps_n@2x.png">
-                                <span>3</span>
+                                <img :src="unchecked">
+                                <span>{{three}}</span>
                             </div>
                         </div>
 
                     </div>
                     <div class="step">
                         <div class="step_one item selected">
-                            <span>提取金额</span>
+                            <span>{{extractAmount}}</span>
                         </div>
                         <div class="step_two item unchecked">
-                            <span>信息确认</span>
+                            <span>{{informationValidation}}</span>
                         </div>
                         <div class="step_three item unchecked">
-                            <span>提取结果</span>
+                            <span>{{extractionResult}}</span>
                         </div>
 
                     </div>
                 </div>
                 <div class="amount_money">
-                    <span class="money_num">￥</span>
-                    <input class="money_num" v-model.number="money" type="number">
-                    <img class="delete" @click="clearMoney" src="../../assets/card_delete_1@2x.png">
+                    <span class="money_num">{{moneySymbol}}</span>
+                    <input class="money_num" v-model.number="money" type="number" step="0.01" >
+                    <img class="delete" @click="clearMoney" :src="deleteImg">
                 </div>
                 <div class="phone bg_item">
                     <span>请确认您正在使用的手机：</span>
-                    <input v-model="phone">
-                    <img class="delete" @click="clearPhoneNumber" src="../../assets/card_delete_1@2x.png">
+                    <input v-model="phone" type="tel" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" >
+                    <img class="delete" @click="clearPhoneNumber" :src="deleteImg">
                 </div>
                 <div class="rule" v-if="is_show_rule">
                     <div>
-                        <span>本次最高可提取</span><span class="highest_money">{{totalMoney}}</span><span>元</span>
-                        <span class="calculation_rule">查看计算规则</span>
+                        本次最高可提取<span class="highest_money">{{totalMoney}}</span>元
+                        <span class="calculation_rule" @click="showFlag=true">查看计算规则</span>
                     </div>
                     <div>
-                        <span>提取起止时间：</span><span class="time">2015</span><span>年</span><span
-                            class="time">1</span><span>月</span><span>-</span>
-                        <span class="time">2015</span><span>年</span><span class="time">12</span><span>月</span>
+                        提取起止时间：<span class="time">{{startTimeYear}}</span>{{year}}
+                        <span class="time">{{startTimeMonth}}</span> {{month}}<span>-</span>
+                        <span class="time">{{endTimeYear}}</span>{{year}}
+                        <span class="time">{{endTimeMonth}}</span>{{month}}
                     </div>
                     <div>
-                        <span>最大提取月份：</span><span class="time">12</span><span>个月</span>
+                        最大提取月份：<span class="time">{{maximumMathNumber}}</span>个月
                     </div>
                 </div>
                 <div v-bind:class="[is_show_rule ? 'operate_two': 'operate']">
                     <button class="my_button one" @click="extract">提&nbsp;&nbsp;&nbsp;&nbsp;取</button>
                 </div>
+                <span v-show="isShowRemind" class="important_remind error_remind">{{remind}}</span>
             </div>
             <div class="content_item" v-show="is_show_content_two">
                 <div class="top">
                     <div class="step">
                         <div class="step_one item unchecked">
                             <div class="unchecked circle">
-                                <img src="../../assets/card_steps_complete@2x.png">
+                                <img :src="complete">
                             </div>
                         </div>
                         <div class="step_two item selected">
                             <div class="selected circle">
-                                <img src="../../assets/card_steps_s@2x.png">
-                                <span>2</span>
+                                <img :src="selected">
+                                <span>{{two}}</span>
                             </div>
                         </div>
                         <div class="step_three item unchecked">
                             <div class="unchecked circle">
-                                <img src="../../assets/card_steps_n@2x.png">
-                                <span>3</span>
+                                <img :src="unchecked">
+                                <span>{{three}}</span>
                             </div>
                         </div>
 
                     </div>
                     <div class="step">
                         <div class="step_one item unchecked">
-                            <span>提取金额</span>
+                            <span>{{extractAmount}}</span>
                         </div>
                         <div class="step_two item selected">
-                            <span>信息确认</span>
+                            <span>{{informationValidation}}</span>
                         </div>
                         <div class="step_three item unchecked">
-                            <span>提取结果</span>
+                            <span>{{extractionResult}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="amount_money">
-                    <span class="money_num">￥</span>
+                    <span class="money_num">{{moneySymbol}}</span>
                     <input class="money_num" readonly="readonly" v-model="money">
                 </div>
                 <div class="bg_item bg_item_font">
@@ -110,8 +112,8 @@
                 </div>
                 <div class="bg_item bg_item_font">
                     <span>卡&nbsp;&nbsp;&nbsp;号：</span>
-                    <span>6225****1111</span>
-                    <span class="bank">(中国建设银行)</span>
+                    <span>{{cardNumber}}</span>
+                    <span class="bank">{{bank}}</span>
                 </div>
                 <div class="operate">
                     <button class="my_button two" @click="previousStep">上一步</button>
@@ -122,64 +124,148 @@
                 <img class="success_sign" :src="src"/>
                 <span class="success_remind">恭喜你，受理成功！</span>
                 <div class="success_rule_remind">
-                    <div><span>资金将在</span><span class="important_remind">3个工作日</span><span>内转入您的联名卡</span></div>
-                    <div class="remind_two"><span>在资金转入前</span><span
-                            class="important_remind">请勿</span><span>将联名卡注销</span></div>
+                    <div v-if="isShowSuccessRuleRemindOne">资金将在<span class="important_remind">3个工作日</span> 内转入您的联名卡
+                    </div>
+                    <div class="remind_two" v-if="isShowSuccessRuleRemindTwo">在资金转入前
+                        <span class="important_remind">请勿</span>将联名卡注销
+                        <span class="calculation_rule" v-if="isShowSuccessRuleRemindTwoRule" @click="showFlag=true">查看结算规则</span>
+                    </div>
                 </div>
                 <div class="bg_item bg_item_font">
                     <span>提取金额：</span>
-                    <span class="money_num">￥{{money}}</span>
+                    <span class="money_num">{{moneySymbol}}{{money}}</span>
                 </div>
                 <div class="bg_item bg_item_font">
                     <span>账户余额：</span>
-                    <span class="money_num">￥{{accountBalance}}</span>
+                    <span class="money_num">{{moneySymbol}}{{accountBalance}}</span>
                 </div>
                 <div class="operate">
                     <button class="my_button one" @click="finish">完&nbsp;&nbsp;&nbsp;&nbsp;成</button>
                 </div>
             </div>
+
+        </div>
+        <div class="pop" v-show='showFlag'>
+            <div class="confirm">
+                <div class="title">
+                    <span class="rule_title">{{title}}</span>
+                    <img src="../../assets/btn_shut_down@2x.png" @click="showFlag=false">
+                </div>
+                <div class="cont">
+                    <div class="cont_two">
+                        <div class="extract_quota cont_item">
+                            <span class="extract_quota_title big_font">提取额度</span>
+                            <div class="second_column">
+                                <div>
+                                    = 当前月缴存额 x <span class="number big_font">50%</span> x 可提取月份
+                                </div>
+                                <div class="extract_quota_number">
+                                    = {{currentMonthlyDeposit}} x <span class="number">50%</span> x <span
+                                        class="number">{{maximumMathNumber}}</span> =
+                                    <span class="number big_font">{{totalMoney}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cont_item month">
+                            <span class="month_title">可提取月:</span>
+                            <div class="second_column">
+                                <div>
+                                    您的上一次提取月份为<span class="number extract_month"> {{startTimeYear}} </span>{{year}}
+                                    <span class="number extract_month"> {{startTimeMonth}} </span>{{month}}
+                                </div>
+                                <div class="can_extract_month">
+                                    可提取月为<span class="number extract_month"> {{maximumMathNumber}}</span>个月
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay"></div>
         </div>
     </div>
 </template>
 
 <script>
     import NavHeader from '@/components/nav-header'
+
     export default {
         name: "ExtractDetails",
-        data () {
+        data() {
             return {
                 title: '',
+                one: 1,
+                two: 2,
+                three: 3,
+                selected: require('../../assets/card_steps_s@2x.png'),
+                unchecked: require('../../assets/card_steps_n@2x.png'),
+                complete: require('../../assets/card_steps_complete@2x.png'),
+                deleteImg: require('../../assets/card_delete_1@2x.png'),
+                extractAmount: '提取金额',
+                informationValidation: '信息确认',
+                extractionResult: '提取结果',
+                startTimeYear: 2015,
+                startTimeMonth: 1,
+                endTimeYear: 2015,
+                endTimeMonth: 11,
+                maximumMathNumber: 12,
+                year: '年',
+                month: '月',
+                moneySymbol: '￥',
                 is_show_content_one: true,
                 is_show_content_two: false,
                 is_show_content_three: false,
                 is_show_rule: false,
                 src: require('../../assets/appoint_success.png'),
                 totalMoney: 25000,
-                money: '',
+                money: 0,
                 phone: 13800000000,
+                showFlag: false,
+                cardNumber: '6225****1111',
+                bank: '(中国建设银行)',
+                isShowSuccessRuleRemindOne: false,
+                isShowSuccessRuleRemindTwo: false,
+                isShowSuccessRuleRemindTwoRule: false,
+                currentMonthlyDeposit: 2000,
+                percentage: 0.5,
+                remind:'',
+                isShowRemind:false,
 
             }
         },
         created: function () {
             //从上一个页面来的数据
             var typeSign = this.$route.query.typeSign;
+            this.totalMoney = this.currentMonthlyDeposit * this.percentage * this.maximumMathNumber;
             this.money = this.totalMoney;
             switch (typeSign) {
                 case 1:
                     this.title = "租房提取";
                     this.is_show_rule = true;
+                    this.isShowSuccessRuleRemindOne = true;
+                    this.isShowSuccessRuleRemindTwo = false;
+                    this.isShowSuccessRuleRemindTwoRule = false;
                     break;
                 case 2:
                     this.title = "其他住房消费提取";
                     this.is_show_rule = true;
+                    this.isShowSuccessRuleRemindOne = true;
+                    this.isShowSuccessRuleRemindTwo = false;
+                    this.isShowSuccessRuleRemindTwoRule = false;
                     break;
                 case 3:
                     this.title = "非深户离深销户提取";
                     this.is_show_rule = false;
+                    this.isShowSuccessRuleRemindOne = false;
+                    this.isShowSuccessRuleRemindTwo = true;
+                    this.isShowSuccessRuleRemindTwoRule = true;
                     break;
                 case 4:
                     this.title = "退休销户提取";
                     this.is_show_rule = false;
+                    this.isShowSuccessRuleRemindOne = true;
+                    this.isShowSuccessRuleRemindTwo = true;
+                    this.isShowSuccessRuleRemindTwoRule = false;
                     break;
             }
 
@@ -193,6 +279,49 @@
         methods: {
             //提取
             extract: function () {
+                var myMoney = this.money + "";
+                console.log(myMoney);
+                this.isShowRemind=false;
+                if (myMoney === "") {
+//                    alert('提取金额不能为空');
+                    this.remind='提取金额不能为空';
+                    this.isShowRemind=true;
+                    return;
+                }
+                if (this.phone === "") {
+//                    alert('正在使用的手机号码不能为空');
+                    this.remind='正在使用的手机号码不能为空';
+                    this.isShowRemind=true;
+                    return;
+                }
+
+                var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+                if (!reg.test(myMoney)) {
+//                    alert("提取金额格式错误！");
+                    this.remind='提取金额格式错误';
+                    this.isShowRemind=true;
+                    return;
+                }
+                if (this.money === 0) {
+//                    alert('提取金额不能等于0')
+                    this.remind='提取金额不能等于0';
+                    this.isShowRemind=true;
+                    return;
+                }
+//                以1开始后面加10位数字
+                var re = /^1[3|4|5|8][0-9]\d{4,8}$/;
+                if (!re.test(this.phone)) {
+//                    alert("手机号格式错误！");
+                    this.remind='手机号格式错误';
+                    this.isShowRemind=true;
+                    return;
+                }
+                if (this.money > this.totalMoney) {
+//                    alert('提取金额不能大于最高可以提前金额');
+                    this.remind='提取金额不能大于最高可以提前金额';
+                    this.isShowRemind=true;
+                    return;
+                }
                 this.is_show_content_one = false;
                 this.is_show_content_two = true;
                 this.is_show_content_three = false;
@@ -214,12 +343,18 @@
                 history.back();
 
             },
+            //提取金额清空
             clearMoney: function () {
-                this.money='';
+                this.money = '';
             },
-            clearPhoneNumber:function () {
-                this.phone='';
+            //正在使用电话清空
+            clearPhoneNumber: function () {
+                this.phone = '';
+            },
+            showRule: function () {
+
             }
+
         },
         components: {
             NavHeader,
@@ -450,5 +585,123 @@
 
     .remind_two {
         margin-top: 0.1rem;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 200;
+    }
+
+    .confirm {
+        position: fixed;
+        top: 45%;
+        left: 50%;
+        width: 7.12rem;
+        height: 4rem;
+        visibility: visible;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        z-index: 201;
+        border-radius: 0.1rem;
+        background: white;
+        box-shadow: 0.03rem 0.03rem 0.03rem white;
+    }
+
+    .confirm .title {
+        height: 0.6rem;
+        background: url(../../assets/pop_bg.jpg) repeat-x;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 0.1rem;
+    }
+
+    .rule_title {
+        flex: 1;
+        font-size: 0.32rem;
+        font-weight: bold;
+    }
+
+    .title img {
+        width: 0.33rem;
+        margin-right: 0.2rem;
+    }
+
+    .confirm .cont {
+        height: 3.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cont_two {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /*计算规则对话框中的提取额度和可提取月份两行*/
+    .cont_item {
+        display: flex;
+        flex-direction: row;
+    }
+
+    /*提取額度*/
+    .extract_quota {
+        font-size: 0.25rem;
+    }
+
+    .big_font {
+        font-size: 0.33rem;
+    }
+
+    /*计算规则对话框可提取月*/
+    .month {
+        font-size: 0.2rem;
+        margin-top: 0.5rem;
+    }
+
+    /*计算规则中可提取月 第一列*/
+    .month_title {
+        font-size: 0.28rem;
+        font-weight: bold;
+    }
+
+    /*计算规则对话框中的蓝色字*/
+    .number {
+        color: blue;
+    }
+
+    /*计算规则对话框中可提取月份那一行*/
+    .can_extract_month {
+        margin-top: 0.2rem;
+    }
+
+    /*计算规则对话框中可提取月份中的数字*/
+    .extract_month {
+        font-size: 0.28rem;
+    }
+
+    /*计算规则对话框中提取额度第二行*/
+    .extract_quota_number {
+        margin-top: 0.2rem;
+    }
+
+    /*计算规则对话框中第二列*/
+    .second_column {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+  .extract_details .error_remind{
+        margin-top: 0.5rem;
     }
 </style>
