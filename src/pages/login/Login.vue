@@ -15,7 +15,7 @@
                 <label class="login_name" for="code">验证码：</label>
                 <input type="text" class="login_input" v-model="code" id="code">
             </div>
-            <img class="image_code" src="../../assets/card_email_registered_validation.png">
+            <img class="image_code" src="http://192.168.1.85:8080/WheatInterface/in?fund_code=base_show_picvcode">
         </div>
         <button class="login_submit" @click="login">登录</button>
         <div class="forget">
@@ -150,5 +150,6 @@
         margin-top: 2px;
         right: 0px;
         height: 40px;
+        width:1.5rem;
     }
 </style>
