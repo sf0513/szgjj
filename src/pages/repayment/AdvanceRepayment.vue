@@ -29,11 +29,11 @@
                 <p class="raw_style">
                     <span class="cell_common_style left_style new_left_flex">是否全额还款</span>
                     <span class="cell_common_style right_style new_right_flex">
-                        <label class="full_choose_style" :class="{blue_font_style:full==='yes'}">
-                            <input type="radio" v-model="full" value="yes"/>
+                        <label class="repay_all_radio_style" :class="{blue_font_style:full==='yes'}">
+                            <input type="radio" v-model="full" value="yes" class="radio_icon_style"/>
                             &nbsp;&nbsp;是</label>
-                        <label class="full_choose_style margin_left_style" :class="{blue_font_style:full==='no'}">
-                            <input type="radio" v-model="full" value="no"/>
+                        <label class="repay_all_radio_style margin_left_style" :class="{blue_font_style:full==='no'}">
+                            <input type="radio" v-model="full" value="no" class="radio_icon_style"/>
                             &nbsp;&nbsp;否</label>
                     </span>
                 </p>
@@ -43,10 +43,28 @@
                 <p class="raw_style">
                     <span class="cell_common_style left_style new_left_flex red_color_style">提前还款金额</span>
                     <span class="cell_common_style right_style new_right_flex">
-                        <input type="text" value="￥20146.67"/>
-                        <button>详情</button>
+                        <input type="text"/>
+                        <button @click="showDetail">详情</button>
                     </span>
                 </p>
+                <div v-show="full==='no'">
+                    <div class="line_zone_style new_line_zone_style">
+                        <p class="line_style new_line_style"></p>
+                    </div>
+                    <div>
+                        <p class="raw_style">
+                            <span class="cell_common_style left_style new_left_flex">选择还款方式</span>
+                            <span class="cell_common_style right_style new_right_flex two_line_style">
+                                <label class="repay_way_radio_style">
+                                    <input type="radio" v-model="repay_way" value="repay_one" class="radio_icon_style radio_icon_margin_right_style"/>
+                                    期限缩短，月供不变</label>
+                                <label class="repay_way_radio_style">
+                                    <input type="radio" v-model="repay_way" value="repay_two" class="radio_icon_style radio_icon_margin_right_style"/>
+                                    期限不变，月供减少</label>
+                            </span>
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="div_style margin_top_style">
@@ -91,6 +109,20 @@
             <ChangeRepaySubmitSuccess :msg="submit_success_msg"
                                           v-if="submit_success_flag===true"></ChangeRepaySubmitSuccess>
         </div>
+
+        <div v-show="show_detail_flag" :class="{pop_background_style:show_detail_flag}">
+            <div class="pop_dialog_style">
+                <p class="top_line_style">
+                    <img src="../../assets/btn_shut_down@2x.png" @click="shutdownPop" class="shutdown_btn_style"/>
+                </p>
+                <div>
+                    <p v-for="item in pop_items" class="pop_raw_style">
+                        <span class="pop_left_style">{{item.label}}</span>
+                        <span class="pop_right_style red_color_style">{{item.money}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
 	</div>
 </template>
 
@@ -106,11 +138,20 @@ export default{
 			title:'提前还款',
             btnName:'提&nbsp;&nbsp;&nbsp;&nbsp;交',
             submit_success_flag:false,
-            submit_success_msg:'您已成功办理还款账户变更!',
+            submit_success_msg:'您办理的提前还款已成功受理!',
             full:'yes',//是否全额还贷
+            show_detail_flag:false,//默认不展示详情
+            pop_items:[{label:'本金',money:'￥2,000,000.00'},{label:'利息',money:'￥1,467.47'}],
+            repay_way:'',//还款方式
 		}
 	},
 	methods:{
+        showDetail(){
+            this.show_detail_flag=true;
+        },
+        shutdownPop(){
+            this.show_detail_flag=false;
+        },
         submitInfo(){
             this.submit_success_flag=!this.submit_success_flag;
         }
@@ -189,7 +230,7 @@ export default{
     .new_line_style{
         width: 94%;
     }
-    .full_choose_style{
+    .repay_all_radio_style{
         font-size: 16px;
     }
     .margin_left_style{
@@ -198,5 +239,68 @@ export default{
     .cell_flex_style{
         flex:1;
         text-align: center;
+    }
+    .pop_background_style{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.4);
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .pop_dialog_style{
+        position: fixed;
+        top: 45%;
+        left: 50%;
+        width: 7.12rem;
+        height: 3.6rem;
+        visibility: visible;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        z-index: 201;
+        border-radius: 0.1rem;
+        background: white;
+    }
+    .top_line_style{
+        height: 30px;
+        width: 100%;
+        background-color: #C2E6F8;
+        margin-bottom: 10px;
+    }
+    .pop_raw_style{
+        display: flex;
+        font-size: 14px;
+        height: 42px;
+    }
+    .pop_left_style{
+        flex: 1.2;
+        line-height: 42px;
+        text-align: right;
+    }
+    .pop_right_style{
+        flex: 2;
+        line-height: 42px;
+        text-align: left;
+        padding-left: 0.8rem;
+    }
+    .shutdown_btn_style{
+        position: absolute;
+        right: 9px;
+        top: 4px;
+        height: 18px;
+    }
+    .two_line_style{
+        display: flex;
+        flex-direction: column;
+    }
+    .repay_way_radio_style{
+        line-height: 24px;
+    }
+    .radio_icon_style{
+        height: 10px;
+    }
+    .radio_icon_margin_right_style{
+        margin-right: 0.1rem;
     }
 </style>
