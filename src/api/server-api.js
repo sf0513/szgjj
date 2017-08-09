@@ -3,7 +3,6 @@
 
 var axios = require('axios');
 var API = require('./mock-urls'); //本地mock调试
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 const CODE_INVALIDE_SESSION_TOKEN = '000109'; //无效session的返回码（会话超时）
 
 var ServerAPI = function (app) {
@@ -32,8 +31,14 @@ var ServerAPI = function (app) {
             appChannel: this.appChannel,//渠道号
             deviceInfo: this.deviceInfo,//设备信息
             timestamp: timestamp,//时间戳
-            dataEntity: dataEntity//接口需要的参数
+            dataEntity:dataEntity//接口需要的参数
         }
+        // dataEntity.append("fundCode",this.fundCode);
+        // dataEntity.append("appVersion",this.appVersion);
+        // dataEntity.append("appChannel",this.appChannel);
+        // dataEntity.append("deviceInfo",this.deviceInfo);
+        // dataEntity.append("timestamp",this.timestamp);
+
         callback(null, reqPackage);
     }
 
@@ -94,9 +99,10 @@ ServerAPI.prototype.send = function (url, reqData, option, callback) {
         }
         //执行post方式请求
         axios.post(url, req, {
-            timeout: 15000,
-            /*axios配置，超时时间15秒*/
-        })
+                timeout: 15000,
+                /*axios配置，超时时间15秒*/
+            }
+        )
         //请求成功，响应
             .then(res => {
                 self.checkResPackage(res, function (error, data) {
@@ -162,13 +168,17 @@ ServerAPI.prototype.send = function (url, reqData, option, callback) {
  * @return  无
  */
 ServerAPI.prototype.login = function (data, callback) {
+    // var dataEntity = new URLSearchParams();
     var dataEntity = {
         userName: data.username,
         passWord: data.password,
         code: data.code,
         falg: data.flag
     };
-
+    // dataEntity.append("userName", data.username);
+    // dataEntity.append("passWord", data.password);
+    // dataEntity.append("code", data.code);
+    // dataEntity.append("falg", data.flag);
     this.send(API.login, dataEntity, null, callback);
 };
 

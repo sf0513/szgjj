@@ -29,13 +29,13 @@ module.exports = {
     assetsPublicPath: '/',
     //proxyTable处理跨域问题（一般只在开发时会用到）
     proxyTable: {
-	      '/api': {
-	          target: 'http://192.168.1.85:8080',
-	          changeOrigin: true,
-	          pathRewrite: {
-	            '^/api': '/'
-	          }
-	      }
+	      // '/api': {
+	      //     target: 'http://192.168.1.85:8080',
+	      //     changeOrigin: true,
+	      //     pathRewrite: {
+	      //       '^/api': '/'
+	      //     }
+	      // }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
