@@ -61,6 +61,8 @@ export default{
             this.phone=msg;
         },
 	    submitInfo(){
+            this.aa();
+            return;
 	        if(this.title.length>0&&this.content.length>0&&this.checkPhone(this.phone)){
                 this.$router.push({
                     path:'./SubmitSuccess',
@@ -86,11 +88,26 @@ export default{
         errConfirm(){
             this.showFlag=false;
             this.err_flag=false;
+        },
+        aa(){
+            this.serverApi.login2({
+                username: this.username,
+                password: this.password,
+                code:this.code,
+                flag:2
+            }, (error, data) => {
+                if (error) {
+                    alert(error.message);
+                    return;
+                }
+                alert(data.username);
+            });
         }
     },
     components:{
         EditText,SubmitBtn
     },
+
 }
 </script>
 
