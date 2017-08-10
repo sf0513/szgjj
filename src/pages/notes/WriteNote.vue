@@ -90,7 +90,7 @@ export default{
     },
     components:{
         EditText,SubmitBtn
-    }
+    },
 }
 </script>
 
