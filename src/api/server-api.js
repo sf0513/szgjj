@@ -172,5 +172,16 @@ ServerAPI.prototype.login = function (data, callback) {
     this.send(API.login, dataEntity, null, callback);
 };
 
+ServerAPI.prototype.login2 = function (data, callback) {
+    var dataEntity = {
+        userName: data.username,
+        passWord: data.password,
+        code: data.code,
+        falg: data.flag
+    };
+
+    this.send(API.login2, dataEntity, null, callback);
+};
+
 
 module.exports = ServerAPI;
