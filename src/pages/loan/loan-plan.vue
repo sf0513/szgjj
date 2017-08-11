@@ -22,7 +22,53 @@
                     进度追踪
                 </div>
                 <div class="content_detail">
-                    <span>12月16日</span> <img src="../../assets/ic_loan_complete_bg.png" alt=""> <span>银行收件</span>
+                    <div class="left">
+                        <div>
+                            <p>12月06日</p>
+                            <img src="../../assets/ic_loan_complete_normal.png" alt="">
+                        </div>
+                        <div>
+                            <p>12月16日</p>
+                            <span>
+                            <img src="../../assets/ic_loan_complete_normal.png" alt="">
+                        </span>
+                        </div>
+                        <div>
+                            <p>12月21日</p>
+                            <span>
+                            <img src="../../assets/ic_loan_complete_normal.png" alt="">
+                        </span>
+                        </div>
+                        <div>
+                            <p>12月26日</p>
+                            <span>
+                            <img src="../../assets/ic_loan_complete_normal.png" alt="">
+                        </span>
+                        </div>
+                        <div>
+                            <p>01月06日</p>
+                            <span>
+                            <img src="../../assets/ic_loan_complete_pressed.png" alt="">
+                        </span>
+                        </div>
+                        <!--<div>-->
+                            <!--<span>12月16日</span>-->
+                            <!--<span>-->
+                            <!--<img src="../../assets/ic_loan_complete_normal.png" alt="">-->
+                        <!--</span>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="center">
+                        <img src="../../assets/ic_loan_progress5.png" alt="">
+                    </div>
+                    <div class="right">
+                        <p>银行收件</p>
+                        <p>银行初步审查</p>
+                        <p>公积金中心审查</p>
+                        <p>银行落实放款条件</p>
+                        <p>银行放款</p>
+                        <p>完成放款</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,7 +149,7 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        font-size:0.28rem;
+        font-size:16px;
     }
     .loan-plan-title{
         background: white;
@@ -124,29 +170,37 @@
         margin-left: 0.2rem;
     }
     .content_title{
-        height: 20px;
+        height: 30px;
         background: rgb(245,245,245);
         margin-top: 20px;
         text-align: left;
         padding-top: 5px;
-        font-size: 0.32rem;
+        font-size: 20px;
         padding-left: 20px;
     }
     .content_detail{
-        height: 40px;
         text-align: left;
-        padding-top: 10px;
+        /*padding-top: 10px;*/
+        display: inline-flex;
     }
-    .content_detail img{
-        height: 30px;
-        vertical-align: middle;
+    .left img{
+        height: 35px;
+        margin-top: 10px;
+    }
+    .left div{
+        margin-top: 20px;
         margin-left: 20px;
+        height: 50px;
     }
-    .content_detail span:nth-child(1){
-        margin-left: 40px;
+    .left p{
+        display: inline-block;
+        height: 50px;
     }
-    .content_detail span:nth-child(3){
-        margin-left: 40px;
+    .right p{
+        margin-top: 40px;
+        height: 30px;
+        margin-left: 20px;
+        font-size: 20px;
     }
     .item_select{
         display: flex;
@@ -187,5 +241,13 @@
         text-align: left;
         padding-top: 15px;
         flex: 1;
+    }
+    .center img{
+        height: 380px;
+        margin-top: 35px;
+        margin-left: 20px;
+    }
+    .left p{
+       display: inline-block;
     }
 </style>
