@@ -2,16 +2,17 @@
     <div class="login">
         <img class="login_logo" src="../../assets/logo.png">
         <br/>
-        <EditText class="et" :labelStr="account" :holderStr="accountRemind"></EditText>
-        <EditText class="et" :labelStr="titlePassword"></EditText>
+        <EditText class="et" :labelStr="account" @son_to_father="saveUsername" :holderStr="accountRemind"></EditText>
+        <EditText class="et" :labelStr="titlePassword" @son_to_father="savePassword" ></EditText>
         <div class="et verification_code">
-            <EditText class="code" :labelStr="titleCode" :showLabel="showLabel"></EditText>
+            <EditText class="code" :labelStr="titleCode" @son_to_father="saveCode" :showLabel="showLabel"></EditText>
             <img class="image_code" src="http://192.168.1.85:8080/WheatInterface/in?fund_code=base_show_picvcode">
         </div>
-        <button class="login_submit" @click="login">{{login}}</button>
+        <button class="login_submit" @click="login">{{signIn}}</button>
         <div class="forget">
             <router-link to="/forgetpsw"><p>{{forgetPassword}}</p></router-link>
         </div>
+        {{username}}
     </div>
 </template>
 <script>
@@ -24,7 +25,7 @@
                 account: '账户：',
                 titlePassword: '密码：',
                 titleCode: '验证码：',
-                login: '登录',
+                signIn: '登录',
                 forgetPassword: '忘记密码',
                 accountRemind: '公积金账户/手机账户',
                 showLabel: true,
@@ -34,6 +35,15 @@
             }
         },
         methods: {
+            saveUsername(msg){
+                this.username=msg;
+            },
+            savePassword(msg){
+                this.password=msg;
+            },
+            saveCode(msg){
+                this.code=msg;
+            },
             login() {
                 this.serverApi.login({
                     username: this.username,
