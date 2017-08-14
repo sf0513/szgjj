@@ -45,6 +45,9 @@ export default{
             if(this.isActive ==8 ){
             	this.$router.push('/appointment/moreService')
             }
+            if(this.isActive ==0 ){
+            	this.$router.push('/appointment/appointBank')
+            }
         }
 	},
 	components:{
