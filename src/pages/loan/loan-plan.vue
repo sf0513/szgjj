@@ -105,7 +105,11 @@
                     {src:require("../../assets/ic_card_issue.png"),type:'贷款结清日',content:'2015-12-3'},
                 ],
                 loan_plan:[
-                    {},
+                    {src:require("../../assets/ic_card_issue.png"),time:'2016-12-06'},
+                    {src:require("../../assets/ic_card_issue.png"),time:'2016-12-06'},
+                    {src:require("../../assets/ic_card_issue.png"),time:'2016-12-06'},
+                    {src:require("../../assets/ic_card_issue.png"),time:'2016-12-06'},
+                    {src:require("../../assets/ic_card_issue.png"),time:'2016-12-06'},
                 ],
             }
         },
