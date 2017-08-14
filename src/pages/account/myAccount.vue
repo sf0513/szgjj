@@ -123,7 +123,7 @@
                 }
 //                alert(data.ACCOUNT_BALANCE);
                 this.deposit_base = data.DEPOSIT_BASE;
-                this.deposit_ratio = data.DEPOSIT_PROPORTION;
+                this.deposit_ratio = (data.DEPOSIT_PROPORTION * 100 ) + "%";
                 this.balance = data.ACCOUNT_BALANCE;
                 this.account_name = data.USER_NAME;
             });
