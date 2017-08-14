@@ -2,32 +2,32 @@
     <div class="login">
         <img class="login_logo" src="../../assets/logo.png">
         <br/>
-        <div class="login_row name">
-            <label class="login_name" for="acount">账户：</label>
-            <input type="text" class="login_input" id="acount" v-model="username" placeholder="公积金账户/手机账户">
-        </div>
-        <div class="login_row">
-            <label class="login_name" for="password">密码：</label>
-            <input type="password" class="login_input" id="password" v-model="password">
-        </div>
-        <div class="login_row_code">
-            <div class="login_code">
-                <label class="login_name" for="code">验证码：</label>
-                <input type="text" class="login_input" v-model="code" id="code">
-            </div>
+        <EditText class="et" :labelStr="account" :holderStr="accountRemind"></EditText>
+        <EditText class="et" :labelStr="titlePassword"></EditText>
+        <div class="et verification_code">
+            <EditText class="code" :labelStr="titleCode" :showLabel="showLabel"></EditText>
             <img class="image_code" src="http://192.168.1.85:8080/WheatInterface/in?fund_code=base_show_picvcode">
         </div>
-        <button class="login_submit" @click="login">登录</button>
+        <button class="login_submit" @click="login">{{login}}</button>
         <div class="forget">
-            <router-link to="/forgetpsw"><p>忘记密码</p></router-link>
+            <router-link to="/forgetpsw"><p>{{forgetPassword}}</p></router-link>
         </div>
     </div>
 </template>
 <script>
+    import EditText from '@/components/EditText'
+
     export default {
         name: 'login',
         data() {
             return {
+                account: '账户：',
+                titlePassword: '密码：',
+                titleCode: '验证码：',
+                login: '登录',
+                forgetPassword: '忘记密码',
+                accountRemind: '公积金账户/手机账户',
+                showLabel: true,
                 username: '',
                 password: '',
                 code: ''
@@ -38,8 +38,8 @@
                 this.serverApi.login({
                     username: this.username,
                     password: this.password,
-                    code:this.code,
-                    flag:2
+                    code: this.code,
+                    flag: 2
                 }, (error, data) => {
                     if (error) {
                         alert(error.message);
@@ -49,6 +49,9 @@
                 });
 
             }
+        },
+        components: {
+            EditText,
         }
     }
 </script>
@@ -72,6 +75,24 @@
         height: 96px;
     }
 
+    .et {
+        margin-top: 0.35rem;
+    }
+
+    .code {
+        width: 5rem;
+    }
+
+    .verification_code {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .label_style {
+        width: 1rem;
+    }
+
     .login_row {
         max-width: 7rem;
         background: white;
@@ -84,7 +105,8 @@
 
     .login_input {
         background: transparent;
-        width: 80%;
+        width: 75%;
+        height: 1rem;
         vertical-align: middle;
     }
 
@@ -107,7 +129,7 @@
     }
 
     .login_code input {
-        max-width: 65%;
+        max-width: 58%;
     }
 
     .login_row_code {
@@ -145,11 +167,8 @@
     }
 
     .image_code {
-        position: absolute;
-        top: 0;
-        margin-top: 2px;
-        right: 0px;
         height: 40px;
-        width:1.5rem;
+        width: 1.5rem;
+        margin-left: 0.3rem;
     }
 </style>
