@@ -135,6 +135,7 @@ ServerAPI.prototype.send = function (url, reqData, option, callback) {
             //错误处理，进入catch
             .catch(function (error) {
                 if (error.response) {
+                    console.log(error.response);
                     //请求已发出，但服务器响应的状态码不在 2xx 范围内
                     console.log(error.response.data);
                     console.log(error.response.status);
@@ -191,6 +192,13 @@ ServerAPI.prototype.login2 = function (data, callback) {
     };
 
     this.send(API.login2, dataEntity, null, callback);
+};
+
+ServerAPI.prototype.getMyAccount = function (data,callback) {
+    var dataEntity = {
+        userId:data.userId,
+    };
+    this.send(API.myAccount,dataEntity,null,callback);
 };
 
 

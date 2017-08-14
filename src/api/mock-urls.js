@@ -6,3 +6,4 @@ const remoteUrl = '/api';
 export const login = remoteUrl + '/aaa/login';
 
 export const login2 = remoteUrl + '/login2';
+export const myAccount = remoteUrl + '/account/my_account';
