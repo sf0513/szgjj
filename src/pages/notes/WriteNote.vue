@@ -3,7 +3,8 @@
         <div>
             <label class="label_style">{{type_label}}</label>
             <select v-model="selected" class="selector_style">
-                <option v-for="item in items" :value="item.value">{{item.text}}</option>
+                <!--<option v-for="item in items" :value="item.value">{{item.text}}</option>-->
+                <option v-for="item in items" :value="item.BUSINESS_ID">{{item.BUSINESS_NAME}}</option>
             </select>
         </div>
         <EditText :showLabel="false"  @son_to_father="save_title" :holderStr="title_label" class="margin_top_style"></EditText>
@@ -36,8 +37,10 @@ export default{
 	data(){
 		return{
 			type_label:'请选择业务类型',
-            selected:'a',
-            items:[{text:'公积金缴存',value:'a'},{text:'公积金提取',value:'b'},{text:'公积金贷款',value:'c'},{text:'其他',value:'d'}],
+//            selected:'a',
+//            items:[{text:'公积金缴存',value:'a'},{text:'公积金提取',value:'b'},{text:'公积金贷款',value:'c'},{text:'其他',value:'d'}],
+            selected:'',
+            items:[],
             title_label:'请输入标题',
             phone_label:'联系电话',
             btnName:'提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交',
@@ -107,7 +110,35 @@ export default{
     components:{
         EditText,SubmitBtn
     },
-
+    beforeCreate(){
+        this.serverApi.businessType({},(error,data)=>{
+            console.log(data);
+            this.items=data;
+            this.selected=this.items[0].BUSINESS_ID;
+        });
+        console.log('beforeCreate');
+    },
+    created(){
+        console.log('created');
+    },
+    beforeMount(){
+        console.log('beforeMount');
+    },
+    mounted(){
+        console.log('mounted');
+    },
+    beforeUpdate(){
+        console.log('beforeUpdate');
+    },
+    updated(){
+        console.log('updated');
+    },
+    beforeDestroy(){
+        console.log('beforeDestroy');
+    },
+    destroyed(){
+        console.log('destroyed');
+    },
 }
 </script>
 
