@@ -25,21 +25,21 @@ var ServerAPI = function (app) {
 
         //需对数据进行加密，签名
 
-        var reqPackage = {
-            fundCode: this.fundCode,//访问接口名(根据后台需求)
-            appVersion: this.appVersion,//版本号
-            appChannel: this.appChannel,//渠道号
-            deviceInfo: this.deviceInfo,//设备信息
-            timestamp: timestamp,//时间戳
-            dataEntity:dataEntity//接口需要的参数
-        }
-        // dataEntity.append("fundCode",this.fundCode);
-        // dataEntity.append("appVersion",this.appVersion);
-        // dataEntity.append("appChannel",this.appChannel);
-        // dataEntity.append("deviceInfo",this.deviceInfo);
-        // dataEntity.append("timestamp",this.timestamp);
+        // var reqPackage = {
+        //     fundCode: this.fundCode,//访问接口名(根据后台需求)
+        //     appVersion: this.appVersion,//版本号
+        //     appChannel: this.appChannel,//渠道号
+        //     deviceInfo: this.deviceInfo,//设备信息
+        //     timestamp: timestamp,//时间戳
+        //     dataEntity:dataEntity//接口需要的参数
+        // }
+        dataEntity.append("fundCode",this.fundCode);
+        dataEntity.append("appVersion",this.appVersion);
+        dataEntity.append("appChannel",this.appChannel);
+        dataEntity.append("deviceInfo",this.deviceInfo);
+        dataEntity.append("timestamp",this.timestamp);
 
-        callback(null, reqPackage);
+        callback(null, dataEntity);
     }
 
     /**
@@ -168,17 +168,19 @@ ServerAPI.prototype.send = function (url, reqData, option, callback) {
  * @return  无
  */
 ServerAPI.prototype.login = function (data, callback) {
-    // var dataEntity = new URLSearchParams();
-    var dataEntity = {
-        userName: data.username,
-        passWord: data.password,
-        code: data.code,
-        falg: data.flag
-    };
-    // dataEntity.append("userName", data.username);
-    // dataEntity.append("passWord", data.password);
-    // dataEntity.append("code", data.code);
-    // dataEntity.append("falg", data.flag);
+    var dataEntity = new URLSearchParams();
+    // var dataEntity = {
+    //     userName: data.username,
+    //     passWord: data.password,
+    //     code: data.code,
+    //     falg: data.flag
+    // };
+    dataEntity.append("userName", data.username);
+    dataEntity.append("passWord", data.password);
+    dataEntity.append("code", data.code);
+    dataEntity.append("falg", data.flag);
+    dataEntity.append("mei", data.mei);
+
     this.send(API.login, dataEntity, null, callback);
 };
 
@@ -187,7 +189,8 @@ ServerAPI.prototype.login2 = function (data, callback) {
         userName: data.username,
         passWord: data.password,
         code: data.code,
-        falg: data.flag
+        falg: data.flag,
+        mei:data.mei
     };
 
     this.send(API.login2, dataEntity, null, callback);
