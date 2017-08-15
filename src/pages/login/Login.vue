@@ -2,6 +2,9 @@
     <div class="login">
         <img class="login_logo" src="../../assets/logo.png">
         <br/>
+        <div class="login_row">
+            <label></label>
+        </div>
         <EditText class="et" :labelStr="account" @son_to_father="saveUsername" :holderStr="accountRemind"></EditText>
         <EditText class="et" :labelStr="titlePassword" @son_to_father="savePassword"></EditText>
         <div class="et verification_code">
@@ -57,6 +60,9 @@
                 return this.codeUrl;
             },
             login() {
+                if(!this.checkout()){
+                   return;
+                }
                 this.serverApi.login({
                     username: this.username,
                     password: this.password,
@@ -71,6 +77,21 @@
                     alert(data.username);
                 });
 
+            },
+            checkout() {
+                if (this.username === '') {
+                    alert("账户不能为空！");
+                    return false;
+                }
+                if (this.password === '') {
+                    alert("密码不能为空！");
+                    return false;
+                }
+                if (this.code === '') {
+                    alert("验证码不能为空！");
+                    return false;
+                }
+                return true;
             }
         },
         components: {
@@ -110,10 +131,6 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-    }
-
-    .label_style {
-        width: 1rem;
     }
 
     .login_row {
@@ -192,6 +209,6 @@
     .image_code {
         height: 40px;
         width: 1.5rem;
-        margin-left: 0.3rem;
+        margin-left: 0.1rem;
     }
 </style>
