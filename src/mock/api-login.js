@@ -15,9 +15,11 @@ module.exports = {
     api: '/api/aaa/login',
     response: function (req, res) {
         console.log("req=======================" + req.body);
-        let reqData = req.body.dataEntity; //请求数据
+
+        let reqData = req.body; //请求数据
         let username = reqData.userName; //手机号
         let password = reqData.passWord; //密码
+
         //此log只能在控制台查看
         console.log("登录接口请求数据：username=" + username + "---password=" + password);
         if (username === '111' && password === '123') {

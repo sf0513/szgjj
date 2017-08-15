@@ -3,16 +3,15 @@
         <img class="login_logo" src="../../assets/logo.png">
         <br/>
         <EditText class="et" :labelStr="account" @son_to_father="saveUsername" :holderStr="accountRemind"></EditText>
-        <EditText class="et" :labelStr="titlePassword" @son_to_father="savePassword" ></EditText>
+        <EditText class="et" :labelStr="titlePassword" @son_to_father="savePassword"></EditText>
         <div class="et verification_code">
             <EditText class="code" :labelStr="titleCode" @son_to_father="saveCode" :showLabel="showLabel"></EditText>
-            <img class="image_code" src="http://192.168.1.85:8080/WheatInterface/in?fund_code=base_show_picvcode">
+            <img class="image_code" :src="codeUrl" @click="refreshCode($event)">
         </div>
         <button class="login_submit" @click="login">{{signIn}}</button>
         <div class="forget">
             <router-link to="/forgetpsw"><p>{{forgetPassword}}</p></router-link>
         </div>
-        {{username}}
     </div>
 </template>
 <script>
@@ -31,25 +30,39 @@
                 showLabel: true,
                 username: '',
                 password: '',
-                code: ''
+                code: '',
+                mei: '12',
+                codeUrlFirst: '/api/WheatInterface/in?fund_code=base_show_picvcode&mei=',
+                codeUrl: '',
+                codeSign: ''
             }
         },
+        created: function () {
+            this.mei = Math.floor(Math.random() * 110);
+            this.codeUrl = this.codeUrlFirst + this.mei;
+        },
         methods: {
-            saveUsername(msg){
-                this.username=msg;
+            saveUsername(msg) {
+                this.username = msg;
             },
-            savePassword(msg){
-                this.password=msg;
+            savePassword(msg) {
+                this.password = msg;
             },
-            saveCode(msg){
-                this.code=msg;
+            saveCode(msg) {
+                this.code = msg;
+            },
+            refreshCode(event) {
+                this.mei = Math.floor(Math.random() * 110);
+                this.codeUrl = this.codeUrlFirst + this.mei;
+                return this.codeUrl;
             },
             login() {
                 this.serverApi.login({
                     username: this.username,
                     password: this.password,
                     code: this.code,
-                    flag: 2
+                    flag: 2,
+                    mei: this.mei
                 }, (error, data) => {
                     if (error) {
                         alert(error.message);
