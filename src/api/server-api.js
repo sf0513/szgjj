@@ -204,5 +204,12 @@ ServerAPI.prototype.getMyAccount = function (data,callback) {
     this.send(API.myAccount,dataEntity,null,callback);
 };
 
+// 我的信息接口
+ServerAPI.prototype.requestMyInformation = function (data, callback) {
+    var dataEntity = {
+        userId: data.userId,
+    };
+    this.send(API.myInformation, dataEntity, null, callback);
+};
 
 module.exports = ServerAPI;
