@@ -206,9 +206,11 @@ ServerAPI.prototype.getMyAccount = function (data,callback) {
 
 // 我的信息接口
 ServerAPI.prototype.requestMyInformation = function (data, callback) {
-    var dataEntity = {
-        userId: data.userId,
-    };
+    // var dataEntity = {
+    //     userId: data.userId,
+    // };
+    var dataEntity = new URLSearchParams();
+    dataEntity.append("userId", data.userId);
     this.send(API.myInformation, dataEntity, null, callback);
 };
 

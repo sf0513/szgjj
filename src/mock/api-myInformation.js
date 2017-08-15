@@ -15,7 +15,7 @@ module.exports = {
     api: '/api/account/myInformation',
     response: function (req, res) {
         console.log("req=======================" + req.body);
-        let reqData = req.body.dataEntity; //请求数据
+        let reqData = req.body; //请求数据
         let userId = reqData.userId; // 用户id
 
         //此log只能在控制台查看
