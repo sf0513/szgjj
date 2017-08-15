@@ -70,6 +70,30 @@
                 pageNumber: '',
             }
         },
+        created() {
+            // 请求 '我的信息' 接口
+            this.serverApi.requestMyInformation({
+                userId: '10012',
+            },(error, data) => {
+                if (error) {
+                    alert('errorCode:' + error.code + 'errorMessage:' + error.message);
+                    console.log('E_MAIL:' + data.E_MAIL);
+                    return;
+                }
+                alert(data.DEPOSIT_UNIT)
+            })
+
+//            this.serverApi.getMyAccount({
+//                userId: '10010',
+//            },(error, data) => {
+//                if (error) {
+//                    alert('errorCode:' + error.code + 'errorMessage:' + error.message);
+//                    console.log('data:',data.DEPOSIT_UNIT);
+//                    return;
+//                }
+//                alert(data.ACCOUNT + data.ACCOUNT_BALANCE)
+//            })
+        },
         components: {
             TopBar,
             NavHeader
