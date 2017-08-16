@@ -35,9 +35,9 @@ module.exports = {
                     ret_msg: '请求成功',
                     data_entity: {
                         ACCOUNT: 'admin',                   //公积金账户
-                        ACCOUNT_BALANCE:'10000',            //账户余额
-                        DEPOSIT_BASE:'4000',                //缴存基数
-                        DEPOSIT_PROPORTION:'0.1',           //缴存比例
+                        ACCOUNT_BALANCE:'20000',            //账户余额
+                        DEPOSIT_BASE:'8000',                //缴存基数
+                        DEPOSIT_PROPORTION:'0.4',           //缴存比例
                         USER_IMG:'http://localhost:8080/WheatInterface/img/favicon.png',//用户头像
                         USER_NAME:'小米',
                     }

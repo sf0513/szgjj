@@ -126,6 +126,7 @@
                 this.deposit_ratio = (data.DEPOSIT_PROPORTION * 100 ) + "%";
                 this.balance = data.ACCOUNT_BALANCE;
                 this.account_name = data.USER_NAME;
+                this.user_img = data.USER_IMG;
             });
         },
         components:{
