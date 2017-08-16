@@ -2,15 +2,30 @@
     <div class="login">
         <img class="login_logo" src="../../assets/logo.png">
         <br/>
-        <div class="login_row">
-            <label></label>
+        <div class="login_row name">
+            <label class="login_name" for="acount">{{account}}</label>
+            <input type="text" class="login_input" id="acount" v-model="username" :placeholder="accountRemind">
         </div>
-        <EditText class="et" :labelStr="account" @son_to_father="saveUsername" :holderStr="accountRemind"></EditText>
-        <EditText class="et" :labelStr="titlePassword" @son_to_father="savePassword"></EditText>
-        <div class="et verification_code">
-            <EditText class="code" :labelStr="titleCode" @son_to_father="saveCode" :showLabel="showLabel"></EditText>
+        <div class="login_row">
+            <label class="login_name" for="password">{{titlePassword}}</label>
+            <input type="password" class="login_input" id="password" v-model="password">
+        </div>
+        <div class="login_row_code verification_code">
+            <div class="login_code">
+                <label class="login_name" for="code">{{titleCode}}</label>
+                <input type="text" class="login_input" v-model="code" id="code">
+            </div>
             <img class="image_code" :src="codeUrl" @click="refreshCode($event)">
         </div>
+
+        <!--<EditText class="et" :labelStr="account" @son_to_father="saveUsername"-->
+        <!--:holderStr="accountRemind"></EditText>-->
+        <!--<EditText class="et" :labelStr="titlePassword" @son_to_father="savePassword"></EditText>-->
+        <!--<div class="et verification_code">-->
+        <!--<EditText class="code" :labelStr="titleCode" @son_to_father="saveCode"-->
+        <!--:showLabel="showLabel"></EditText>-->
+        <!--<img class="image_code" :src="codeUrl" @click="refreshCode($event)">-->
+        <!--</div>-->
         <button class="login_submit" @click="login">{{signIn}}</button>
         <div class="forget">
             <router-link to="/forgetpsw"><p>{{forgetPassword}}</p></router-link>
@@ -60,8 +75,8 @@
                 return this.codeUrl;
             },
             login() {
-                if(!this.checkout()){
-                   return;
+                if (!this.checkout()) {
+                    return;
                 }
                 this.serverApi.login({
                     username: this.username,
@@ -146,7 +161,7 @@
     .login_input {
         background: transparent;
         width: 75%;
-        height: 1rem;
+        height: 0.8rem;
         vertical-align: middle;
     }
 
@@ -181,7 +196,7 @@
     .login_submit {
         position: relative;
         width: 4rem;
-        height: 35px;
+        height: 0.7rem;
         font-size: 16px;
         background-image: url(../../assets/btn.png);
         margin: 32px 20px 10px;
