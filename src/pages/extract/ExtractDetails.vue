@@ -445,6 +445,7 @@
         justify-content: center;
         margin-bottom: 0.5rem;
         width: 5rem;
+        height: 1rem;
         box-shadow: 1px 1px #949494;
     }
 
