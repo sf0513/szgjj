@@ -24,26 +24,26 @@
                     <div class="content">
                         <div class="column_one">
                             <img :src="item.img">
-                            <div class="row">
+                            <div class="column_column_two immediate_extraction_column_column_two">
                                 <span>{{item.title}}</span>
                                 <div v-if="item.which_num==='1'">
-                                    <div class="row_one">
+                                    <div class="row_two">
                                         <span class="num1">月缴存额度的</span>
                                         <span class="num">{{item.num}}</span>
                                     </div>
                                 </div>
                                 <div v-else="true">
-                                    <div class="row_one">
-                                        <span class="num_all">{{item.num}}</span>
+                                    <div class="row_two">
+                                        <span class="num_all num">{{item.num}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="column_two">
-                            <button v-if="item.able==='1'" class="able" @click="operate(item)">
+                            <button v-if="item.able==='1'" class="able my_button" @click="operate(item)">
                                 {{item.operate}}
                             </button>
-                            <button v-else-if="item.able='2'" disabled class="disable" @click="operate(item)">
+                            <button v-else-if="item.able='2'" disabled class="disable my_button" @click="operate(item)">
                                 {{item.operate}}
                             </button>
                         </div>
@@ -62,19 +62,20 @@
                     <div class="content">
                         <div class="column_one">
                             <img :src="item.img">
-                            <div class="column_column_two">
+                            <div class="column_column_two more_extraction_column_column_two">
                                 <div>
                                     <span>{{item.title}}</span>
-                                    <span v-if="item.exit" class="age_limit">男满50周岁，女满45周岁</span>
+                                    <span v-if="item.exit"
+                                          class="age_limit more_extraction_content">男满50周岁，女满45周岁</span>
                                 </div>
-                                <span class="service_guide">办事指南</span>
+                                <span class="service_guide more_extraction_content">办事指南</span>
                             </div>
                         </div>
                         <div class="column_two">
-                            <button v-if="item.able==='1'" class="able" @click="operate(item)">
+                            <button v-if="item.able==='1'" class="able my_button" @click="operate(item)">
                                 {{item.operate}}
                             </button>
-                            <button v-else-if="item.able='2'" disabled class="disable" @click="operate(item)">
+                            <button v-else-if="item.able='2'" disabled class="disable my_button" @click="operate(item)">
                                 {{item.operate}}
                             </button>
                         </div>
@@ -104,7 +105,7 @@
 
     export default {
         name: 'IWantToExtract',
-        data () {
+        data() {
             return {
                 show_item: "index_first",
                 showItemFlag: true,
@@ -232,17 +233,17 @@
             topBar
         },
         methods: {
-            show_first(){
+            show_first() {
                 this.show_item = "index_first";
                 this.showItemFlag = true;
                 this.showSelect();
             },
-            show_second(){
+            show_second() {
                 this.show_item = "index_second";
                 this.showItemFlag = false;
                 this.showSelect();
             },
-            showSelect(){
+            showSelect() {
                 var select_1 = document.getElementById("select_1");
                 var select_2 = document.getElementById("select_2");
                 var select_3 = document.getElementById("select_3");
@@ -264,20 +265,19 @@
 
                 }
             },
-            operate(str){
+            operate(str) {
                 if (str.status === 1) {//立即提取
                     if (str.operate === "撤销") {//撤销
                         this.tip = "你是否确认撤销非深户销户提取";
                         this.showFlag = true;
                     } else {//申请
-                        this.$router.push({path: '/pages/extract/ExtractDetails',query: {typeSign: str.type_sign}});
+                        this.$router.push({path: '/pages/extract/ExtractDetails', query: {typeSign: str.type_sign}});
                     }
                 } else {//更多提取
                     alert("功能正在开发...,请稍后！");
                 }
             },
-            extractSuccess()
-            {
+            extractSuccess() {
                 this.$router.push('/pages/extract/ExtractSuccess');
             }
         }
@@ -354,7 +354,8 @@
         color: white;
     }
 
-    .immediate_extraction_item .content {
+    /*内容布局*/
+    .content {
         height: 100%;
         display: flex;
         flex-direction: row;
@@ -363,87 +364,94 @@
 
     }
 
+    /*立即提取中图标样式*/
     .immediate_extraction_item .content img {
         width: 0.8rem;
         margin-top: 0.2rem;
         margin-left: 0.3rem;
     }
 
-    .immediate_extraction_item .content .column_one {
+    /*第一列布局*/
+    .column_one {
         height: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
     }
 
-    .immediate_extraction_item .content .column_one .row {
+    /*第一列中第二列布局*/
+    .column_column_two {
         height: 100%;
         display: flex;
         margin-top: 0.2rem;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        margin-left: 0.1rem;
     }
 
-    .immediate_extraction_item .content .column_one .row .row_one {
+    /*立即提取中第一列中第二列布局*/
+    .immediate_extraction_column_column_two {
+        margin-left: 0.1rem;
+        font-size: 8px;
+    }
+
+    /*更多提取中第一列中第二列布局*/
+    .more_extraction_column_column_two {
+        margin-left: 0.3rem;
+
+    }
+
+    /*立即提取中第一列中第二列中的第一行布局*/
+    .row_two {
         margin-top: 0.1rem;
     }
 
-    .immediate_extraction_item .content .column_one .row .row_one span {
+    .row_two span {
         font-size: 14px;
         font-weight: bold;
         color: black;
     }
 
-    .immediate_extraction_item .content .column_one .row .row_one .num {
+    /*立即提取部分提取*/
+    .row_two .num {
         color: #0086D4;
     }
 
-    .immediate_extraction_item .content .column_one .row .row_one .num_all {
-        color: #0086D4;
+    /*立即提取全额提取样式*/
+    .row_two .num_all {
         margin-left: 0.5rem;
     }
 
-    .immediate_extraction_item .content .column_one .row span {
-        font-size: 8px;
-    }
-
-    .immediate_extraction_item .content .column_two {
+    /*第二列布局*/
+    .column_two {
         display: flex;
         height: 100%;
         flex-direction: column;
         justify-content: center;
     }
 
-    .immediate_extraction_item .content .column_two .able {
-        margin-right: 0.5rem;
-        width: 1.5rem;
-        height: 35px;
-        font-size: 16px;
-        margin-top: 0.1rem;
+    /*按钮可点击*/
+    .able {
         background-image: url(../../assets/btn_apply_n@2x.png);
-        border-radius: 3rem;
-        cursor: pointer;
         color: white;
-        background-repeat: no-repeat;
-        background-position: 50% center;
-        background-color: transparent;
-        overflow: hidden;
-        outline: none;
-        border: none;
+
     }
 
-    .immediate_extraction_item .content .column_two .disable {
+    /*按钮不可点击*/
+    .disable {
+        background-image: url(../../assets/btn_apply_d@2x.png);
+        color: black;
+    }
+
+    /*按钮公共样式*/
+    .my_button {
         margin-right: 0.5rem;
         width: 1.5rem;
         height: 35px;
         font-size: 16px;
         margin-top: 0.1rem;
-        background-image: url(../../assets/btn_apply_d@2x.png);
         border-radius: 3rem;
         cursor: pointer;
-        color: black;
         background-repeat: no-repeat;
         background-position: 50% center;
         background-color: transparent;
@@ -452,6 +460,7 @@
         border: none;
     }
 
+    /*立即提取线条*/
     .immediate_extraction .line {
         height: 20px;
         background: #EFEFEF;
@@ -464,93 +473,21 @@
         background: white;
     }
 
-    .more_extraction_item .content {
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-    }
-
+    /*更多提取中的图片标示*/
     .more_extraction_item .content img {
         width: 0.6rem;
         margin-top: 0.2rem;
         margin-left: 0.3rem;
     }
 
-    .more_extraction_item .content .column_one {
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .more_extraction_item .content .column_one .column_column_two {
-        height: 100%;
-        display: flex;
-        margin-top: 0.2rem;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        margin-left: 0.3rem;
-    }
-
-    .more_extraction_item .content .column_one .column_column_two .age_limit {
+    /*更多提取中的年龄限制*/
+    .more_extraction_content {
         font-size: 12px;
         color: gray;
         margin-top: 0.2rem;
     }
 
-    .more_extraction_item .content .column_one .column_column_two .service_guide {
-        font-size: 12px;
-        color: gray;
-        margin-top: 0.2rem;
-    }
-
-    .more_extraction_item .content .column_two {
-        display: flex;
-        height: 100%;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .more_extraction_item .content .column_two .able {
-        margin-right: 0.5rem;
-        width: 1.5rem;
-        height: 35px;
-        font-size: 16px;
-        margin-top: 0.1rem;
-        background-image: url(../../assets/btn_apply_n@2x.png);
-        border-radius: 3rem;
-        cursor: pointer;
-        color: white;
-        background-repeat: no-repeat;
-        background-position: 50% center;
-        background-color: transparent;
-        overflow: hidden;
-        outline: none;
-        border: none;
-    }
-
-    .more_extraction_item .content .column_two .disable {
-        margin-right: 0.5rem;
-        width: 1.5rem;
-        height: 35px;
-        font-size: 16px;
-        margin-top: 0.1rem;
-        background-image: url(../../assets/btn_apply_d@2x.png);
-        border-radius: 3rem;
-        cursor: pointer;
-        color: black;
-        background-repeat: no-repeat;
-        background-position: 50% center;
-        background-color: transparent;
-        overflow: hidden;
-        outline: none;
-        border: none;
-    }
-
+    /*更多提取中的线*/
     .more_extraction .line {
         height: 2px;
         background: #EFEFEF;

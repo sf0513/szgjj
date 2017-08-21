@@ -50,7 +50,7 @@
 	.label_style{
         line-height: 50px;
         width: 2.6rem;
-    }
+      }
 	.holder_style{
         width:3.8rem;
     }

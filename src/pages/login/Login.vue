@@ -2,13 +2,31 @@
     <div class="login">
         <img class="login_logo" src="../../assets/logo.png">
         <br/>
-        <EditText class="et" :labelStr="account" :holderStr="accountRemind"></EditText>
-        <EditText class="et" :labelStr="titlePassword"></EditText>
-        <div class="et verification_code">
-            <EditText class="code" :labelStr="titleCode" :showLabel="showLabel"></EditText>
-            <img class="image_code" src="http://192.168.1.85:8080/WheatInterface/in?fund_code=base_show_picvcode">
+        <div class="login_row name">
+            <label class="login_name" for="acount">{{account}}</label>
+            <input type="text" class="login_input" id="acount" v-model="username" :placeholder="accountRemind">
         </div>
-        <button class="login_submit" @click="login">{{login}}</button>
+        <div class="login_row">
+            <label class="login_name" for="password">{{titlePassword}}</label>
+            <input type="password" class="login_input" id="password" v-model="password">
+        </div>
+        <div class="login_row_code verification_code">
+            <div class="login_code">
+                <label class="login_name" for="code">{{titleCode}}</label>
+                <input type="text" class="login_input" v-model="code" id="code">
+            </div>
+            <img class="image_code" :src="codeUrl" @click="refreshCode($event)">
+        </div>
+
+        <!--<EditText class="et" :labelStr="account" @son_to_father="saveUsername"-->
+        <!--:holderStr="accountRemind"></EditText>-->
+        <!--<EditText class="et" :labelStr="titlePassword" @son_to_father="savePassword"></EditText>-->
+        <!--<div class="et verification_code">-->
+        <!--<EditText class="code" :labelStr="titleCode" @son_to_father="saveCode"-->
+        <!--:showLabel="showLabel"></EditText>-->
+        <!--<img class="image_code" :src="codeUrl" @click="refreshCode($event)">-->
+        <!--</div>-->
+        <button class="login_submit" @click="login">{{signIn}}</button>
         <div class="forget">
             <router-link to="/forgetpsw"><p>{{forgetPassword}}</p></router-link>
         </div>
@@ -24,22 +42,48 @@
                 account: '账户：',
                 titlePassword: '密码：',
                 titleCode: '验证码：',
-                login: '登录',
+                signIn: '登录',
                 forgetPassword: '忘记密码',
                 accountRemind: '公积金账户/手机账户',
                 showLabel: true,
                 username: '',
                 password: '',
-                code: ''
+                code: '',
+                mei: '12',
+                codeUrlFirst: '/api/WheatInterface/in?fund_code=base_show_picvcode&mei=',
+                codeUrl: '',
+                codeSign: ''
             }
         },
+        created: function () {
+            this.mei = Math.floor(Math.random() * 110);
+            this.codeUrl = this.codeUrlFirst + this.mei;
+        },
         methods: {
+            saveUsername(msg) {
+                this.username = msg;
+            },
+            savePassword(msg) {
+                this.password = msg;
+            },
+            saveCode(msg) {
+                this.code = msg;
+            },
+            refreshCode(event) {
+                this.mei = Math.floor(Math.random() * 110);
+                this.codeUrl = this.codeUrlFirst + this.mei;
+                return this.codeUrl;
+            },
             login() {
+                if (!this.checkout()) {
+                    return;
+                }
                 this.serverApi.login({
                     username: this.username,
                     password: this.password,
                     code: this.code,
-                    flag: 2
+                    flag: 2,
+                    mei: this.mei
                 }, (error, data) => {
                     if (error) {
                         alert(error.message);
@@ -48,6 +92,21 @@
                     alert(data.username);
                 });
 
+            },
+            checkout() {
+                if (this.username === '') {
+                    alert("账户不能为空！");
+                    return false;
+                }
+                if (this.password === '') {
+                    alert("密码不能为空！");
+                    return false;
+                }
+                if (this.code === '') {
+                    alert("验证码不能为空！");
+                    return false;
+                }
+                return true;
             }
         },
         components: {
@@ -89,10 +148,6 @@
         align-items: center;
     }
 
-    .label_style {
-        width: 1rem;
-    }
-
     .login_row {
         max-width: 7rem;
         background: white;
@@ -106,7 +161,7 @@
     .login_input {
         background: transparent;
         width: 75%;
-        height: 1rem;
+        height: 0.8rem;
         vertical-align: middle;
     }
 
@@ -141,7 +196,7 @@
     .login_submit {
         position: relative;
         width: 4rem;
-        height: 35px;
+        height: 0.7rem;
         font-size: 16px;
         background-image: url(../../assets/btn.png);
         margin: 32px 20px 10px;
@@ -169,6 +224,6 @@
     .image_code {
         height: 40px;
         width: 1.5rem;
-        margin-left: 0.3rem;
+        margin-left: 0.1rem;
     }
 </style>

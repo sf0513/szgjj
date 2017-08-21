@@ -5,4 +5,11 @@ const remoteUrl = '/api';
 // export const login = remoteUrl + '/WheatInterface/in?fund_code=perAccoLogin';
 export const login = remoteUrl + '/aaa/login';
 
+//我的留言业务类型接口
 export const businessType = remoteUrl + '/business_type';
+
+export const login2 = remoteUrl + '/login2';
+export const myAccount = remoteUrl + '/account/my_account';
+
+// 我的信息接口
+export const myInformation = remoteUrl + '/account/myInformation';

@@ -8,49 +8,49 @@
             <table class="my-information-table">
                 <tr id="odd-tr">
                     <td>姓名:</td>
-                    <td>王小花</td>
+                    <td>{{ userName }}</td>
                     <td></td>
                     <td><a @click="goToPage(1)">修改密码 ></a></td>
                 </tr>
                 <tr id="even-tr">
                     <td>省份证:</td>
-                    <td>4320000000000000</td>
+                    <td>{{ userIDCard }}</td>
                     <td></td>
                     <td><a @click="goToPage(2)">升位 ></a></td>
                 </tr>
                 <tr id="odd-tr">
                     <td>缴存单位:</td>
-                    <td>深圳富士康集团</td>
+                    <td>{{ userUnit }}</td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr id="even-tr">
                     <td>手机号码:</td>
-                    <td>13812345678</td>
+                    <td>{{ userPhone }}</td>
                     <td><a @click="goToPage(3)">立即绑定</a></td>
                     <td><a @click="goToPage(4)">修改 ></a></td>
                 </tr>
                 <tr id="odd-tr">
                     <td>邮箱:</td>
-                    <td>12345678@163.com</td>
+                    <td>{{ userEmail }}</td>
                     <td></td>
                     <td><a @click="goToPage(5)">修改 ></a></td>
                 </tr>
                 <tr id="even-tr">
                     <td>婚姻状况:</td>
-                    <td>已婚</td>
+                    <td>{{ userMarriage }}</td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr id="odd-tr">
                     <td>配偶:</td>
-                    <td>李芙蓉</td>
+                    <td>{{ spouseName }}</td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr id="even-tr">
                     <td>配偶省份证:</td>
-                    <td>432000********00</td>
+                    <td>{{ spouseIDCard }}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -67,8 +67,44 @@
         name: 'my-information',
         data() {
             return {
+                userName: '',
+                userIDCard: '',
+                userUnit: '',
+                userPhone: '',
+                userEmail: '',
+                userMarriage: '',
+                spouseName:'',
+                spouseIDCard:'',
                 pageNumber: '',
             }
+        },
+        mounted() {
+
+        },
+        created() {
+            // 请求 '我的信息' 接口
+            this.serverApi.requestMyInformation({
+                userId: '10012',
+            },(error, data) => {
+                if (error) {
+                    alert('errorCode:' + error.code + 'errorMessage:' + error.message);
+                    console.log('E_MAIL:' + data.E_MAIL);
+                    return;
+                }
+                this.userName = data.USER_NAME;
+                this.userIDCard = data.ID_NUMBER;
+                this.userUnit = data.DEPOSIT_UNIT;
+                this.userPhone = data.USER_PHONE;
+                this.userEmail = data.E_MAIL;
+                this.spouseName = data.SPOUSE_NAME;
+                this.spouseIDCard = data.SPOUSE_NUMBER;
+                if (data.MARITAL_STATUS === 1) {
+                    this.userMarriage = '未婚';
+                } else {
+                    this.userMarriage = '已婚';
+                }
+                //alert(data.DEPOSIT_UNIT)
+            })
         },
         components: {
             TopBar,

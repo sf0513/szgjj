@@ -4,7 +4,7 @@
             <top-bar></top-bar>
             <div class="account_title">
                 <img src="../../assets/ic_my_account.png" alt="" height="100px">
-                <router-link to="/pages/loan/MyLoan"><p>王小花 >></p></router-link>
+                <router-link to="/pages/loan/MyLoan"><p>{{account_name}} >></p></router-link>
                 <p class="name">330305285   封存</p>
                 <p class="balance_style">余额<span id="balance" v-if="showBalance">{{balance}}</span><span id="balance_hide" v-else="">******</span><img id="balance_img" @click="showOrHideBalance" src="../../assets/ic_account_hide.png"></p>
             </div>
@@ -12,10 +12,10 @@
         <div class="center">
             <div class="deposite">
                 <span >
-                    缴存基数&nbsp; &nbsp; 4000
+                    缴存基数&nbsp; &nbsp; {{deposit_base}}
                 </span>
                 <span >
-                    缴存比例&nbsp; &nbsp; 10%
+                    缴存比例&nbsp; &nbsp; {{deposit_ratio}}
                 </span>
             </div>
             <div class="item">
@@ -62,12 +62,15 @@
         name: 'myAccount',
         data () {
             return {
+                account_name:'',
                 balance:'￥253,765.45',
                 bank:'中国银行',
                 idCard:'6213457****5874',
                 show:true,
                 showBalance:true,
-
+                deposit_base:'',                    //缴存基数
+                deposit_ratio:'',                   //缴存比例
+                user_img:'',
             }
         },
         methods:{
@@ -109,7 +112,21 @@
                     balance_img.src =require('../../assets/ic_account_hide.png');
                 }
             },
-
+        },
+        created(){
+            this.serverApi.getMyAccount({
+                userId:'10010',
+            },(error,data) => {
+                if (error) {
+                    alert("code==>" +error.code + ",message==>" +  error.message);
+                    return;
+                }
+//                alert(data.ACCOUNT_BALANCE);
+                this.deposit_base = data.DEPOSIT_BASE;
+                this.deposit_ratio = (data.DEPOSIT_PROPORTION * 100 ) + "%";
+                this.balance = data.ACCOUNT_BALANCE;
+                this.account_name = data.USER_NAME;
+            });
         },
         components:{
             topBar

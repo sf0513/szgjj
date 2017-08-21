@@ -25,21 +25,21 @@ var ServerAPI = function (app) {
 
         //需对数据进行加密，签名
 
-        var reqPackage = {
-            fundCode: this.fundCode,//访问接口名(根据后台需求)
-            appVersion: this.appVersion,//版本号
-            appChannel: this.appChannel,//渠道号
-            deviceInfo: this.deviceInfo,//设备信息
-            timestamp: timestamp,//时间戳
-            dataEntity:dataEntity//接口需要的参数
-        }
-        // dataEntity.append("fundCode",this.fundCode);
-        // dataEntity.append("appVersion",this.appVersion);
-        // dataEntity.append("appChannel",this.appChannel);
-        // dataEntity.append("deviceInfo",this.deviceInfo);
-        // dataEntity.append("timestamp",this.timestamp);
+        // var reqPackage = {
+        //     fundCode: this.fundCode,//访问接口名(根据后台需求)
+        //     appVersion: this.appVersion,//版本号
+        //     appChannel: this.appChannel,//渠道号
+        //     deviceInfo: this.deviceInfo,//设备信息
+        //     timestamp: timestamp,//时间戳
+        //     dataEntity:dataEntity//接口需要的参数
+        // }
+        dataEntity.append("fundCode",this.fundCode);
+        dataEntity.append("appVersion",this.appVersion);
+        dataEntity.append("appChannel",this.appChannel);
+        dataEntity.append("deviceInfo",this.deviceInfo);
+        dataEntity.append("timestamp",this.timestamp);
 
-        callback(null, reqPackage);
+        callback(null, dataEntity);
     }
 
     /**
@@ -135,6 +135,7 @@ ServerAPI.prototype.send = function (url, reqData, option, callback) {
             //错误处理，进入catch
             .catch(function (error) {
                 if (error.response) {
+                    console.log(error.response);
                     //请求已发出，但服务器响应的状态码不在 2xx 范围内
                     console.log(error.response.data);
                     console.log(error.response.status);
@@ -168,27 +169,49 @@ ServerAPI.prototype.send = function (url, reqData, option, callback) {
  * @return  无
  */
 ServerAPI.prototype.login = function (data, callback) {
-    // var dataEntity = new URLSearchParams();
-    var dataEntity = {
-        userName: data.username,
-        passWord: data.password,
-        code: data.code,
-        falg: data.flag
-    };
-    // dataEntity.append("userName", data.username);
-    // dataEntity.append("passWord", data.password);
-    // dataEntity.append("code", data.code);
-    // dataEntity.append("falg", data.flag);
+    var dataEntity = new URLSearchParams();
+    // var dataEntity = {
+    //     userName: data.username,
+    //     passWord: data.password,
+    //     code: data.code,
+    //     falg: data.flag
+    // };
+    dataEntity.append("userName", data.username);
+    dataEntity.append("passWord", data.password);
+    dataEntity.append("code", data.code);
+    dataEntity.append("falg", data.flag);
+    dataEntity.append("mei", data.mei);
+
     this.send(API.login, dataEntity, null, callback);
 };
 
 ServerAPI.prototype.businessType = function (data, callback) {
     var dataEntity = {
-
+        userName: data.username,
+        passWord: data.password,
+        code: data.code,
+        falg: data.flag,
+        mei:data.mei
     };
 
     this.send(API.businessType, dataEntity, null, callback);
 };
 
+ServerAPI.prototype.getMyAccount = function (data,callback) {
+    var dataEntity = {
+        userId:data.userId,
+    };
+    this.send(API.myAccount,dataEntity,null,callback);
+};
+
+// 我的信息接口
+ServerAPI.prototype.requestMyInformation = function (data, callback) {
+    // var dataEntity = {
+    //     userId: data.userId,
+    // };
+    var dataEntity = new URLSearchParams();
+    dataEntity.append("userId", data.userId);
+    this.send(API.myInformation, dataEntity, null, callback);
+};
 
 module.exports = ServerAPI;
