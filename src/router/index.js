@@ -43,111 +43,6 @@ import ChangeRepaymentAcc from '@/pages/repayment/ChangeRepaymentAcc'
 import AdvanceRepayment from '@/pages/repayment/AdvanceRepayment'
 
 Vue.use(Router)
-
-//export default new Router({
-//routes: [
-//    {
-//      path: '/',
-//      name: 'Hello',
-//      component: Hello
-//    },
-//    {
-//      path: '/pages/account/myAccount',
-//      name: 'myAccount',
-//      component: myAccount
-//    },
-//    {
-//      path: '/pages/account/MyInformation',
-//      name: 'MyInformation',
-//      component: MyInformation
-//    },
-//    {
-//        path: '/appointment',
-//        name: 'Appointment',
-//        component: Appointment
-//    },
-//    {
-//        path: '/appointment/myAppointment',
-//        name: 'myAppointment',
-//        component: myAppointment
-//    },
-//    {
-//        path: '/appointment/completeAppoint',
-//        name: 'completeAppoint',
-//        component: completeAppoint
-//    },
-//    {
-//        path: '/appointment/changeAppoint',
-//        name: 'changeAppoint',
-//        component: changeAppoint
-//    },
-//    {
-//        path: '/appointment/appointBank',
-//        name: 'appointBank',
-//        component: appointBank
-//    },
-//    {
-//        path: '/appointment/appointArea',
-//        name: 'appointArea',
-//        component: appointArea
-//    },
-//    {
-//        path: '/appointment/appointDot',
-//        name: 'appointDot',
-//        component: appointDot
-//    },
-//    {
-//        path:'/forgetpsw',
-//        name:'ForgetPsw',
-//        component:ForgetPsw
-//    },
-//    {
-//        path: '/pages/login/login',
-//        name: 'login',
-//        component: Login
-//    },
-//    {
-//        path: '/pages/message/Message',
-//        name: 'Message',
-//        component: Message
-//    },
-//    {
-//        path: '/pages/loan/MyLoan',
-//        name: 'MyLoan',
-//        component: MyLoan
-//    },
-//    {
-//        path: '/pages/loan/ReimbursementDetail',
-//        name: 'ReimbursementDetail',
-//        component: ReimbursementDetail
-//    },
-//    {
-//        path: '/notes',
-//        name: 'MyNotes',
-//        component: MyNotes
-//    },
-//    {
-//        path: '/pages/hedge/HedgeInput',
-//        name: 'HedgeInput',
-//        component: HedgeInput
-//    },
-//  	{
-//			    path: '/HedgeSubmit',
-//			    name:'HedgeSubmit',
-//			    component:HedgeSubmit
-//			},
-//    {
-//        path: '/loan/modeOfRepayment',
-//        name: 'modeOfRepayment',
-//        component: modeOfRepayment
-//    },
-//    {
-//        path: '/loan/modeOfRepaymentOk',
-//        name: 'modeOfRepaymentOk',
-//        component: modeOfRepaymentOk
-//    }
-//  ]
-//})
 const router = new Router({
     // mode: 'history',
     base: __dirname,
@@ -398,6 +293,14 @@ const router = new Router({
             name: 'loan-plan',
             component: (resolve) => {
                 require(['../pages/loan/loan-plan'], resolve)
+            }
+
+        },
+        
+        {
+            path: '/echartsDemo',
+            component: (resolve) => {
+                require(['../pages/echarts-demo'], resolve)
             }
 
         },

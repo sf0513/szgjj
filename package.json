@@ -13,6 +13,7 @@
     "axios": "^0.16.2",
     "body": "^5.1.0",
     "body-parser": "^1.17.2",
+    "echarts": "^3.6.2",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "mockjs": "^1.0.1-beta3",
